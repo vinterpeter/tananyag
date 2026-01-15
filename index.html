@@ -614,8 +614,8 @@
         async function loadAllChapters() {
             const promises = chapters.map(async (ch) => {
                 try {
-                    const mdFile = `${ch.folder}/${ch.folder}.md`;
-                    const response = await fetch(mdFile);
+                    const mdFile = `${ch.folder}/${ch.folder}.md?v=2`;
+                    const response = await fetch(mdFile, { cache: 'no-store' });
                     if (response.ok) {
                         chaptersContent[ch.id] = await response.text();
                     } else {
