@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Tananyag</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
@@ -265,12 +265,6 @@
             background: #f1c40f;
             padding: 2px 4px;
             border-radius: 3px;
-            animation: highlightFade 3s ease-out forwards;
-        }
-
-        @keyframes highlightFade {
-            0% { background: #f1c40f; }
-            100% { background: transparent; }
         }
 
         /* Loading */
@@ -401,7 +395,7 @@
             .search-input {
                 padding: 10px 12px;
                 padding-right: 35px;
-                font-size: 14px;
+                font-size: 16px;
             }
 
             .search-results {
@@ -690,6 +684,7 @@
             }
 
             searchResults.classList.add('visible');
+            searchResults.scrollTop = 0;
         }
 
         function getHighlightedContext(text, query) {
