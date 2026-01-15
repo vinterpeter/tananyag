@@ -4,12 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Tananyag</title>
+
+    <!-- PWA support -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Tananyag">
+    <link rel="apple-touch-icon" href="icon-192.png">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html, body {
+            overflow-x: hidden;
         }
 
         body {
@@ -70,6 +82,7 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            max-width: 100%;
         }
 
         /* Search bar */
@@ -120,6 +133,7 @@
         .content-wrapper {
             flex: 1;
             overflow-y: auto;
+            overflow-x: hidden;
             position: relative;
         }
 
@@ -127,6 +141,9 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 30px;
+            overflow-x: hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .content h1 {
@@ -215,8 +232,11 @@
 
         .content table {
             width: 100%;
+            max-width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
+            display: block;
+            overflow-x: auto;
         }
 
         .content th, .content td {
@@ -238,6 +258,12 @@
         .content li {
             line-height: 1.6;
             margin-bottom: 5px;
+        }
+
+        .content pre, .content code {
+            max-width: 100%;
+            overflow-x: auto;
+            word-break: break-word;
         }
 
         /* Search results */
