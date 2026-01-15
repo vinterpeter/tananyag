@@ -621,6 +621,9 @@ A század törzsállományában lévő beosztásokkal kellene a század tűztám
 
 ### 4.2.4.3 A lövészzászlóalj tűztámogatásának szervezetei, erői és eszközei
 
+![Ábra - oldal 27](images/page_27_img_1.jpeg)
+
+
 A lövészzászlóalj (ZAHK – zászlóalj alkalmi harci kötelék) harctevékenységét alapvetően a hadrendben meghatározott szervezetszerű tüzérségének állományával, az elöljáró (dandár) tüzérségének támogatásával, esetenként páncéltörő tüzéralegység megerősítéssel vívja meg. A lövészzászlóalj szervezetszerű tüzérsége áll a zászlóalj közvetlen tüzérségéből, valamint a századok tüzérségéből. A lövészzászlóalj állományába (közvetlen tüzérség) egy tűztámogató század van szervezve. A lövészszázadok szervezetébe pedig (századtüzérség) egy irányított páncéltörőrakéta-szakasz található. A zászlóalj szervezetszerű tüzérsége alapvetően biztosítja a támadó vagy védelmi harc megvívását. Ugyanakkor egyes esetekben – függően a zászlóalj (ZAHK) feladatától; az elöljáró harcrendjében elfoglalt helyétől, szerepétől; az ellenség erejétől, csoportosításától, tevékenységének jellegétől, páncélozott harcjárműveinek mennyiségétől; az elöljáró tűztámogató erőivel (tábori és páncéltörő tüzérséggel, repülőkkel, harci helikopterekkel) a zászlóalj sávjában megoldásra kerülő feladatok mennyiségétől stb. – szükségessé válhat a zászlóalj részére páncéltörőtüzér-megerősítés és tábori tüzérségi támogatás biztosítása.
 
 Mindezek alapján a lövészzászlóalj (ZAHK) megerősíthető a dandár irányított páncéltörő rakétaosztály állományából egy irányított páncéltörő rakétaütegig terjedő erővel (szakasszal vagy üteggel). Továbbá a dandárt közvetlen támogató vagy megerősítő tüzérosztály, illetve azok ütegei néhány tűzfeladat mértékéig vagy meghatározott lőszerfelhasználás keretén belül a harc egyes mozzanataiban tűzfeladatokat oldanak meg a zászlóalj érdekében, a zászlóaljparancsnok tervének, intézkedésének megfelelően.
@@ -1576,6 +1579,9 @@ A környezetünkben zajló folyamatok nagy része a légnemű, szilárd és foly
 
 Az akusztikai tartományban alkalmazhatunk irányított energiájú hangimpulzus fegyvert, személyi állományt zaklató berendezést, tüzérségi hangfelderítő rendszert, mint az orosz AZK-7M automatikus hangfelderítő komplexum, vagy akusztikai lövésdetektáló rendszer, mint az Aselsan által gyártott SEDA rendszer, mely a Magyar Honvédségben rendszeresített 4x4 Gidránokba is beépítésre került.
 
+![Ábra - oldal 63](images/page_63_img_1.jpeg)
+
+
 A hidroakusztikai tartományban kizárólag a pár száz Hz alatti hullámok terjednek hatékonyan, mivel a vízben magas frekvencián jelentős a közegcsillapítás. Katonai alkalmazást tekintve, víz alatti felderítésre használnak hidrofonokat és szonárokat medertérképezésre, akadályészlelésre és tengeralattjárók felderítésére.
 
 A szeizmikus tartományban a földben terjedő mechanikus rezgések érzékelésével katonai mozgásokat lehet detektálni. Az amerikai gyártmányú IREMBASS<sup>89</sup> úgynevezett harctéri szenzor rendelkezik szeizmikus érzékelővel, mely képes felismerni, kategorizálni és megszámolni a szenzor környékén mozgó katonákat kerekes vagy lánctalpas harcjárműveket.
@@ -1589,6 +1595,9 @@ Elektromágneses hullámnak nevezzük az időben változó, egymással kölcsön
 *1.1. táblázat: Az elektromágneses hullámok felosztása*
 
 A rádióhullámok tartományát a frekvencia és a hullámhossz szerint nevezzük el. Keletkezésük szerint megkülönböztetünk természetes és mesterséges eredetű elektromágneses hullámokat. A természetes hullámok a világűrből érkeznek, vagy a Föld légkörében keletkeznek. A mesterséges elektromágneses hullámokat adóberendezések állítják melyek az adóhoz csatlakoztatott antennáról válnak le. Az antennáról való leszakadást követelően egyenes vonalban, fénysebességgel terjed. Az elektromágneses hullám polarizációja az elektromos térerő helyzetétől függ.
+
+![Ábra - oldal 64](images/page_64_img_1.jpeg)
+
 
 Az elektromágneses hullámok a fénytanban megfigyelhető fizikai viselkedést tanúsítanak, mint a visszaverődés és az új közegbe érve megtört sugár. A visszaverődés történhet az ionoszféráról, talajról, vagy a hullámhosszal összemérhető természetes és mesterséges tárgyakról.
 
@@ -1606,6 +1615,9 @@ A rádióhullámokat frekvenciájuk vagy hullámhosszuk szerint csoportosítjuk.
 *1.8. ábra: A rádióhullámok terjedési módjai*
 
 Az infravörös<sup>90</sup> tartomány a rádiófrekvenciás sáv és a látható fény tartomány között helyezkedik el. Három részre osztható fel az IR spektrum, a közeli infravörös<sup>91</sup> (0,78 μm - 3 μm), a közepes infravörös<sup>92</sup> (3 μm – 50 μm) és a távoli infravörös<sup>93</sup> (50 μm - 100 μm) tartományra, melyet a 1.9. ábra mutat be.
+
+![Ábra - oldal 65](images/page_65_img_1.jpeg)
+
 
 *1.9. ábra: Az infravörös tartomány felosztása*
 

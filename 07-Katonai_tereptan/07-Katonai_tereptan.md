@@ -173,6 +173,33 @@ A fizikai, kémiai és biológia kölcsönhatások eredményeként létrejövő 
 
 A hazai talajviszonyok katonai szempontú értékeléséről további részletes ismeretek érhetők el A talaj katonai osztályozása c. tananyagban.
 
+![Ábra - oldal 8](images/page_8_img_1.png)
+
+![Ábra - oldal 8](images/page_8_img_2.png)
+
+![Ábra - oldal 8](images/page_8_img_3.png)
+
+![Ábra - oldal 8](images/page_8_img_4.png)
+
+![Ábra - oldal 8](images/page_8_img_5.png)
+
+![Ábra - oldal 8](images/page_8_img_6.png)
+
+![Ábra - oldal 8](images/page_8_img_7.png)
+
+![Ábra - oldal 8](images/page_8_img_8.png)
+
+![Ábra - oldal 8](images/page_8_img_9.png)
+
+![Ábra - oldal 8](images/page_8_img_10.png)
+
+![Ábra - oldal 8](images/page_8_img_11.png)
+
+![Ábra - oldal 8](images/page_8_img_12.png)
+
+![Ábra - oldal 8](images/page_8_img_13.png)
+
+
 **Közlekedési hálózat**
 
 Egy adott térség közlekedési hálózatának fejlettsége, kiépítettsége, állapota nagyban befolyásolja a katonai műveletek sikeres és gyors végrehajtását az abban résztvevő erők mozgás, manőver és együttműködési feltételeinek megteremtésével és fenntartásával. Biztosítja továbbá az erők és eszközök széttagolását és védelmét, a tartalékok időbeni előrevonását és a harcoló erők folyamatos utánpótlását.
@@ -590,6 +617,9 @@ E18° 01,28'; N47° 01,57'
 
 vagy teljes decimális tört alakban:
 
+![Ábra - oldal 31](images/page_31_img_1.jpeg)
+
+
 E18,02139°; N47,02611°
 
 ### 6.2.4 Az MGRS helyazonosító rendszer
@@ -608,6 +638,9 @@ Egy adott pozíció MGRS azonosítójának első adatpárja maga az UTM szegmens
 
 A második adatpár az adott UTM szegmensen belüli 100 km-es MGRS négyzet azonosító betűpárja, melyet a térkép keretében megadnak az UTM szegmens értékével együtt.
 
+![Ábra - oldal 32](images/page_32_img_2.jpeg)
+
+
 A négyzetazonosító betűpárjának első tagja a 100 km-es négyzetrács egy adott oszlopát, a második betű pedig egy sorát határozza meg (pl. Csóka-hegy: BT).
 
 ![21. A 34T jelű UTM szegmens területére eső 100 km-es MGRS négyzetek](images/page_32_img_1.jpeg)
@@ -625,6 +658,9 @@ A helymeghatározás pontossága ez esetben azt jelenti, hogy az MGRS azonosít�
 *22. MGRS azonosító harmadik adatpárjának leolvasása a BT jelű 100 km-es csonka négyzetben (forrás: MH GEOSZ oktatótérképek)*
 
 A zónát határoló szélső meridiánoknál az MGRS négyzetek csonkulnak. Ez azonban a helymeghatározás menetére nem gyakorol hatást, vagyis a fenti ábrán látható BT jelű csonka négyzetet a keresett pont (Csóka-hegy) azonosítójának leolvasásakor úgy kell elképzelnünk, mintha teljes lenne. (Lásd a szaggatott vonalakat!).
+
+![Ábra - oldal 34](images/page_34_img_1.png)
+
 
 Az azonosító értékének meghatározásánál a térkép keretében és a koordinátahálón található számok segítenek. Az utolsó számjegyek leolvasásakor már beosztásos vonalzót is igénybe kell vennünk. Lehetőség szerint az adott térképi méretaránynak megfelelő beosztású vonalzót alkalmazunk, de átszámítással a milliméter beosztású vonalzóval is le tudjuk venni a térképről az értékeket. Mivel az MGRS nem koordinátákat ad meg, hanem egy négyzet alakú terület azonosítóját, ezért az értékek leolvasásánál nem kerekíthetünk fölfelé.
 
@@ -698,6 +734,9 @@ A térképi méretarányból eredően olyan tereptárgyak is pontszerűen jelenn
 
 **Vonalas jellegű tereptárgyak** ábrázolásánál a térkép készítői a nyomvonal helyzetét és irányváltozásait rögzítik. A tereptárgy oldalirányú kiterjedése mellékes körülmény, vagy az adott térképi méretarányban nem fejezhető ki. A vonalas tereptárgyak (mint pl. az utak és a vasutak, a patakok és a keskenyebb csatornák, a kerítések stb.) jelei oldalirányban méreten felül ábrázolnak, ezért a közel eső vonalas tereptárgyak esetén mindig a fontosabbhoz képest rajzolják meg a kevésbé lényegest, utóbbi szükséges elmozdításával. A térinformatikai modellekben ezeket egydimenziós tereptárgyaknak is nevezzük, mivel lényegében más térbeli jellemzőjével nem foglalkozunk (leíró adatain túl) mint jellemző vektoraival.
 
+![Ábra - oldal 40](images/page_40_img_1.jpeg)
+
+
 **Területi jellegű tereptárgyak** esetén alaprajzilag azonos jelölést kell alkalmazni a topográfiai térképeken. Ilyen jelekkel a nagyobb kiterjedésű építmények, a növényzettel fedett területek, a szélesebb folyók, folyamok, jelentősebb tavak és mocsarak jelennek meg. Bár e tereptárgyak alak- és mérethelyesen jelennek meg a topográfiai térképeken, bonyolultabb alakzatoknál a lényeget nem érintő összevonásokra, egyszerűsítésekre számítanunk kell. Az alaprajzi ábrázolás a tereptárgyakat határoló kontúrvonalból és az azon belüli felületkitöltő jelből áll. A felületkitöltő jelek lehetnek különféle színek, mintázatok, vagy egyenletes eloszlású azonos szimbólumok. A térinformatikai modellekben ezeket kétdimenziós tereptárgyaknak is nevezzük, mivel térbeli reprezentációjukhoz a sík elegendő.
 
 A térképi jeleket, legyenek azok pont, vonalas, vagy területi jellegűek, egyezményes magyarázó jelekkel, megírásokkal is kiegészülhetnek. Ezeket a jeleket és megírásokat nem önállóan használják, hanem az alaprajzi és a meghatározott alakú jelekkel együtt.
@@ -720,6 +759,11 @@ A térképi megírások könnyen túlzsúfolttá tehetik a térképi tartalmat, 
 ![Jelkulcs táblázat](images/page_42_img_1.jpeg)
 
 #### 6.2.6.2 A jelkulcs felépítése, tartalma
+
+![Ábra - oldal 43](images/page_43_img_1.png)
+
+![Ábra - oldal 43](images/page_43_img_2.png)
+
 
 Az egyezményes jelek gyűjteménye 10 csoportra bontva sorolja fel a térképen megjelenő jeleket és megírásokat:
 
@@ -745,6 +789,15 @@ A topográfiai térképeken az összes települést ábrázolják. A fő-, átvo
 **Ipari, mezőgazdasági, szociális és kulturális építmények**
 
 Az ipari és mezőgazdasági üzemek, kereskedelmi, szociális és kulturális létesítmények a topográfiai térképeken általában alaprajz hűen jelennek meg. A kémények, toronyszerű kiemelkedő építmények a tájékozódás elősegítése érdekében kerülnek a térképre. A különböző szociális és kulturális (egészségügyi) építményeket (intézményeket) a már ismert elvek szerint ábrázolják, fajtájukat megírással tüntetik fel (iskola, kórház, stb).
+
+![Ábra - oldal 44](images/page_44_img_1.png)
+
+![Ábra - oldal 44](images/page_44_img_2.png)
+
+![Ábra - oldal 44](images/page_44_img_3.png)
+
+![Ábra - oldal 44](images/page_44_img_4.png)
+
 
 **Közlekedési hálózat**
 
@@ -778,6 +831,9 @@ A topográfiai térképeken a vizeket és a hozzájuk tartozó vízügyi létes�
 
 A folyóvizekhez tartoznak a folyók, a patakok, a csatornák és a lefolyással rendelkező árkok. Állóvizek alatt a tavakat és duzzasztással nyert tározómedencéket értjük. Az időszakosan változó partvonalú állóvizek ábrázolásánál eltérő vízállási helyzetet vesznek figyelembe:
 
+![Ábra - oldal 45](images/page_45_img_1.png)
+
+
 - tavaknál a középvíznek megfelelő vízvonal, azaz a közepes, tartós víztükör állása;
 - a duzzasztással nyert tárolómedencéknél a vízszint tervezett vonala, normál duzzasztás esetén.
 
@@ -803,6 +859,11 @@ A szintvonalas domborzatábrázolás plasztikusabbá tehető domborzatárnyékol
 
 Ide tartoznak mindazon terepelemek, amelyek a terepi közlekedést akadályozhatják, illetve közigazgatásilag, jogilag eltérő hovatartozású területek találkozását jelzik. A vonal jelöléséből lehet következtetni a határ fontosságára, a kerítés akadályozó jellegére. A határvonalakra általában feltüntetik az elválasztott régiók, közigazgatási egységek, egyéb területek megnevezését. Előfordulhat, hogy a térképen csak a töréspontoknál jelennek meg rövidebb szakaszon a határok. Ez különösen akkor fordul elő, amikor a határvonal valamely más vonalas tereptárgy mentén fut.
 
+![Ábra - oldal 46](images/page_46_img_1.png)
+
+![Ábra - oldal 46](images/page_46_img_2.png)
+
+
 **Növényzet és talajnemek**
 
 A topográfiai térkép a növényzetet és a talajt, járhatóságuk, védelmi és álcázási tulajdonságaik figyelembevételével, a tájékozódás követelményeinek megfelelően ábrázolja. A növényzet és talajfajták határait a méretarány adta lehetőség szerint ábrázolja, azok mennyiségi és minőségi adatait ábrázoló egyezményes magyarázó jelekkel.
@@ -812,6 +873,11 @@ A növényzet ábrázolásánál előtérbe kerülnek a katonai szempontból fon
 Az erdőkön való áthaladásnál fontos tájékoztató terepelemek az erdőátvágások, a nyiladékok, tisztások. Ezek az elemek a lehetőségek figyelembevételével alakhelyesen kerülnek ábrázolásra. A mezőgazdasági vetésterületeket (szántó) nem különböztetik meg. A többéves növénykultúrákat (gyümölcsöst, szőlőt, komlót stb.) a méretarány adta lehetőség szerint ábrázolják.
 
 A talajt kiterjedésének megfelelő alaprajzban, területi kitöltő jelekkel, különleges esetekben egyedi kitöltő jelöléssel ábrázolják. Elsősorban a mozgást és a műszaki munkákat befolyásoló talajtípusokat ábrázolják. A mocsarakat a gyalogos közlekedés lehetőségei szempontjából minősítik, megkülönböztetve a járható, a nehezen járható, illetve a járhatatlan mocsarakat. A mocsarakat borító növényzetet fajtájának és kiterjedésének megfelelően tüntetik fel.
+
+![Ábra - oldal 47](images/page_47_img_1.png)
+
+![Ábra - oldal 47](images/page_47_img_2.jpeg)
+
 
 **Írásminták**
 
@@ -853,6 +919,9 @@ A térképen megjelenő szintvonalak a terep azonos abszolút magasságú pontja
 
 Az alapszintköz, vagyis a vízszintes szintsíkok között kialakított szintköz a topográfiai térkép méretarányától és az megjelenítendő domborzati viszonyoktól függően változhat. Változatlan alapszintköznél a szintvonalak sűrűsége alapján következtethetünk a térképen lejtők meredekségére. (Ahol a szintvonalak sűrűbben helyezkednek el egymáshoz, ott a lejtő meredekebb, ahol ritkábban, ott lankásabb.) A domborzat ábrázolásához alkalmazott alapszintköz nagyságát a topográfiai térképeken mindig feltüntetik.
 
+![Ábra - oldal 49](images/page_49_img_2.jpeg)
+
+
 Az alapszintvonal mellett a topográfiai térképeken találkozhatunk még főszintvonalakkal, felező és kiegészítő szintvonalakkal is. Főszintvonalnak az alapszintköztől függően minden negyedik, vagy ötödik alapszintvonalat nevezünk ki, amelyeket vastagított, folyamatos vonallal jelölünk. A főszintvonal a szintvonal értékek gyorsabb meghatározását teszik lehetővé sűrű szintvonalrajz esetén.
 
 A felező szintvonal az alapszintköz felének megfelelő szintsík metszésvonala. Hosszan szaggatott vonallal jelöljük. Segítségével a formagazdag és a lankásabb területek domborzati idomai jeleníthetők meg.
@@ -862,6 +931,9 @@ A kiegészítő szintvonalak rövid, szaggatott vonalak, az alap- és felező sz
 A szintvonalak magasságértéküket az őket létrehozó vízszintes metszősíkoktól kapják. A szintvonalakon feltüntetett magasságérték alapján tudjuk a terepi pontok abszolút magasságát meghatározni a térképen. A lejtők irányáról egyrészt az eséstüskék alapján, másrészt a szintvonalak magasságmegírásai alapján szerezhetünk tudomást, ez utóbbiak talpa ugyanis mindig a lejtésirányba mutat.
 
 ### 6.2.8 A topográfiai térképek szelvényezése
+
+![Ábra - oldal 50](images/page_50_img_1.jpeg)
+
 
 A földrajzi fokháló a pontok helyének terepi és térképi beazonosításán kívül a szelvényezési rendszerek kialakításánál is szerepet játszik. Elsősorban a hagyományos papír alapú térképek esetében szükséges a megjelenítendő földrajzi tér egységes, mértani felosztása nagy kiterjedésű területek ábrázolásánál, az alkalmazott papírméretektől függően. E célra a földrajzi fokháló meghatározott vonalait vesszük igénybe.
 
@@ -979,6 +1051,15 @@ A Magyar Honvédségnél leggyakrabban az EDF 7×40 típusú távcsővel találk
 *36. A 7×40-es EDF távcső hordkész állapotban*
 
 A katonai feladatok végrehajtására alkalmas távcsöveket speciális szálkereszttel látják el, amely alkalmassá teszi kisebb szögek, irányeltérések meghatározására, a vonásképlet révén pedig távolságok, tereptárgyak méretének meghatározására. Az EDF 7×40-es távcső látómezejében függőleges és vízszintes vonalbeosztás látható. Minden egyes beosztás 5 vonásnak, a hosszabb vonalkák közötti irányeltérés 10 vonásnak felel meg.
+
+![Ábra - oldal 57](images/page_57_img_2.png)
+
+![Ábra - oldal 57](images/page_57_img_3.png)
+
+![Ábra - oldal 57](images/page_57_img_4.png)
+
+![Ábra - oldal 57](images/page_57_img_5.png)
+
 
 **Térképek, légifényképek**
 
@@ -1261,6 +1342,9 @@ A hátrametszés feladata végrehajtható tájolóval és vonalzóval egyaránt.
       iii. Szerkesszük fel a térképre mindhárom tereptárgy jelétől mérve a meghatározott azimutértékeket!
    b. Tájoló alkalmazásával
 3. Ahol a három hátrametsző irány egyenese metszi egymást, ott lesz az álláspontunk térképi helye.
+
+![Ábra - oldal 69](images/page_69_img_2.jpeg)
+
 
 A megoldás helyességében akkor bízhatunk meg, ha a térképre felszerkesztett egyenesek egy pontban metszik egymást. Pontatlan meghatározásnál hibaháromszög keletkezik. Ha a hibaháromszög valamelyik oldalának nagysága nagyobb 2 mm-nél, akkor a hátrametszést meg kell ismételnünk. Kisebb hibaháromszögnél annak súlypontját elfogadhatjuk álláspontként. Kellő idő rendelkezésre állása esetén célszerű azonban a hátrametszést megismételni, lehetőség szerint más tereptárgyak felhasználásával.
 
