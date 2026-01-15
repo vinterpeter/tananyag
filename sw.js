@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tananyag-v1';
+const CACHE_NAME = 'tananyag-v2';
 
 // Files to cache
 const STATIC_FILES = [
