@@ -280,10 +280,80 @@
             color: #7f8c8d;
         }
 
+        /* Hamburger menu button */
+        .menu-toggle {
+            display: none;
+            background: #2c3e50;
+            border: none;
+            color: white;
+            font-size: 24px;
+            padding: 15px 20px;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+        }
+
+        .menu-toggle-inner {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        .menu-toggle.active .hamburger span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 4px);
+        }
+
+        .menu-toggle.active .hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active .hamburger span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -4px);
+        }
+
+        .menu-title {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Mobile overlay */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+        }
+
+        .sidebar-overlay.visible {
+            display: block;
+        }
+
         /* Mobile responsive */
         @media (max-width: 768px) {
             .sidebar {
-                width: 250px;
+                width: 280px;
+            }
+
+            .content {
+                padding: 20px;
             }
         }
 
@@ -292,20 +362,73 @@
                 flex-direction: column;
             }
 
+            .menu-toggle {
+                display: block;
+            }
+
             .sidebar {
-                width: 100%;
-                height: auto;
-                max-height: 40vh;
+                position: fixed;
+                top: 56px;
+                left: 0;
+                width: 85%;
+                max-width: 300px;
+                height: calc(100vh - 56px);
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 100;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .sidebar-header {
+                display: none;
+            }
+
+            .main {
+                height: calc(100vh - 56px);
             }
 
             .content {
                 padding: 15px;
             }
+
+            .search-container {
+                padding: 12px 15px;
+            }
+
+            .search-input {
+                padding: 10px 12px;
+                padding-right: 35px;
+                font-size: 14px;
+            }
+
+            .search-results {
+                padding: 15px;
+            }
+
+            .search-result-item {
+                padding: 12px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
+    <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+        <div class="menu-toggle-inner">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <span class="menu-title">Tananyag</span>
+        </div>
+    </button>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMenu()"></div>
+
+    <div class="sidebar" id="sidebar">
         <div class="sidebar-header">Tananyag</div>
         <div class="chapter-list" id="chapterList">
             <div class="loading">Betoltes...</div>
@@ -329,6 +452,27 @@
     </div>
 
     <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const toggle = document.getElementById('menuToggle');
+
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('visible');
+            toggle.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const toggle = document.getElementById('menuToggle');
+
+            sidebar.classList.remove('open');
+            overlay.classList.remove('visible');
+            toggle.classList.remove('active');
+        }
+
         // Chapter configuration
         const chapters = [
             { id: '02', folder: '02-Vezeteselmellet_altalanos_ismeretek', name: 'Vezeteselmeleti altalanos ismeretek' },
@@ -398,6 +542,9 @@
             document.getElementById('searchResults').classList.remove('visible');
             document.getElementById('searchInput').value = '';
             document.getElementById('searchClear').classList.remove('visible');
+
+            // Close mobile menu
+            closeMenu();
 
             // Render content
             renderContent(id);
