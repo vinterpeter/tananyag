@@ -1,0 +1,22 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ecfdf5', 'primaryTextColor': '#065f46', 'primaryBorderColor': '#10b981', 'lineColor': '#4a5568', 'secondaryColor': '#d1fae5', 'tertiaryColor': '#a7f3d0'}}}%%
+flowchart TB
+    subgraph BR["CZ BREN 2 - A magyar lövészkatona alapfegyvere"]
+        subgraph UM["Űrméretek"]
+            U1["5,56×45 mm&lt;br/&gt;NATO standard"]
+            U2["7,62×51 mm&lt;br/&gt;NATO Battle Rifle"]
+            U3["7,62×39 mm&lt;br/&gt;orosz kaliberű"]
+        end
+        subgraph CS["Csőhosszak"]
+            C1["8&quot; / 207 mm&lt;br/&gt;kompakt"]
+            C2["11&quot; / 280 mm&lt;br/&gt;karabély"]
+            C3["14&quot; / 357 mm&lt;br/&gt;standard"]
+        end
+    end
+
+    subgraph TECH["Jellemzők"]
+        T1["2,86-3,25 kg"]
+        T2["30 lőszer tár"]
+        T3["850 lövés/perc"]
+    end
+
+    BR --> TECH

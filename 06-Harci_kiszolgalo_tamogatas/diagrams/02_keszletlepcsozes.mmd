@@ -1,0 +1,20 @@
+flowchart LR
+    subgraph ZA["ZÁSZLÓALJ<br/>5 DOS"]
+        UZ["Üzemi: 3 DOS"]
+        TA["Tartalék: 2 DOS"]
+    end
+
+    subgraph DA["DANDÁR<br/>2 DOS"]
+        RAK["Raktári készlet"]
+    end
+
+    subgraph KO["KÖZPONTI<br/>Stratégiai készlet"]
+        KOZP["Hadműveleti<br/>készlet"]
+    end
+
+    KO -->|"feltöltés"| DA
+    DA -->|"feltöltés"| ZA
+
+    style ZA fill:#fed7d7,stroke:#c53030
+    style DA fill:#feebc8,stroke:#c05621
+    style KO fill:#c6f6d5,stroke:#276749

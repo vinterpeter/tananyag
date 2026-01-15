@@ -1,0 +1,18 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#fefce8', 'primaryTextColor': '#713f12', 'primaryBorderColor': '#ca8a04', 'lineColor': '#4a5568', 'secondaryColor': '#fef9c3', 'tertiaryColor': '#fde047'}}}%%
+flowchart TB
+    subgraph GID["Gidrán 4×4 - Magyar gyártás Kaposváron"]
+        direction LR
+        A["Csapatszállító&lt;br/&gt;9+2 fő"]
+        B["Felderítő&lt;br/&gt;szenzorrendszer"]
+        C["Sebesültszállító&lt;br/&gt;egészségügyi"]
+        D["Tűztámogató&lt;br/&gt;SARP platform"]
+        E["Tüzérbemérő&lt;br/&gt;120 mm aknavető"]
+    end
+
+    subgraph VED["Védelmi jellemzők"]
+        V1["STANAG Level 3&lt;br/&gt;golyóálló"]
+        V2["4a/4b aknavédelem&lt;br/&gt;V-alakú haspáncél"]
+        V3["Run-flat gumik&lt;br/&gt;+ központi fújás"]
+    end
+
+    GID --> VED

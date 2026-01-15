@@ -1,0 +1,20 @@
+flowchart TD
+    subgraph MDMP["MDMP - 7 LÉPÉS"]
+        L1["1️⃣ Feladat vétele<br/>Megkapjuk a feladatot"]
+        L2["2️⃣ Küldetés elemzése<br/>Mit kell tennünk?"]
+        L3["3️⃣ Változatok kidolgozása<br/>Hogyan tehetjük?"]
+        L4["4️⃣ Változatok elemzése<br/>Hadijáték végrehajtása"]
+        L5["5️⃣ Változatok összehasonlítása<br/>Melyik a legjobb?"]
+        L6["6️⃣ Döntés<br/>Parancsnok elhatároz"]
+        L7["7️⃣ Harcparancs elkészítése<br/>Feladatok kiosztása"]
+    end
+
+    L1 --> L2 --> L3 --> L4 --> L5 --> L6 --> L7
+
+    style L1 fill:#FFEBEE,stroke:#EF5350,color:#333
+    style L2 fill:#FFF3E0,stroke:#FF9800,color:#333
+    style L3 fill:#FFFDE7,stroke:#FFEB3B,color:#333
+    style L4 fill:#E8F5E9,stroke:#4CAF50,color:#333
+    style L5 fill:#E3F2FD,stroke:#2196F3,color:#333
+    style L6 fill:#EDE7F6,stroke:#673AB7,color:#333
+    style L7 fill:#FCE4EC,stroke:#E91E63,color:#333

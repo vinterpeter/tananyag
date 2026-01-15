@@ -1,0 +1,14 @@
+flowchart TB
+    subgraph GPS ["GPS rendszer szegmensei"]
+        direction TB
+        M["<b>Űrszegmens</b><br/>24+ műhold<br/>6 pálya, 20 200 km"]
+        V["<b>Vezérlő szegmens</b><br/>Földi állomások<br/>Pályakorrekciók"]
+        F["<b>Felhasználói szegmens</b><br/>Vevőkészülékek<br/>Navigációs alkalmazások"]
+    end
+
+    M --> V
+    V --> F
+
+    style M fill:#bbdefb
+    style V fill:#c8e6c9
+    style F fill:#fff9c4

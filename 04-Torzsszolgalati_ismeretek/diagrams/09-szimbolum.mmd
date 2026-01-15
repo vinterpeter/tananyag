@@ -1,0 +1,14 @@
+flowchart TD
+    subgraph SZIMB["SZIMBÓLUM ÖSSZETEVŐI"]
+        K["KÖRVONAL<br/>Hovatartozás"]
+        KIT["KITÖLTÉS<br/>Harctéri dimenzió"]
+        IK["IKON<br/>Csapatnem/Funkció"]
+        MOD["MÓDOSÍTÓK<br/>Kiegészítő info"]
+    end
+
+    K --> KIT --> IK --> MOD
+
+    style K fill:#E8F4FD,stroke:#4A90A4,color:#333
+    style KIT fill:#FFF3E0,stroke:#FFB74D,color:#333
+    style IK fill:#E8F5E9,stroke:#66BB6A,color:#333
+    style MOD fill:#FCE4EC,stroke:#E91E63,color:#333

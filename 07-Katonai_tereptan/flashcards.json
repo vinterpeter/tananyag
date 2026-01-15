@@ -1,0 +1,638 @@
+{
+    "deck": {
+        "name": "Katonai tereptan - Vizsgafelkészítő",
+        "description": "A Magyar Honvédség katonai tereptan tananyaga: tereptani alapismeretek, térképészeti alapismeretek, tájékozódási alapismeretek, tájolók, GPS"
+    },
+    "cards": [
+        {
+            "id": 1,
+            "front": "Mi a terep definíciója?",
+            "back": "A Föld felszínének egy része, amelyen a katonai tevékenységek végbemennek. Hatással van a harc megvívására, a harctevékenység körülményeire és lehetőségeire. Befolyásolja a személyi állomány harcképességét, a haditechnikai eszközök alkalmazását.",
+            "tags": [
+                "tereptan",
+                "alapfogalom"
+            ]
+        },
+        {
+            "id": 2,
+            "front": "Mik a terep alkotóelemei?",
+            "back": "1. Domborzat (a terep váza)\n2. Vizek (óceánok, tengerek, tavak, vízfolyások, mocsarak)\n3. Növényzet (természetes és mesterséges)\n4. Talaj (a földkéreg felső laza rétege)\n5. Közlekedési hálózat\n6. Települések (és egyéb létesítmények)",
+            "tags": [
+                "tereptan",
+                "alkotóelemek"
+            ]
+        },
+        {
+            "id": 3,
+            "front": "Mik a terep harcászati jellemzői?",
+            "back": "1. Járhatóság (a terep leküzdhetősége)\n2. Fedezőképesség (fedezék és rejtés)\n3. Megfigyelési és tűzvezetési lehetőségek",
+            "tags": [
+                "tereptan",
+                "harcászat"
+            ]
+        },
+        {
+            "id": 4,
+            "front": "Mi a különbség a fedezék és a rejtés között?",
+            "back": "Fedezék: ellenséges lőfegyverek tüze elleni védelem (pl. lövészárok, harckocsi mélyedés).\nRejtés: felderítés elleni védelem, láthatóság csökkentése (pl. álcázás, növényzet takarása).",
+            "tags": [
+                "tereptan",
+                "harcászat"
+            ]
+        },
+        {
+            "id": 5,
+            "front": "Hogyan osztályozzuk a terepet járhatóság szerint?",
+            "back": "1. Járható: tereptárgyak nem korlátozzák a mozgást\n2. Nehezen járható: helyenként akadályozza\n3. Járhatatlan: tereptárgyak végig korlátozzák a mozgást\n\nMegkülönböztetjük körkörös és egyirányú járhatóságot is.",
+            "tags": [
+                "tereptan",
+                "járhatóság"
+            ]
+        },
+        {
+            "id": 6,
+            "front": "Mi a síkvidék katonai szempontból?",
+            "back": "Viszonylagos magasságkülönbségek: 0-30 m. Jellemző a jó járhatóság (különösen a nagy sík felületeken), a rálátás és tűzvezetés előnye, de a rejtőzési lehetőségek korlátozottak.",
+            "tags": [
+                "tereptan",
+                "terepfajta"
+            ]
+        },
+        {
+            "id": 7,
+            "front": "Mi a dombvidék katonai szempontból?",
+            "back": "Viszonylagos magasságkülönbségek: 30-200 m. Kedvezőbb rejtőzési és fedezéki lehetőségek mint síkvidéken, változatosabb terepviszonyok, megnehezített megfigyelés.",
+            "tags": [
+                "tereptan",
+                "terepfajta"
+            ]
+        },
+        {
+            "id": 8,
+            "front": "Mi a hegyvidék katonai szempontból?",
+            "back": "Viszonylagos magasságkülönbségek: 200 m felett. Jelentősen korlátozza a mozgást, a megfigyelést és a tűzvezetést. Magaslatok birtoklása kulcsfontosságú. Korlátozott járhatóság, fontos szorosok és hágók.",
+            "tags": [
+                "tereptan",
+                "terepfajta"
+            ]
+        },
+        {
+            "id": 9,
+            "front": "Mik a síkvidéki tájtípusok?",
+            "back": "1. Síkvidéki típus (igazi síkság)\n2. Homokbuckás síkvidék\n3. Hullámos síkvidék",
+            "tags": [
+                "tereptan",
+                "tájtípus"
+            ]
+        },
+        {
+            "id": 10,
+            "front": "Mik a dombvidéki és hegyvidéki tájtípusok?",
+            "back": "Dombvidék:\n1. Dombvidéki tájtípus\n2. Árkolt dombvidék\n\nHegyvidék:\n1. Hegyvidéki tájtípus\n2. Magashegységi tájtípus",
+            "tags": [
+                "tereptan",
+                "tájtípus"
+            ]
+        },
+        {
+            "id": 11,
+            "front": "Hol helyezkedik el Magyarország az UTM rendszerben?",
+            "back": "Magyarország területe az UTM rendszer 33-as és 34-es zónájába esik. A zónahatár nagyjából a 18° keleti hosszúság mentén húzódik.",
+            "tags": [
+                "térképészet",
+                "UTM"
+            ]
+        },
+        {
+            "id": 12,
+            "front": "Mi az MGRS (Military Grid Reference System)?",
+            "back": "Katonai keresőhálózati rendszer, amely az UTM zónákra épül. Felépítése: zónaszám + zónabetű + 100 km-es négyzet azonosító (2 betű) + koordináták (keleti és északi érték).",
+            "tags": [
+                "térképészet",
+                "MGRS"
+            ]
+        },
+        {
+            "id": 13,
+            "front": "Mit jelent a GEOREF rendszer?",
+            "back": "Földrajzi (fokhálózati) koordinátákon alapuló azonosítási rendszer. Felépítése: 15°×15°-os négyzet (2 betű) + 1°×1°-os négyzet (2 betű) + percértékek. Elsősorban légierő alkalmazásokhoz.",
+            "tags": [
+                "térképészet",
+                "GEOREF"
+            ]
+        },
+        {
+            "id": 14,
+            "front": "Milyen NATO szabványos térképméretarányok vannak?",
+            "back": "1. 1:25 000 - alegységek, részletes tervezés\n2. 1:50 000 - leggyakoribb harcászati térkép\n3. 1:100 000 - hadműveleti tervezés\n4. 1:250 000 - hadászati tervezés\n5. 1:500 000 - légi navigáció\n6. 1:1 000 000 - áttekintő térképek",
+            "tags": [
+                "térképészet",
+                "méretarány"
+            ]
+        },
+        {
+            "id": 15,
+            "front": "Mi a szintvonal (izohipsza)?",
+            "back": "Az egyenlő tengerszint feletti magasságú pontokat összekötő zárt görbe vonal a térképen. A szintvonalak távolságából a lejtő meredekségére következtethetünk: sűrű vonalak = meredek lejtő.",
+            "tags": [
+                "térképészet",
+                "domborzat"
+            ]
+        },
+        {
+            "id": 16,
+            "front": "Mi az alapszintköz?",
+            "back": "Két egymást követő alapszintvonal közötti magasságkülönbség. Értéke méretaránytól függ:\n- 1:25 000 → 10 m\n- 1:50 000 → 20 m\n- 1:100 000 → 40 m",
+            "tags": [
+                "térképészet",
+                "domborzat"
+            ]
+        },
+        {
+            "id": 17,
+            "front": "Mit jelöl a főszintvonal és a segédszintvonal?",
+            "back": "Főszintvonal: ötödik alapszintvonal, vastagabb vonallal jelölve, könnyebb tájékozódást segíti.\nSegédszintvonal: fél alapszintközönként húzott szaggatott vonal, ahol a domborzat enyhébb változásait nem mutatná az alapszintvonal.",
+            "tags": [
+                "térképészet",
+                "domborzat"
+            ]
+        },
+        {
+            "id": 18,
+            "front": "Mit jelöl a csúcs és a nyeregpont a térképen?",
+            "back": "Csúcs: koncentrikus, zárt szintvonalak, a legbelső a legmagasabb pont körül.\nNyeregpont: két kiemelkedés közötti legmélyebb pont, ahol a szintvonalak 8-as vagy homokóra alakzatot formálnak.",
+            "tags": [
+                "térképészet",
+                "domborzat"
+            ]
+        },
+        {
+            "id": 19,
+            "front": "Mi a hát- és völgyvonal?",
+            "back": "Hátvonal (gerinc): kiemelkedés legmagasabb vonala, ahol a szintvonalak kidomborodnak a magasabb területek felé.\nVölgyvonal: mélyedés legmélyebb vonala, ahol a szintvonalak az alacsonyabb területek felé domborodnak.",
+            "tags": [
+                "térképészet",
+                "domborzat"
+            ]
+        },
+        {
+            "id": 20,
+            "front": "Milyen tájolók rendszeresítettek a Magyar Honvédségben?",
+            "back": "1. 39/49 M típusú tükrös-szelencés tájoló (Bézárd típus) - 6000 vonás beosztás\n2. Cammenga 3H lencsés tájoló - 6400 vonás (NATO szabvány)",
+            "tags": [
+                "tájékozódás",
+                "tájoló"
+            ]
+        },
+        {
+            "id": 21,
+            "front": "Mi a különbség a 6000 és 6400 vonás beosztás között?",
+            "back": "6000 vonás: a teljes kör 6000 részre osztása, 1 vonás ≈ 1 méter 1 km-re.\n6400 vonás (mil): NATO szabvány, a teljes kör 6400 részre osztása. A Cammenga 3H ezt használja.",
+            "tags": [
+                "tájékozódás",
+                "tájoló"
+            ]
+        },
+        {
+            "id": 22,
+            "front": "Mi a vonásképlet és mire használható?",
+            "back": "T = S × 1000 / V\n\nT = távolság (méterben)\nS = a tárgy mérete (méterben)\nV = leolvasott vonásérték\n\nTávolságbecslésre és célméretre használható, ha egy adat ismert.",
+            "tags": [
+                "tájékozódás",
+                "vonásképlet"
+            ]
+        },
+        {
+            "id": 23,
+            "front": "Milyen főbb részeit ismered a Cammenga 3H tájolónak?",
+            "back": "1. Fedél célzóréssel\n2. Irányzószál\n3. Lebegőtárcsa (beosztással)\n4. Rögzített leolvasójel\n5. Nagyító lencse\n6. Vonalzóél\n7. Foszforeszkáló jelek (éjszakai használat)",
+            "tags": [
+                "tájékozódás",
+                "tájoló"
+            ]
+        },
+        {
+            "id": 24,
+            "front": "Mik a 39/49 M tájoló (Bézárd) főbb részei?",
+            "back": "1. Forgatható szelence (6000 vonás beosztás)\n2. Tükör (mágnestű figyeléséhez)\n3. Irányzófedél és irányzórések\n4. Mágnestű\n5. Vonalzóél méretarány-beosztással\n6. Foszforeszkáló jelek",
+            "tags": [
+                "tájékozódás",
+                "tájoló"
+            ]
+        },
+        {
+            "id": 25,
+            "front": "Mi az EDF 7×40 távcső és milyen mérőhálózata van?",
+            "back": "Katonai távcső: 7× nagyítás, 40 mm objektív átmérő.\nMérőhálózat: 10 vonás nagy beosztás, 5 vonás kis beosztás.\nA vonásképlettel távolságbecslésre használható.",
+            "tags": [
+                "tájékozódás",
+                "távcső"
+            ]
+        },
+        {
+            "id": 26,
+            "front": "Mik a fő világtájak azimut értékei (6400 vonás)?",
+            "back": "Észak (N): 0 / 6400 vonás\nKelet (E): 1600 vonás\nDél (S): 3200 vonás\nNyugat (W): 4800 vonás",
+            "tags": [
+                "tájékozódás",
+                "világtáj"
+            ]
+        },
+        {
+            "id": 27,
+            "front": "Mik a fő világtájak azimut értékei (6000 vonás)?",
+            "back": "Észak (N): 0 / 6000 vonás\nKelet (E): 1500 vonás\nDél (S): 3000 vonás\nNyugat (W): 4500 vonás",
+            "tags": [
+                "tájékozódás",
+                "világtáj"
+            ]
+        },
+        {
+            "id": 28,
+            "front": "Mi a földrajzi észak (TN - True North)?",
+            "back": "Az adott állásponton áthaladó helyi meridiánnak a Föld északi pólusára mutató ága. A térképeken a keretvonal függőleges része jelöli. Gyakorlatilag egybeesik a Sarkcsillag irányával.",
+            "tags": [
+                "tájékozódás",
+                "észak"
+            ]
+        },
+        {
+            "id": 29,
+            "front": "Mi a mágneses észak (MN - Magnetic North)?",
+            "back": "Az adott állásponton a mágneses iránytű északi vége által mutatott irány. A helyi mágneses erőtér irányvonalaival esik egybe. Iránya időben és térben változik.",
+            "tags": [
+                "tájékozódás",
+                "észak"
+            ]
+        },
+        {
+            "id": 30,
+            "front": "Mi a hálózati észak (GN - Grid North)?",
+            "back": "A térkép kilométer-hálózatának függőleges vonalaival egyező irány. Az egyenlítőn és az UTM zóna középmeridiánjánál esik egybe a földrajzi északkal.",
+            "tags": [
+                "tájékozódás",
+                "észak"
+            ]
+        },
+        {
+            "id": 31,
+            "front": "Mi az azimut?",
+            "back": "Az északi irány és egy adott pontra mutató irány közötti szög, az északi iránytól az óramutató járásával megegyező irányban mérve. Lehet földrajzi (TA), mágneses (MA) vagy hálózati azimut (GA/irányszög).",
+            "tags": [
+                "tájékozódás",
+                "azimut"
+            ]
+        },
+        {
+            "id": 32,
+            "front": "Mi a mágneses deklináció (MD)?",
+            "back": "A földrajzi észak (TN) és a mágneses észak (MN) közötti szög.\nMD = MN – TN\nPozitív, ha MN keletre tér el TN-től. Értéke időben és térben változik!",
+            "tags": [
+                "tájékozódás",
+                "deklináció"
+            ]
+        },
+        {
+            "id": 33,
+            "front": "Mi a vetületi meridián konvergencia (GC)?",
+            "back": "A földrajzi észak (TN) és a hálózati észak (GN) közötti szög.\nGC = GN – TN\nÉrtéke függ az álláspont távolságától az UTM zóna középmeridiánjától és az Egyenlítőtől.",
+            "tags": [
+                "tájékozódás",
+                "konvergencia"
+            ]
+        },
+        {
+            "id": 34,
+            "front": "Mi a mágneses tájékozószög / iránytűeltérés (GMA)?",
+            "back": "A hálózati észak (GN) és a mágneses észak (MN) közötti szög.\nGMA = GC – MD = MA – GA\nA térképről levett irányszögek átszámításához szükséges a terepen használható mágneses azimuttá.",
+            "tags": [
+                "tájékozódás",
+                "GMA"
+            ]
+        },
+        {
+            "id": 35,
+            "front": "Hogyan határozható meg az északi irány a Napból analóg órával?",
+            "back": "1. Vízszintesen tartott órát fordítsd úgy, hogy a kismutató a Nap irányába mutasson.\n2. Felezd meg a kismutató és a 12 óra (nyáron 1 óra) közötti szöget.\n3. A szögfelező a Nap irányába meghosszabbítva délre mutat, ellentétes irányban északra.",
+            "tags": [
+                "tájékozódás",
+                "világtáj"
+            ]
+        },
+        {
+            "id": 36,
+            "front": "Hogyan határozható meg az északi irány a Sarkcsillag alapján?",
+            "back": "1. Keresd meg a Göncölszekér 7 csillagát.\n2. A szekér két hátsó csillagát kösd össze és hosszabbítsd meg felfelé ~5×-ösére.\n3. A kapott pont közelében van a Sarkcsillag (Polaris).\n4. A Sarkcsillag függőleges síkja a földrajzi észak.",
+            "tags": [
+                "tájékozódás",
+                "világtáj"
+            ]
+        },
+        {
+            "id": 37,
+            "front": "Mik a természeti jelenségek alapján történő világtáj-meghatározás módszerei?",
+            "back": "- Fák lombja délen dúsabb, északon ritkább\n- Fák kérge északon vastagabb, durvább\n- Mohás kérgű fák és sziklák észak felé néznek\n- Kivágott fák évgyűrűi északon sűrűbbek\n- Hangyabolyok déli oldala enyhébb lejtésű",
+            "tags": [
+                "tájékozódás",
+                "természet"
+            ]
+        },
+        {
+            "id": 38,
+            "front": "Mik a térkép tájolásának lépései tájolóval?",
+            "back": "1. Határozd meg a mágneses deklináció értékét.\n2. Helyezd a tájolót a térképre, irányélét a keretvonalhoz igazítva.\n3. Forgasd a térképet, amíg a tájoló a korrigált értéket nem mutatja.\n\nA deklináció értékét a 6400-ból (lencsés tájoló) ki kell vonni.",
+            "tags": [
+                "tájékozódás",
+                "térkép"
+            ]
+        },
+        {
+            "id": 39,
+            "front": "Hogyan tájolható a térkép vonalas tereptárgy alapján?",
+            "back": "1. Azonosítsd a terepen és a térképen ugyanazt a vonalas tereptárgyat (út, csatorna).\n2. Helyezz vonalzót a térképi jelre.\n3. Forgasd a térképet, amíg a terepi és térképi irány nem egyezik.\n4. Ellenőrizd egy oldalirányú tereptárggyal.",
+            "tags": [
+                "tájékozódás",
+                "térkép"
+            ]
+        },
+        {
+            "id": 40,
+            "front": "Hogyan határozható meg az álláspont azonosítással?",
+            "back": "Ha álláspontunk közvetlenül egy térképen ábrázolt tereptárgyon vagy annak közelében van (pl. útkereszteződés, híd), azt egyszerűen beazonosítjuk a tájolt térképen. Ellenőrizzük közelítő iránymérésekkel a környező tereptárgyakra.",
+            "tags": [
+                "tájékozódás",
+                "álláspont"
+            ]
+        },
+        {
+            "id": 41,
+            "front": "Mi az oldalmetszés módszere?",
+            "back": "Álláspont meghatározása, ha egy azonosított vonalas tereptárgyon állunk:\n1. Azonosítsuk a vonalas tereptárgyat a térképen.\n2. Válasszunk egy oldalt fekvő, azonosítható tereptárgyat.\n3. Irányozzuk meg a tereptárgyat és szerkesszük fel az irányt.\n4. A metszéspont az álláspont.",
+            "tags": [
+                "tájékozódás",
+                "álláspont"
+            ]
+        },
+        {
+            "id": 42,
+            "front": "Mi a hátrametszés módszere?",
+            "back": "Álláspont meghatározása távolabbi tereptárgyak segítségével:\n1. Válasszunk ki 3 jól azonosítható, távoli tereptárgyat.\n2. Mérjük meg mindegyik mágneses azimutját.\n3. Számítsuk át irányszöggé és szerkesszük fel.\n4. A három irány metszéspontja az álláspont.",
+            "tags": [
+                "tájékozódás",
+                "álláspont"
+            ]
+        },
+        {
+            "id": 43,
+            "front": "Mekkora hibaháromszög fogadható el hátrametszésnél?",
+            "back": "Ha a hibaháromszög bármely oldalának nagysága nagyobb 2 mm-nél (térképen), a hátrametszést meg kell ismételni. Kisebb hibaháromszögnél a súlypont elfogadható álláspontként.",
+            "tags": [
+                "tájékozódás",
+                "álláspont"
+            ]
+        },
+        {
+            "id": 44,
+            "front": "Mi az oleátás hátrametszés?",
+            "back": "Gyors módszer átlátszó papírral:\n1. Oleátára szúrd le az álláspont előzetes helyét.\n2. Vonalzóval irányozd meg a 3 tereptárgyat és húzz vonalakat.\n3. Helyezd az oleátát a térképre úgy, hogy mindhárom vonal a saját jelén haladjon át.\n4. Szúrd át az álláspont jelét a térképre.",
+            "tags": [
+                "tájékozódás",
+                "álláspont"
+            ]
+        },
+        {
+            "id": 45,
+            "front": "Mi az előremetszés módszere?",
+            "back": "Célpont helyének meghatározása két ismert álláspontból:\n1. Az első álláspontból mérj mágneses azimutot a célpontra.\n2. Szerkeszd fel a térképre.\n3. Válts álláspontot.\n4. Ismételd meg a mérést és szerkesztést.\n5. A metszéspont a célpont helye.",
+            "tags": [
+                "tájékozódás",
+                "célpont"
+            ]
+        },
+        {
+            "id": 46,
+            "front": "Mi a GPS (Global Positioning System)?",
+            "back": "Globális helymeghatározó rendszer. Eredetileg: NAVSTAR (Navigation Satellite Timing And Ranging System). Műholdas navigációs rendszer, amely a Föld bármely pontján lehetővé teszi a pozíció meghatározását.",
+            "tags": [
+                "GPS",
+                "alapfogalom"
+            ]
+        },
+        {
+            "id": 47,
+            "front": "Milyen szegmensekből áll a GPS rendszer?",
+            "back": "1. Műholdas szegmens: Föld körüli pályán keringő navigációs műholdak\n2. Vezérlő/kontroll szegmens: földi követőállomások\n3. Felhasználói szegmens: GPS vevők és alkalmazások",
+            "tags": [
+                "GPS",
+                "felépítés"
+            ]
+        },
+        {
+            "id": 48,
+            "front": "Hány GPS műhold kell a pontos helymeghatározáshoz?",
+            "back": "Minimum 4 műhold a pontos 3D helymeghatározáshoz. A negyedik műhold az órahiba kiküszöböléséhez szükséges. 3 műholddal csak 2D (magasság nélküli) pozíció határozható meg.",
+            "tags": [
+                "GPS",
+                "működés"
+            ]
+        },
+        {
+            "id": 49,
+            "front": "Milyen magasságban keringenek a NAVSTAR GPS műholdak?",
+            "back": "20 200 km magasságban, 6 orbitális pályán. A műholdak száma 24-nél több az üzemelési megbízhatóság érdekében.",
+            "tags": [
+                "GPS",
+                "műholdak"
+            ]
+        },
+        {
+            "id": 50,
+            "front": "Mi a GPS helymeghatározás elve?",
+            "back": "Kódkorrelációs eljárás: a műhold és a vevő azonos időben azonos kódsorozatot állít elő. A beérkező jel késéséből számítható a távolság. Térbeli ívmetszéssel (több műhold távolsága alapján) határozható meg a pozíció.",
+            "tags": [
+                "GPS",
+                "működés"
+            ]
+        },
+        {
+            "id": 51,
+            "front": "Mi okoz hibát a GPS helymeghatározásban?",
+            "back": "1. A műholdak atomórái és a vevő kvarcórája közötti eltérés\n2. Ionoszféra okozta jelkésés\n3. Műholdak rossz geometriai elhelyezkedése (konstelláció)\n4. Többutas terjedés (visszaverődés)\n5. 10-20 méteres koordináta-pontosság várható",
+            "tags": [
+                "GPS",
+                "pontosság"
+            ]
+        },
+        {
+            "id": 52,
+            "front": "Milyen más globális műholdas navigációs rendszerek léteznek?",
+            "back": "1. GLONASS (orosz)\n2. Galileo (európai, polgári kezdeményezés)\n3. BeiDou (kínai)",
+            "tags": [
+                "GPS",
+                "rendszerek"
+            ]
+        },
+        {
+            "id": 53,
+            "front": "Mire használható a GPS katonai alkalmazásokban?",
+            "back": "1. Helymeghatározási feladatok\n2. Jármű- és flottanavigáció\n3. Fegyverirányítás (precíziós bombák, manőverező rakéták)\n4. Roboteszközök irányítása (UAV-ok)\n5. Időszinkronizáció",
+            "tags": [
+                "GPS",
+                "alkalmazás"
+            ]
+        },
+        {
+            "id": 54,
+            "front": "Mi a légi fényképek előnye a térképpel szemben?",
+            "back": "1. Frissebb terepi állapotok megjelenítése\n2. Fénykép párok használatával térbeli kép előállítható\n3. Részletesebb lehet mint a térkép\n4. Terep valósághű képe",
+            "tags": [
+                "térképészet",
+                "légi fénykép"
+            ]
+        },
+        {
+            "id": 55,
+            "front": "Mik a térképi koordinátarendszerek fő típusai?",
+            "back": "1. Földrajzi koordinátarendszer (szélesség, hosszúság fokban)\n2. Vetületi koordinátarendszer (UTM, Gauss-Krüger - méterben)\n3. Keresőhálózati rendszerek (MGRS, GEOREF)",
+            "tags": [
+                "térképészet",
+                "koordináták"
+            ]
+        },
+        {
+            "id": 56,
+            "front": "Mik a topográfiai térkép fő elemei?",
+            "back": "1. Térképkeret (belső és külső)\n2. Térképmező (ábrázolt terület)\n3. Jelmagyarázat\n4. Méretarány és vonalmérték\n5. Szelvényelnevezés\n6. Északi irányok diagramja\n7. Kiadási és egyéb adatok",
+            "tags": [
+                "térképészet",
+                "térkép"
+            ]
+        },
+        {
+            "id": 57,
+            "front": "Mit jelent az 1:50 000 méretarány?",
+            "back": "A térképen 1 cm a valóságban 50 000 cm = 500 m. A leggyakrabban használt harcászati térképméretarány. A térképen 2 cm = 1 km a terepen.",
+            "tags": [
+                "térképészet",
+                "méretarány"
+            ]
+        },
+        {
+            "id": 58,
+            "front": "Hogyan történik a térkép szelvényezése?",
+            "back": "A térképeket szabványos méretű szelvényekre osztják. A szelvények elnevezése tartalmazza a földrajzi azonosítót és a méretarányt. Szomszédos szelvények összeilleszthetők.",
+            "tags": [
+                "térképészet",
+                "szelvény"
+            ]
+        },
+        {
+            "id": 59,
+            "front": "Mi a tájékozódási pont kijelölésének szempontja?",
+            "back": "1. Környezetétől jól elütő, szembetűnő\n2. Több irányból jól látható\n3. Állandó jellegű (a művelet időtartamára megmarad)\n4. A térképen is azonosítható",
+            "tags": [
+                "tájékozódás",
+                "tájékozódási pont"
+            ]
+        },
+        {
+            "id": 60,
+            "front": "Mi a John Harrison kronométer jelentősége?",
+            "back": "1759-ben alkotta meg. Lehetővé tette a földrajzi hosszúság pontos meghatározását tengeren. A kikötő helyi idejét mutatta, amiből a Nap delelésekor a hosszúságkülönbség számítható.",
+            "tags": [
+                "GPS",
+                "történelem"
+            ]
+        },
+        {
+            "id": 61,
+            "front": "Mit jelent a JDAM rövidítés?",
+            "back": "Joint Direct Attack Munition - GPS-vezérlésű precíziós bomba. Előnye, hogy időjárástól és napszaktól kevésbé függ mint más vezérlési módok.",
+            "tags": [
+                "GPS",
+                "fegyverirányítás"
+            ]
+        },
+        {
+            "id": 62,
+            "front": "Hogyan használható a Hold világtáj meghatározásra?",
+            "back": "Telihold: este keleten, éjfélkor délen, reggel nyugaton.\nElső negyed (D alakú): délben keleten, este délen, éjfélkor nyugaton.\nUtolsó negyed (C alakú): éjfélkor keleten, reggel délen, délben nyugaton.",
+            "tags": [
+                "tájékozódás",
+                "Hold"
+            ]
+        },
+        {
+            "id": 63,
+            "front": "Mi a tereplépcső?",
+            "back": "Jellegzetes domborzati forma: a terep hirtelen szintkülönbsége, ahol a szintvonalak sűrűsödnek, majd hirtelen ritkulnak. Katonai szempontból fontos: védőállás, megfigyelőpont.",
+            "tags": [
+                "tereptan",
+                "domborzat"
+            ]
+        },
+        {
+            "id": 64,
+            "front": "Milyen információkat tartalmaz a térképkeret?",
+            "back": "1. Szelvény neve és száma\n2. Kiadás dátuma\n3. Méretarány és vonalmérték\n4. Szomszédos szelvények\n5. Északi irányok diagramja\n6. Mágneses deklináció és éves változása\n7. Koordinátarendszer adatai",
+            "tags": [
+                "térképészet",
+                "térkép"
+            ]
+        },
+        {
+            "id": 65,
+            "front": "Mi az azimutmenet?",
+            "back": "Navigációs módszer előre meghatározott azimutok és távolságok alapján. Iránytűvel tűzzük ki az irányt, távolságot becsléssel vagy lépésszámolással mérjük. GPS-sel egyszerűsíthető.",
+            "tags": [
+                "tájékozódás",
+                "navigáció"
+            ]
+        },
+        {
+            "id": 66,
+            "front": "Milyen jellegzetes domborzati idomokat ismerünk?",
+            "back": "1. Csúcs (kúp, kupola)\n2. Nyeregpont\n3. Hát (gerinc)\n4. Völgy\n5. Teknő\n6. Tereplépcső\n7. Horhos (meredek oldalú bevágás)",
+            "tags": [
+                "tereptan",
+                "domborzat"
+            ]
+        },
+        {
+            "id": 67,
+            "front": "Mi a jelentősége a kilométer-hálózatnak?",
+            "back": "1. Gyors koordináta-meghatározás\n2. Könnyen azonosítható négyzetek\n3. Távolságmérés egyszerűsítése\n4. Tereptárgyak beazonosítása\n5. Hálózati azimut számításához alapvonal",
+            "tags": [
+                "térképészet",
+                "koordináták"
+            ]
+        },
+        {
+            "id": 68,
+            "front": "Hogyan becsülhető távolság a vonásképlettel?",
+            "back": "Ha ismerjük egy tárgy valódi méretét (S) és leolvassuk a látószöget vonásban (V), akkor:\nT = S × 1000 / V\n\nPl.: 2 m magas ember, 4 vonás = 2 × 1000 / 4 = 500 m",
+            "tags": [
+                "tájékozódás",
+                "vonásképlet"
+            ]
+        },
+        {
+            "id": 69,
+            "front": "Miért fontos a műholdak jó geometriai eloszlása?",
+            "back": "Minél közelebb vannak egymáshoz a műholdak az égbolton, annál pontatlanabb az ívmetszés eredménye. Az egyenletes eloszlás (jó konstelláció) növeli a helymeghatározás pontosságát.",
+            "tags": [
+                "GPS",
+                "pontosság"
+            ]
+        },
+        {
+            "id": 70,
+            "front": "Mi a topográfiai térkép?",
+            "back": "A Föld felszínének szabatos, általános célú térképe, amely a terep elemeit és a rajtuk található mesterséges létesítményeket egyezményes jelekkel, a domborzatot szintvonalakkal ábrázolja.",
+            "tags": [
+                "térképészet",
+                "alapfogalom"
+            ]
+        }
+    ]
+}

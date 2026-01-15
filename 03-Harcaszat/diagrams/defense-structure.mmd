@@ -1,0 +1,32 @@
+flowchart TB
+    subgraph defense["🛡️ VÉDELMI RENDSZER"]
+        direction TB
+
+        subgraph security["BIZTOSÍTÁSI ÖV"]
+            S1["👁️ Fedezőerők"]
+            S2["📡 Információgyűjtés"]
+            S3["⚔️ Késleltetés"]
+        end
+
+        PL["━━━ VÉDELEM PEREMVONALA ━━━"]
+
+        subgraph main["FŐ VÉDELMI ÖV"]
+            M1["🎯 Főerők"]
+            M2["🏰 Támpontok"]
+            M3["⚡ Tartalékok"]
+
+            subgraph rear["Mögöttes terület"]
+                R1["📦 Logisztika"]
+                R2["🏥 Egészségügy"]
+                R3["📻 Vezetési pontok"]
+            end
+        end
+    end
+
+    security --> PL --> main
+
+    style defense fill:#f8f9fa,stroke:#dee2e6,color:#212529
+    style security fill:#e3f2fd,stroke:#90caf9,color:#1565c0
+    style PL fill:#ffcdd2,stroke:#ef9a9a,color:#c62828
+    style main fill:#e8f5e9,stroke:#a5d6a7,color:#2e7d32
+    style rear fill:#fff3e0,stroke:#ffcc80,color:#e65100

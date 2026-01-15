@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katonai Tereptan – Kivonat</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap');
+
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2c5282;
+            --accent-color: #4299e1;
+            --text-color: #2d3748;
+            --light-bg: #f7fafc;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 11pt;
+            line-height: 1.7;
+            color: var(--text-color);
+            background: white;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20mm 25mm;
+        }
+
+        /* Címlap */
+        .title-page {
+            text-align: center;
+            padding: 60mm 0;
+            page-break-after: always;
+        }
+
+        .title-page h1 {
+            font-family: 'Open Sans', Arial, sans-serif;
+            font-size: 32pt;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15mm;
+        }
+
+        .title-page .subtitle {
+            font-size: 18pt;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-bottom: 30mm;
+        }
+
+        .title-page .info {
+            font-size: 12pt;
+            color: #718096;
+            border-top: 2px solid var(--border-color);
+            padding-top: 10mm;
+            margin-top: 20mm;
+        }
+
+        /* Főcímek */
+        h1 {
+            font-family: 'Open Sans', Arial, sans-serif;
+            font-size: 22pt;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 15mm 0 8mm 0;
+            padding-bottom: 3mm;
+            border-bottom: 3px solid var(--accent-color);
+            page-break-after: avoid;
+        }
+
+        h2 {
+            font-family: 'Open Sans', Arial, sans-serif;
+            font-size: 16pt;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin: 10mm 0 5mm 0;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-family: 'Open Sans', Arial, sans-serif;
+            font-size: 13pt;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 8mm 0 4mm 0;
+            page-break-after: avoid;
+        }
+
+        h4 {
+            font-family: 'Open Sans', Arial, sans-serif;
+            font-size: 11pt;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 6mm 0 3mm 0;
+        }
+
+        p {
+            margin-bottom: 4mm;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        /* Közérthető magyarázat */
+        .kozerth {
+            background: linear-gradient(135deg, #ebf8ff 0%, #e6fffa 100%);
+            border-left: 4px solid var(--accent-color);
+            padding: 4mm 5mm;
+            margin: 4mm 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .kozerth::before {
+            content: "Közérthető magyarázat: ";
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        /* Pontos definíció */
+        .definicio {
+            background: var(--light-bg);
+            border: 1px solid var(--border-color);
+            padding: 4mm 5mm;
+            margin: 4mm 0;
+            border-radius: 4px;
+            font-style: italic;
+        }
+
+        .definicio::before {
+            content: "Pontos definíció: ";
+            font-weight: 700;
+            font-style: normal;
+            color: var(--primary-color);
+        }
+
+        /* Táblázatok */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 5mm 0;
+            font-size: 10pt;
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+            font-family: 'Open Sans', Arial, sans-serif;
+            font-weight: 600;
+            padding: 3mm 4mm;
+            text-align: left;
+        }
+
+        td {
+            padding: 2.5mm 4mm;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:nth-child(even) {
+            background: var(--light-bg);
+        }
+
+        /* Ábrák */
+        .diagram {
+            text-align: center;
+            margin: 6mm 0;
+            page-break-inside: avoid;
+        }
+
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .diagram-caption {
+            font-size: 9pt;
+            color: #718096;
+            font-style: italic;
+            margin-top: 2mm;
+        }
+
+        /* Listák */
+        ul, ol {
+            margin: 3mm 0 3mm 8mm;
+        }
+
+        li {
+            margin-bottom: 2mm;
+        }
+
+        /* Kiemelés */
+        strong {
+            color: var(--primary-color);
+        }
+
+        /* Horizontális vonal */
+        hr {
+            border: none;
+            border-top: 2px solid var(--border-color);
+            margin: 10mm 0;
+        }
+
+        /* Összefoglaló doboz */
+        .summary-box {
+            background: #fefcbf;
+            border: 2px solid #ecc94b;
+            padding: 5mm;
+            margin: 5mm 0;
+            border-radius: 4px;
+        }
+
+        .summary-box h4 {
+            color: #744210;
+            margin-top: 0;
+        }
+
+        /* Oldaltörés */
+        .page-break {
+            page-break-after: always;
+        }
+
+        /* Lábléc */
+        .footer {
+            font-size: 9pt;
+            color: #a0aec0;
+            text-align: center;
+            margin-top: 15mm;
+            padding-top: 5mm;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media print {
+            body {
+                padding: 15mm 20mm;
+            }
+
+            .page-break {
+                page-break-after: always;
+            }
+
+            h1, h2, h3 {
+                page-break-after: avoid;
+            }
+
+            .diagram, table {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Címlap -->
+    <div class="title-page">
+        <h1>Katonai Tereptan</h1>
+        <div class="subtitle">Kivonat és összefoglaló</div>
+        <div class="info">
+            <p>Nemzeti Közszolgálati Egyetem</p>
+            <p>Hadtudományi és Honvédtisztképző Kar</p>
+            <p style="margin-top: 10mm;">Tanulmányi segédanyag</p>
+        </div>
+    </div>
+
+    <!-- Tartalomjegyzék -->
+    <h2>Tartalomjegyzék</h2>
+    <ol>
+        <li><strong>Tereptani Alapismeretek</strong>
+            <ul>
+                <li>A terep fogalma és alkotóelemei</li>
+                <li>Terepfajták</li>
+            </ul>
+        </li>
+        <li><strong>Térképészeti Alapismeretek</strong>
+            <ul>
+                <li>A térkép és méretarány</li>
+                <li>Vetületi rendszerek (UTM, MGRS, GEOREF)</li>
+                <li>Szintvonalak és térképjelek</li>
+            </ul>
+        </li>
+        <li><strong>Tájékozódási Alapismeretek</strong>
+            <ul>
+                <li>Világtájak és azimut</li>
+                <li>A tájoló és használata</li>
+                <li>Álláspont meghatározása</li>
+            </ul>
+        </li>
+        <li><strong>Műholdas Helymeghatározás (GPS)</strong>
+            <ul>
+                <li>A GPS működése és felépítése</li>
+                <li>Gyakorlati alkalmazások</li>
+            </ul>
+        </li>
+    </ol>
+
+    <div class="page-break"></div>
+
+    <!-- 1. Fejezet -->
+    <h1>1. Tereptani Alapismeretek</h1>
+
+    <h2>1.1 Mi a terep?</h2>
+
+    <div class="kozerth">
+        A terep az a természetes és ember által alakított környezet, ahol a katonai tevékenységek zajlanak. Gondolj rá úgy, mint egy „játéktérre" – dombok, folyók, erdők, utak, épületek együttese, ami befolyásolja, hogyan lehet rajta mozogni és harcolni.
+    </div>
+
+    <div class="definicio">
+        A terep a földfelszínnek az a része, ahol a katonai tevékenység folyik. A természeti tényezők és az emberi tevékenység eredményeként létrejött objektumok és képződmények összessége, amelyek meghatározzák és befolyásolják a katonai tevékenység körülményeit.
+    </div>
+
+    <h2>1.2 A terep alkotóelemei</h2>
+
+    <p>A terep hat fő alkotóelemből áll, amelyek együttesen határozzák meg a katonai tevékenység lehetőségeit:</p>
+
+    <div class="diagram">
+        <img src="kivonat_images/terep_alkotoelemei.png" alt="A terep alkotóelemei">
+        <div class="diagram-caption">1. ábra: A terep hat fő alkotóeleme</div>
+    </div>
+
+    <h3>1.2.1 Domborzat</h3>
+
+    <div class="kozerth">
+        A domborzat a földfelszín „hullámzása" – ahol a talaj megemelkedik vagy lejtősen ereszkedik. Ez határozza meg, honnan látunk messzire, és hol tudunk elbújni.
+    </div>
+
+    <div class="definicio">
+        A domborzat a földkéreg legkülső, szilárd részének (litoszféra) egyenetlen felszíne. A terep legállandóbb jellemzője, ami hat a megfigyelésre, a tűzre, a mozgásra és a rejtőzködésre.
+    </div>
+
+    <table>
+        <tr>
+            <th>Domborzati forma</th>
+            <th>Jellemző</th>
+        </tr>
+        <tr>
+            <td>Hegytető/csúcs</td>
+            <td>A környezetnél minden irányban magasabb pont</td>
+        </tr>
+        <tr>
+            <td>Gerincvonal</td>
+            <td>Hegyek csúcsait összekötő vonal</td>
+        </tr>
+        <tr>
+            <td>Hátvonal</td>
+            <td>Hegyoldal kidomborodó vonala</td>
+        </tr>
+        <tr>
+            <td>Völgyvonal</td>
+            <td>Völgy legmélyebb vonulata</td>
+        </tr>
+        <tr>
+            <td>Nyereg</td>
+            <td>Két magaslat közötti mélyedés</td>
+        </tr>
+    </table>
+
+    <h3>1.2.2 További alkotóelemek</h3>
+
+    <table>
+        <tr>
+            <th>Alkotóelem</th>
+            <th>Leírás</th>
+            <th>Katonai jelentőség</th>
+        </tr>
+        <tr>
+            <td><strong>Vizek</strong></td>
+            <td>Folyók, tavak, mocsarak</td>
+            <td>Akadály, ivóvízforrás</td>
+        </tr>
+        <tr>
+            <td><strong>Növényzet</strong></td>
+            <td>Erdők, bokros területek</td>
+            <td>Fedezék, mozgáskorlátozás</td>
+        </tr>
+        <tr>
+            <td><strong>Talaj</strong></td>
+            <td>Homok, agyag, szikla</td>
+            <td>Járhatóság, beásás</td>
+        </tr>
+        <tr>
+            <td><strong>Közlekedési hálózat</strong></td>
+            <td>Utak, vasutak, hidak</td>
+            <td>Gyors mozgás, kulcsobjektumok</td>
+        </tr>
+        <tr>
+            <td><strong>Települések</strong></td>
+            <td>Városok, falvak</td>
+            <td>Komplex harci környezet</td>
+        </tr>
+    </table>
+
+    <h2>1.3 Terepfajták</h2>
+
+    <p>A tereprészek magasságuk és jellegük alapján különböző típusokba sorolhatók:</p>
+
+    <div class="diagram">
+        <img src="kivonat_images/terepfajtak.png" alt="Terepfajták">
+        <div class="diagram-caption">2. ábra: Terepfajták osztályozása szintkülönbség szerint</div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Terepfajta</th>
+            <th>Szintkülönbség</th>
+            <th>Jellemzők</th>
+        </tr>
+        <tr>
+            <td><strong>Síkvidék</strong></td>
+            <td>0-30 méter</td>
+            <td>Messzire ellátás, könnyű járműmozgás (pl. Alföld)</td>
+        </tr>
+        <tr>
+            <td><strong>Dombvidék</strong></td>
+            <td>30-200 méter</td>
+            <td>Enyhe emelkedők és völgyek (pl. Dunántúli-dombság)</td>
+        </tr>
+        <tr>
+            <td><strong>Hegyvidék</strong></td>
+            <td>200+ méter</td>
+            <td>Meredek lejtők, korlátozott mozgás (pl. Kárpátok)</td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <!-- 2. Fejezet -->
+    <h1>2. Térképészeti Alapismeretek</h1>
+
+    <h2>2.1 A térkép fogalma</h2>
+
+    <div class="kozerth">
+        A térkép a Föld felszínének kicsinyített „képe" papíron vagy képernyőn. Olyan, mint egy madártávlati fénykép, de egyezményes jelekkel.
+    </div>
+
+    <div class="definicio">
+        A térkép a Föld felszínének – vagy egy részének – matematikai szabályok (vetületi rendszer) szerint szerkesztett, méretarányosan kicsinyített és egyezményes jelekkel ábrázolt képe.
+    </div>
+
+    <h2>2.2 Méretarány</h2>
+
+    <div class="kozerth">
+        A méretarány megmutatja, hogy a térkép mennyire van kicsinyítve. 1:50 000 azt jelenti, hogy 1 cm a térképen = 500 méter a valóságban.
+    </div>
+
+    <table>
+        <tr>
+            <th>Méretarány</th>
+            <th>1 cm a térképen =</th>
+            <th>Típus</th>
+        </tr>
+        <tr>
+            <td>1:25 000</td>
+            <td>250 m</td>
+            <td>Nagyméretarányú</td>
+        </tr>
+        <tr>
+            <td>1:50 000</td>
+            <td>500 m</td>
+            <td>Közepes</td>
+        </tr>
+        <tr>
+            <td>1:100 000</td>
+            <td>1 km</td>
+            <td>Közepes</td>
+        </tr>
+        <tr>
+            <td>1:250 000</td>
+            <td>2,5 km</td>
+            <td>Kisméretarányú</td>
+        </tr>
+    </table>
+
+    <h2>2.3 Vetületi rendszerek</h2>
+
+    <h3>2.3.1 UTM rendszer</h3>
+
+    <div class="kozerth">
+        A Földet 60 függőleges „szeletbe" (zónába) osztották, mint egy narancsot. Magyarország a 33. és 34. zónában található.
+    </div>
+
+    <div class="definicio">
+        Az UTM (Universal Transverse Mercator) a Föld felszínét 60, egyenként 6° széles zónára osztó vetületi rendszer. Minden zóna saját derékszögű koordinátarendszerrel rendelkezik.
+    </div>
+
+    <div class="diagram">
+        <img src="kivonat_images/utm_rendszer.png" alt="UTM rendszer">
+        <div class="diagram-caption">3. ábra: Az UTM zónarendszer felépítése</div>
+    </div>
+
+    <h3>2.3.2 MGRS – Katonai Keresőhálózat</h3>
+
+    <div class="kozerth">
+        A katonák egy betű-szám kódot használnak a pozíció megadására. Például „34T DN 123 456" pontosan meghatároz egy helyet a térképen.
+    </div>
+
+    <div class="definicio">
+        Az MGRS (Military Grid Reference System) az UTM rendszerre épülő katonai azonosítási rendszer, amely zóna, öv, 100 km-es négyzet és koordináták kombinációjával határozza meg a pozíciót.
+    </div>
+
+    <div class="summary-box">
+        <h4>MGRS kód felépítése</h4>
+        <ul>
+            <li><strong>34T</strong> – UTM zóna és öv</li>
+            <li><strong>DN</strong> – 100 km-es négyzet azonosítója</li>
+            <li><strong>123 456</strong> – koordináták (keleti és északi érték)</li>
+        </ul>
+    </div>
+
+    <h3>2.3.3 GEOREF – Légi navigáció</h3>
+
+    <div class="kozerth">
+        A repülésben használt rendszer, amely betűkkel és számokkal azonosítja a légtereket.
+    </div>
+
+    <div class="definicio">
+        A GEOREF (Geographic Reference System) a nemzetközi légi navigációban alkalmazott rendszer, amely a földfelszínt 15°×15°-os trapézokra osztja, betűkombinációkkal és számokkal azonosítva.
+    </div>
+
+    <h2>2.4 Szintvonalak – A domborzat ábrázolása</h2>
+
+    <div class="kozerth">
+        A szintvonalak olyan képzeletbeli vonalak, amelyek azonos magasságú pontokat kötnek össze. Ahol sűrűn vannak, ott meredek a terep; ahol ritkán, ott lapos.
+    </div>
+
+    <div class="definicio">
+        A szintvonal (izohipsza) az azonos tengerszint feletti magasságú pontokat összekötő zárt görbe. Az egymást követő szintvonalak közötti magasságkülönbség az alapszintköz.
+    </div>
+
+    <div class="diagram">
+        <img src="kivonat_images/szintvonalak.png" alt="Szintvonalak">
+        <div class="diagram-caption">4. ábra: Szintvonal típusok és alapszintköz</div>
+    </div>
+
+    <h2>2.5 Térképjelek és színek</h2>
+
+    <table>
+        <tr>
+            <th>Szín</th>
+            <th>Jelentés</th>
+        </tr>
+        <tr>
+            <td style="color: #3182ce;"><strong>Kék</strong></td>
+            <td>Vizek (folyók, tavak)</td>
+        </tr>
+        <tr>
+            <td style="color: #38a169;"><strong>Zöld</strong></td>
+            <td>Növényzet (erdők)</td>
+        </tr>
+        <tr>
+            <td style="color: #975a16;"><strong>Barna</strong></td>
+            <td>Domborzat (szintvonalak)</td>
+        </tr>
+        <tr>
+            <td><strong>Fekete</strong></td>
+            <td>Mesterséges objektumok</td>
+        </tr>
+        <tr>
+            <td style="color: #e53e3e;"><strong>Piros</strong></td>
+            <td>Utak, fontos objektumok</td>
+        </tr>
+    </table>
+
+    <div class="page-break"></div>
+
+    <!-- 3. Fejezet -->
+    <h1>3. Tájékozódási Alapismeretek</h1>
+
+    <h2>3.1 Világtájak és azimut</h2>
+
+    <div class="kozerth">
+        A világtájak (észak, dél, kelet, nyugat) a tájékozódás alapjai. Az azimut megmutatja, hogy egy irány hány fokra van északtól.
+    </div>
+
+    <div class="definicio">
+        Az azimut az északi iránytól jobbra (az óramutató járásával megegyezően) mért vízszintes szög, amely kifejezi egy tereptárgy irányát a megfigyelő álláspontjához képest.
+    </div>
+
+    <h3>3.1.1 Háromféle északi irány</h3>
+
+    <div class="diagram">
+        <img src="kivonat_images/eszaki_iranyok.png" alt="Északi irányok">
+        <div class="diagram-caption">5. ábra: A háromféle északi irány és összefüggéseik</div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Irány</th>
+            <th>Jelölés</th>
+            <th>Meghatározás</th>
+        </tr>
+        <tr>
+            <td>Földrajzi észak</td>
+            <td>TN (True North)</td>
+            <td>Az Északi-sark valódi iránya</td>
+        </tr>
+        <tr>
+            <td>Mágneses észak</td>
+            <td>MN (Magnetic North)</td>
+            <td>A mágnestű által mutatott irány</td>
+        </tr>
+        <tr>
+            <td>Hálózati észak</td>
+            <td>GN (Grid North)</td>
+            <td>A térkép függőleges vonalainak iránya</td>
+        </tr>
+    </table>
+
+    <div class="summary-box">
+        <h4>Fontos fogalmak</h4>
+        <ul>
+            <li><strong>Deklináció:</strong> A földrajzi és mágneses észak közötti szögeltérés (Magyarországon kb. 4-5° keleti)</li>
+            <li><strong>GMA (Grid Magnetic Angle):</strong> A hálózati és mágneses észak közötti szög</li>
+        </ul>
+    </div>
+
+    <h2>3.2 A tájoló</h2>
+
+    <div class="kozerth">
+        A tájoló az iránytűt tartalmazó eszköz, amivel meghatározhatjuk az északi irányt és mérhetünk szögeket.
+    </div>
+
+    <div class="definicio">
+        A tájoló a földi mágneses tér hatására beálló mágnestűvel működő műszer, amellyel a mágneses északi irány és a tereptárgyak irányai (azimutok) meghatározhatók.
+    </div>
+
+    <h3>3.2.1 Szögmértékek</h3>
+
+    <div class="diagram">
+        <img src="kivonat_images/vonasok.png" alt="Szögmértékek">
+        <div class="diagram-caption">6. ábra: Szögmértékek összehasonlítása</div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Tájoló típus</th>
+            <th>Beosztás</th>
+            <th>Jellemzők</th>
+        </tr>
+        <tr>
+            <td>39/49 M Bézárd</td>
+            <td>6000 vonás</td>
+            <td>Magyar fejlesztés, tükrös</td>
+        </tr>
+        <tr>
+            <td>Cammenga 3H (NATO)</td>
+            <td>6400 mil</td>
+            <td>Trícium világítás, zárható</td>
+        </tr>
+    </table>
+
+    <h2>3.3 Álláspont meghatározása</h2>
+
+    <div class="kozerth">
+        Az álláspont meghatározása azt jelenti, hogy megtaláljuk saját pozíciónkat a térképen. Ehhez azonosítható tereptárgyakra és mérésekre van szükségünk.
+    </div>
+
+    <div class="diagram">
+        <img src="kivonat_images/allaspont.png" alt="Álláspont meghatározás">
+        <div class="diagram-caption">7. ábra: Álláspont meghatározás módszerei</div>
+    </div>
+
+    <h3>3.3.1 Hátrametszés</h3>
+
+    <div class="kozerth">
+        Ha nem tudjuk, hol vagyunk, de látunk három távoli, jól azonosítható pontot (torony, hegycsúcs), akkor azok irányából meg tudjuk határozni a helyzetünket.
+    </div>
+
+    <div class="definicio">
+        A hátrametszés az a helymeghatározási eljárás, amelynél legalább három ismert tereptárgyra mért azimutok visszavetítésével határozzuk meg álláspontunk térképi helyét.
+    </div>
+
+    <p><strong>Végrehajtás lépései:</strong></p>
+    <ol>
+        <li>Válasszunk 3 jól azonosítható távoli tereptárgyat</li>
+        <li>Mérjük meg mindhárom mágneses azimutját</li>
+        <li>Számítsuk át hálózati azimuttá (GMA korrekció)</li>
+        <li>Szerkesszük fel a visszairányokat a térképre</li>
+        <li>A metszéspont az álláspontunk</li>
+    </ol>
+
+    <div class="page-break"></div>
+
+    <!-- 4. Fejezet -->
+    <h1>4. Műholdas Helymeghatározás (GPS)</h1>
+
+    <h2>4.1 A GPS működése</h2>
+
+    <div class="kozerth">
+        A GPS (Global Positioning System) olyan rendszer, ahol műholdak folyamatosan rádiójeleket sugároznak, és a vevőkészülék ezek alapján kiszámítja a helyzetünket – bárhol a Földön, bármikor.
+    </div>
+
+    <div class="definicio">
+        A GPS (NAVSTAR Global Positioning System) a Föld körül keringő műholdak, földi vezérlőállomások és felhasználói vevőkészülékek alkotta globális helymeghatározó rendszer.
+    </div>
+
+    <h2>4.2 A GPS felépítése</h2>
+
+    <div class="diagram">
+        <img src="kivonat_images/gps_szegmensek.png" alt="GPS szegmensek">
+        <div class="diagram-caption">8. ábra: A GPS rendszer három szegmense</div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Rendszer</th>
+            <th>Ország</th>
+            <th>Műholdak</th>
+            <th>Megjegyzés</th>
+        </tr>
+        <tr>
+            <td>GPS (NAVSTAR)</td>
+            <td>USA</td>
+            <td>24+</td>
+            <td>Legelterjedtebb</td>
+        </tr>
+        <tr>
+            <td>GLONASS</td>
+            <td>Oroszország</td>
+            <td>24</td>
+            <td>Orosz rendszer</td>
+        </tr>
+        <tr>
+            <td>Galileo</td>
+            <td>EU</td>
+            <td>30 (tervezett)</td>
+            <td>Polgári célú</td>
+        </tr>
+        <tr>
+            <td>BeiDou</td>
+            <td>Kína</td>
+            <td>35+</td>
+            <td>Regionális+globális</td>
+        </tr>
+    </table>
+
+    <h2>4.3 A helymeghatározás elve</h2>
+
+    <div class="kozerth">
+        A GPS úgy működik, mint a hátrametszés, csak műholdakkal. A vevő megméri, milyen messze van több műholdtól, és a távolságok metszéséből kiszámítja a helyét.
+    </div>
+
+    <div class="definicio">
+        A GPS helymeghatározás kódkorrelációs eljáráson alapul: a vevő a műholdak által sugárzott rádiójelek beérkezési idejéből számítja a távolságokat, majd térbeli ívmetszéssel határozza meg a pozíciót.
+    </div>
+
+    <div class="summary-box">
+        <h4>Szükséges műholdak száma</h4>
+        <ul>
+            <li><strong>3 műhold:</strong> 2D pozíció (szélesség, hosszúság)</li>
+            <li><strong>4 műhold:</strong> 3D pozíció (+ magasság) és órahiba-korrekció</li>
+        </ul>
+        <p><strong>Pontosság:</strong> 10-20 méter (katonai célokra javítható)</p>
+    </div>
+
+    <h2>4.4 GPS alkalmazások</h2>
+
+    <div class="diagram">
+        <img src="kivonat_images/gps_alkalmazasok.png" alt="GPS alkalmazások">
+        <div class="diagram-caption">9. ábra: GPS felhasználási területek</div>
+    </div>
+
+    <p><strong>Katonai alkalmazások:</strong></p>
+    <ul>
+        <li>Álláspont gyors meghatározása</li>
+        <li>Célpontok koordinátáinak rögzítése</li>
+        <li>Útvonalak rögzítése és visszakövetése</li>
+        <li>Precíziós lőszerek irányítása</li>
+        <li>Pilóta nélküli eszközök navigálása</li>
+    </ul>
+
+    <p><strong>Korlátozások:</strong></p>
+    <ul>
+        <li>Épületek és erdők zavarják a jelet</li>
+        <li>Szándékos zavarás blokkolhatja</li>
+        <li>10-20 méteres pontossági hiba</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <!-- Összefoglaló -->
+    <h1>5. Összefoglaló táblázatok</h1>
+
+    <h2>A terep értékelése katonai szempontból</h2>
+
+    <table>
+        <tr>
+            <th>Szempont</th>
+            <th>Értékelési tényezők</th>
+        </tr>
+        <tr>
+            <td>Megfigyelés</td>
+            <td>Rálátás, kilátás, belátás</td>
+        </tr>
+        <tr>
+            <td>Tűz</td>
+            <td>Tüzelőállások, lőterek</td>
+        </tr>
+        <tr>
+            <td>Mozgás</td>
+            <td>Járhatóság, akadályok</td>
+        </tr>
+        <tr>
+            <td>Rejtőzködés</td>
+            <td>Fedezék, álcázási lehetőségek</td>
+        </tr>
+    </table>
+
+    <h2>Koordinátarendszerek összehasonlítása</h2>
+
+    <table>
+        <tr>
+            <th>Rendszer</th>
+            <th>Típus</th>
+            <th>Alkalmazás</th>
+        </tr>
+        <tr>
+            <td>Földrajzi</td>
+            <td>Fok, perc, mp</td>
+            <td>Általános</td>
+        </tr>
+        <tr>
+            <td>UTM/MGRS</td>
+            <td>Méter</td>
+            <td>Katonai</td>
+        </tr>
+        <tr>
+            <td>GEOREF</td>
+            <td>Betű+szám</td>
+            <td>Légi</td>
+        </tr>
+    </table>
+
+    <h2>Helymeghatározási módszerek</h2>
+
+    <table>
+        <tr>
+            <th>Módszer</th>
+            <th>Szükséges eszköz</th>
+            <th>Pontosság</th>
+        </tr>
+        <tr>
+            <td>Azonosítás</td>
+            <td>Térkép</td>
+            <td>Változó</td>
+        </tr>
+        <tr>
+            <td>Hátrametszés</td>
+            <td>Tájoló + térkép</td>
+            <td>Jó</td>
+        </tr>
+        <tr>
+            <td>GPS</td>
+            <td>Vevőkészülék</td>
+            <td>10-20 m</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>Kulcsfogalmak jegyzéke</h2>
+
+    <table>
+        <tr>
+            <th>Fogalom</th>
+            <th>Meghatározás</th>
+        </tr>
+        <tr>
+            <td><strong>Azimut</strong></td>
+            <td>Északtól jobbra mért vízszintes szög</td>
+        </tr>
+        <tr>
+            <td><strong>Deklináció</strong></td>
+            <td>Földrajzi és mágneses észak eltérése</td>
+        </tr>
+        <tr>
+            <td><strong>GMA</strong></td>
+            <td>Hálózati és mágneses észak szöge</td>
+        </tr>
+        <tr>
+            <td><strong>MGRS</strong></td>
+            <td>Katonai keresőhálózat</td>
+        </tr>
+        <tr>
+            <td><strong>Szintvonal</strong></td>
+            <td>Azonos magasságú pontokat összekötő görbe</td>
+        </tr>
+        <tr>
+            <td><strong>UTM</strong></td>
+            <td>Univerzális Transzverzális Mercator vetület</td>
+        </tr>
+        <tr>
+            <td><strong>Vonás</strong></td>
+            <td>Szögmérték (6000 vonás = 360°)</td>
+        </tr>
+    </table>
+
+    <div class="footer">
+        <p>Forrás: Katonai tereptan (Ált/204) és Kállai Attila: Térkép és tereptani alapismeretek</p>
+        <p>Nemzeti Közszolgálati Egyetem – Tanulmányi segédanyag</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+flowchart TB
+    subgraph Szintvonalak ["Szintvonal típusok"]
+        direction TB
+        A["<b>Főszintvonal</b><br/>Vastagabb, 5. számú"]
+        B["<b>Közönséges</b><br/>Normál vastagságú"]
+        C["<b>Segédszintvonal</b><br/>Szaggatott, fél alapszintköz"]
+    end
+
+    D["1:50 000 → 20 m alapszintköz"]
+    E["1:25 000 → 10 m alapszintköz"]
+
+    Szintvonalak --> D
+    Szintvonalak --> E
+
+    style A fill:#c8e6c9
+    style B fill:#fff9c4
+    style C fill:#ffcdd2

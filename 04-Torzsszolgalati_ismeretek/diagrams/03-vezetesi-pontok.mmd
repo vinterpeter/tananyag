@@ -1,0 +1,23 @@
+flowchart TB
+    subgraph HARCMEZO["HARCMEZŐ"]
+        E["☠️ Ellenség"]
+
+        subgraph VP["VEZETÉSI PONTOK"]
+            FHP["🚐 FHP<br/>Előretolt Harcálláspont<br/>Mobil, gyors döntések"]
+            MHP["🏢 MHP<br/>Fő Harcálláspont<br/>Tervezés központ"]
+            FIH["📦 FIH<br/>Mögöttes Központ<br/>Logisztika, tartalék"]
+        end
+
+        CS["🎖️ Harcoló csapatok"]
+    end
+
+    E <-.-> CS
+    FHP --> CS
+    MHP --> FHP
+    FIH --> MHP
+
+    style E fill:#FFCCCB,stroke:#FF6B6B,color:#333
+    style FHP fill:#E8F4FD,stroke:#4A90A4,color:#333
+    style MHP fill:#FFF3E0,stroke:#FFB74D,color:#333
+    style FIH fill:#E8F5E9,stroke:#66BB6A,color:#333
+    style CS fill:#E3F2FD,stroke:#42A5F5,color:#333

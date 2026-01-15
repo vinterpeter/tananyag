@@ -1,0 +1,14 @@
+flowchart LR
+    subgraph PUSH["PUSH rendszer"]
+        direction LR
+        E1["Ellátó szerv"] -->|"előre tervezett<br/>ütemezett szállítás"| C1["Csapat"]
+    end
+
+    subgraph PULL["PULL rendszer"]
+        direction LR
+        C2["Csapat"] -->|"igénylés"| E2["Ellátó szerv"]
+        E2 -->|"szállítás"| C2
+    end
+
+    style PUSH fill:#bee3f8,stroke:#2b6cb0
+    style PULL fill:#feebc8,stroke:#c05621

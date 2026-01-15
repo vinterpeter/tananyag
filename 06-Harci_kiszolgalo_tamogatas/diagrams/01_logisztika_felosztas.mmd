@@ -1,0 +1,19 @@
+flowchart TB
+    subgraph LOG["LOGISZTIKA"]
+        direction TB
+        subgraph FUNK["Funkcionális területek"]
+            E["Ellátás, tárolás"]
+            U["Üzemben tartás"]
+            M["Mozgatás-szállítás"]
+        end
+        subgraph AGAZ["Ágazati rendszer"]
+            HAD["HADTÁP<br/>élelmezés, ruházat,<br/>üzemanyag"]
+            TECH["HADITECHNIKA<br/>fegyverek, járművek,<br/>elektronika"]
+            EÜ["EGÉSZSÉGÜGY<br/>sérültellátás,<br/>kiürítés"]
+        end
+        FUNK --> AGAZ
+    end
+
+    style LOG fill:#e8f4f8,stroke:#2c5282
+    style FUNK fill:#bee3f8,stroke:#2b6cb0
+    style AGAZ fill:#c6f6d5,stroke:#276749

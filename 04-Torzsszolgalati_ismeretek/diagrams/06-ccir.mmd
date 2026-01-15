@@ -1,0 +1,17 @@
+flowchart TD
+    subgraph INFO["PARANCSNOKI INFORMÁCIÓK"]
+        CCIR["📊 CCIR<br/>Parancsnok Kritikus<br/>Információigénye"]
+
+        PIR["🔍 PIR<br/>Ellenségről<br/>szóló info"]
+        FFIR["👥 FFIR<br/>Saját erőkről<br/>szóló info"]
+        EEFI["🔒 EEFI<br/>Rejtendő<br/>információk"]
+    end
+
+    CCIR --> PIR
+    CCIR --> FFIR
+    CCIR -.-> EEFI
+
+    style CCIR fill:#E8F4FD,stroke:#4A90A4,color:#333
+    style PIR fill:#FFCCCB,stroke:#FF6B6B,color:#333
+    style FFIR fill:#E8F5E9,stroke:#66BB6A,color:#333
+    style EEFI fill:#FFF3E0,stroke:#FFB74D,color:#333

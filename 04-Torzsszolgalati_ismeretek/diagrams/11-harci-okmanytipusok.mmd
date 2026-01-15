@@ -1,0 +1,35 @@
+flowchart TD
+    subgraph HO["HARCI OKMÁNYOK TÍPUSAI"]
+        V["📋 VEZETÉSI<br/>Parancsok, tervek"]
+        B["📊 BESZÁMOLÓ<br/>Jelentések"]
+        T["📖 TÁJÉKOZTATÓ<br/>Információk"]
+    end
+
+    subgraph VEZ["VEZETÉSI"]
+        OPORD["OPORD<br/>Harcparancs"]
+        WNGO["WNGO<br/>Előzetes intézkedés"]
+        FRAGO["FRAGO<br/>Kiegészítő parancs"]
+    end
+
+    subgraph BESZ["BESZÁMOLÓ"]
+        ELH["Elhatározás"]
+        JEL["Jelentések"]
+        NAP["Hadműveleti napló"]
+    end
+
+    V --> OPORD
+    V --> WNGO
+    V --> FRAGO
+    B --> ELH
+    B --> JEL
+    B --> NAP
+
+    style V fill:#E8F4FD,stroke:#4A90A4,color:#333
+    style B fill:#FFF3E0,stroke:#FFB74D,color:#333
+    style T fill:#E8F5E9,stroke:#66BB6A,color:#333
+    style OPORD fill:#FCE4EC,stroke:#E91E63,color:#333
+    style WNGO fill:#E3F2FD,stroke:#42A5F5,color:#333
+    style FRAGO fill:#F3E5F5,stroke:#AB47BC,color:#333
+    style ELH fill:#FFFDE7,stroke:#FBC02D,color:#333
+    style JEL fill:#FFFDE7,stroke:#FBC02D,color:#333
+    style NAP fill:#FFFDE7,stroke:#FBC02D,color:#333

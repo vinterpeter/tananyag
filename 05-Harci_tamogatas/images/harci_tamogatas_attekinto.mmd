@@ -1,0 +1,46 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#E8F4FD', 'primaryTextColor': '#2C3E50', 'primaryBorderColor': '#3498DB', 'lineColor': '#5D6D7E'}}}%%
+flowchart TB
+    HT["**HARCI TÁMOGATÁS**"] --> FD
+    HT --> TT
+    HT --> LE
+    HT --> MU
+    HT --> EH
+    HT --> HI
+
+    subgraph FD["**FELDERÍTÉS**"]
+        FD1["Információszerzés"]
+        FD2["IPB, HUMINT, SIGINT"]
+    end
+
+    subgraph TT["**TŰZTÁMOGATÁS**"]
+        TT1["Ellenség pusztítása"]
+        TT2["JFSE, ELT, ÖVT"]
+    end
+
+    subgraph LE["**LÉGIERŐ**"]
+        LE1["Légi támogatás"]
+        LE2["CAS, CCA, AI, JTAC"]
+    end
+
+    subgraph MU["**MŰSZAKI**"]
+        MU1["Mozgás/akadályozás"]
+        MU2["MZO, UHÉCS, AECS"]
+    end
+
+    subgraph EH["**EHV**"]
+        EH1["Elektromágneses harc"]
+        EH2["ESM, ECM, EPM"]
+    end
+
+    subgraph HI["**HÍRADÓ**"]
+        HI1["Kommunikáció"]
+        HI2["MH KCEHH, EDR"]
+    end
+
+    style HT fill:#F4ECF7,stroke:#8E44AD,stroke-width:3px,color:#2C3E50
+    style FD fill:#EBF5FB,stroke:#3498DB,stroke-width:2px
+    style TT fill:#FDEDEC,stroke:#E74C3C,stroke-width:2px
+    style LE fill:#FEF9E7,stroke:#F1C40F,stroke-width:2px
+    style MU fill:#E8F8F5,stroke:#1ABC9C,stroke-width:2px
+    style EH fill:#F5EEF8,stroke:#9B59B6,stroke-width:2px
+    style HI fill:#FDEBD0,stroke:#E67E22,stroke-width:2px

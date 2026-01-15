@@ -1,0 +1,12 @@
+flowchart TB
+    subgraph KIU["KIÜRÍTÉS TÍPUSAI"]
+        FWD["ELŐRETOLT MEDEVAC<br/>Sérülés helyszíne → ROLE 1"]
+        TAK["TAKTIKAI MEDEVAC<br/>ROLE 1 → ROLE 2 → ROLE 3"]
+        STR["STRATEVAC<br/>Műveleti terület → Honi kórház"]
+    end
+
+    FWD --> TAK --> STR
+
+    style FWD fill:#fed7d7,stroke:#c53030
+    style TAK fill:#feebc8,stroke:#c05621
+    style STR fill:#c6f6d5,stroke:#276749

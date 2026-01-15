@@ -1,0 +1,23 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#E8F4FD', 'primaryTextColor': '#2C3E50', 'primaryBorderColor': '#3498DB', 'lineColor': '#5D6D7E'}}}%%
+flowchart TB
+    FD["**FELDERÍTÉSI ÁGAK**"] --> HUMINT
+    FD --> SIGINT
+    FD --> IMINT
+    FD --> OSINT
+
+    HUMINT["**HUMINT**<br/>Emberi források"]
+
+    subgraph SIGINT["**SIGINT** - Jelfelderítés"]
+        COMINT["**COMINT**<br/>Kommunikáció lehallgatás"]
+        ELINT["**ELINT**<br/>Elektronikai rendszerek"]
+    end
+
+    IMINT["**IMINT**<br/>Képfelderítés<br/>(műhold, drón)"]
+
+    OSINT["**OSINT**<br/>Nyílt források"]
+
+    style FD fill:#F4ECF7,stroke:#8E44AD,stroke-width:3px,color:#2C3E50
+    style HUMINT fill:#E8F8F5,stroke:#1ABC9C,stroke-width:2px
+    style SIGINT fill:#FDEDEC,stroke:#E74C3C,stroke-width:2px
+    style IMINT fill:#EBF5FB,stroke:#3498DB,stroke-width:2px
+    style OSINT fill:#FEF9E7,stroke:#F1C40F,stroke-width:2px

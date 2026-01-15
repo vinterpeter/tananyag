@@ -1,0 +1,16 @@
+flowchart TB
+    subgraph LCS["LOGISZTIKAI CSOPORTOSÍTÁSOK"]
+        direction TB
+        H["HOMOGÉN<br/>Tisztán ellátó vagy utánpótló"]
+        K["KOMPLEX<br/>Ellátás + karbantartás + javítás"]
+    end
+
+    subgraph TIPUS["TÍPUSOK"]
+        S["STACIONER<br/>Védelemben, fix helyen"]
+        M["MOBIL<br/>Támadásban, mozgó"]
+    end
+
+    LCS --> TIPUS
+
+    style LCS fill:#e8f4f8,stroke:#2c5282
+    style TIPUS fill:#c6f6d5,stroke:#276749

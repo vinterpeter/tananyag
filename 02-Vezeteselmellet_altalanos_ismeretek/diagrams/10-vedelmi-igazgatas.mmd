@@ -1,0 +1,27 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#E3F2FD'}}}%%
+graph TD
+    A["🏛️ Védelmi és biztonsági<br/>igazgatás"] --> B["⚔️ Honvédelmi<br/>igazgatás"]
+    B --> C["🎖️ Katonai<br/>igazgatás"]
+
+    A --> D["🚒 Katasztrófavédelmi<br/>feladatok"]
+
+    subgraph "Szervezeti szintek"
+        E["Központi: VIH"]
+        F["Területi: Bizottságok"]
+        G["Helyi: Bizottságok"]
+        H["Települési: Polgármester"]
+    end
+
+    C --> E
+    E --> F
+    F --> G
+    G --> H
+
+    style A fill:#E3F2FD,stroke:#1565C0,stroke-width:3px,color:#0D47A1
+    style B fill:#BBDEFB,stroke:#1976D2,stroke-width:2px,color:#1565C0
+    style C fill:#90CAF9,stroke:#1E88E5,stroke-width:2px,color:#1976D2
+    style D fill:#B2DFDB,stroke:#00897B,stroke-width:2px,color:#00695C
+    style E fill:#E8F5E9,stroke:#4CAF50,stroke-width:1px
+    style F fill:#C8E6C9,stroke:#66BB6A,stroke-width:1px
+    style G fill:#A5D6A7,stroke:#81C784,stroke-width:1px
+    style H fill:#81C784,stroke:#4CAF50,stroke-width:1px

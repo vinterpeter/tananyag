@@ -1,0 +1,21 @@
+flowchart LR
+    subgraph HJ["HADIJÁTÉK SZEREPLŐI"]
+        PK["👨‍✈️ Parancsnok<br/>Irányít"]
+        TF["📋 Törzsfőnök<br/>Facilitál"]
+        G2["🔍 G2<br/>Ellenséget játssza"]
+        G3["⚔️ G3<br/>Saját erőket mozgatja"]
+        REC["📝 Rögzítő<br/>Jegyzetel"]
+    end
+
+    PK --> TF
+    TF --> G2
+    TF --> G3
+    G2 <-.Harc.-> G3
+    G3 --> REC
+    G2 --> REC
+
+    style PK fill:#FFE4E1,stroke:#CD5C5C,color:#333
+    style TF fill:#E6E6FA,stroke:#9370DB,color:#333
+    style G2 fill:#FFCCCB,stroke:#FF6B6B,color:#333
+    style G3 fill:#E8F4FD,stroke:#4A90A4,color:#333
+    style REC fill:#FFFACD,stroke:#DAA520,color:#333

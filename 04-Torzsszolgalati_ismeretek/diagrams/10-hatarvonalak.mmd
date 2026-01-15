@@ -1,0 +1,16 @@
+flowchart TD
+    subgraph HV["HATÁRVONALAK"]
+        OH["OLDALSÓ HATÁRVONAL<br/>Szomszédos egységek között"]
+        EH["ELÜLSŐ HATÁRVONAL<br/>Az ellenség felé"]
+        MH["MÖGÖTTES HATÁRVONAL<br/>A hátország felé"]
+        FLOT["FLOT<br/>Előretolt saját csapatok vonala"]
+    end
+
+    MH --> OH
+    OH --> EH
+    EH --> FLOT
+
+    style OH fill:#E8F4FD,stroke:#4A90A4,color:#333
+    style EH fill:#FFCCCB,stroke:#FF6B6B,color:#333
+    style MH fill:#E8F5E9,stroke:#66BB6A,color:#333
+    style FLOT fill:#FFF3E0,stroke:#FFB74D,color:#333

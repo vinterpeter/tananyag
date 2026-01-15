@@ -1,0 +1,19 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#fff5f5', 'primaryTextColor': '#742a2a', 'primaryBorderColor': '#c53030', 'lineColor': '#4a5568', 'secondaryColor': '#fed7d7', 'tertiaryColor': '#feb2b2'}}}%%
+flowchart TB
+    subgraph VED["Lynx KF41 védelmi rendszerei"]
+        P["Kompozit páncélzat&lt;br/&gt;STANAG Level 5"]
+        AKT["StrikeShield&lt;br/&gt;aktív védelmi rendszer"]
+        subgraph PASS["Passzív védelem"]
+            P1["Külső üzemanyagtartály"]
+            P2["Spall-liner burkolat"]
+            P3["Automata tűzoltó"]
+        end
+    end
+
+    subgraph FEN["Védelem biztosított"]
+        F1["30 mm gépágyú ellen"]
+        F2["10 kg harckocsiakna"]
+        F3["RPG rakéták ellen"]
+    end
+
+    VED --> FEN

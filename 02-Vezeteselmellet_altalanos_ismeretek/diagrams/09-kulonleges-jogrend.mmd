@@ -1,0 +1,30 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#FFCDD2'}}}%%
+graph TD
+    subgraph "Különleges jogrendi tényállások"
+        A["🔴 HADIÁLLAPOT<br/>Országgyűlés 2/3"]
+        B["🟠 SZÜKSÉGÁLLAPOT<br/>Országgyűlés 2/3"]
+        C["🟡 VESZÉLYHELYZET<br/>Kormány"]
+    end
+
+    A --> A1["Háborús helyzet"]
+    A --> A2["Külső fegyveres támadás"]
+    A --> A3["Szövetségesi kötelezettség"]
+
+    B --> B1["Alkotmányos rend veszélye"]
+    B --> B2["Tömeges jogellenes cselekmény"]
+
+    C --> C1["Szomszédos háború"]
+    C --> C2["Természeti katasztrófa"]
+    C --> C3["Ipari szerencsétlenség"]
+
+    style A fill:#FFCDD2,stroke:#D32F2F,stroke-width:3px,color:#B71C1C
+    style B fill:#FFE0B2,stroke:#F57C00,stroke-width:3px,color:#E65100
+    style C fill:#FFF9C4,stroke:#FBC02D,stroke-width:3px,color:#F57F17
+    style A1 fill:#FFEBEE,stroke:#EF9A9A,stroke-width:1px
+    style A2 fill:#FFEBEE,stroke:#EF9A9A,stroke-width:1px
+    style A3 fill:#FFEBEE,stroke:#EF9A9A,stroke-width:1px
+    style B1 fill:#FFF3E0,stroke:#FFCC80,stroke-width:1px
+    style B2 fill:#FFF3E0,stroke:#FFCC80,stroke-width:1px
+    style C1 fill:#FFFDE7,stroke:#FFF176,stroke-width:1px
+    style C2 fill:#FFFDE7,stroke:#FFF176,stroke-width:1px
+    style C3 fill:#FFFDE7,stroke:#FFF176,stroke-width:1px

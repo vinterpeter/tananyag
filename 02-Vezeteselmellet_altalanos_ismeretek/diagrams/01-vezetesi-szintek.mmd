@@ -1,0 +1,12 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#E8F5E9', 'secondaryColor': '#E3F2FD', 'tertiaryColor': '#FFF3E0'}}}%%
+graph TB
+    subgraph "Vezetési szintek"
+        A["🏛️ Felsővezetők<br/>Stratégiai döntések"] --> B["📊 Középvezetők<br/>Koordináció"]
+        B --> C["👥 Alsó szintű vezetők<br/>Operatív feladatok"]
+        C --> D["⚙️ Végrehajtók<br/>Termelés, szolgáltatás"]
+    end
+
+    style A fill:#E8F5E9,stroke:#4CAF50,stroke-width:2px,color:#1B5E20
+    style B fill:#E3F2FD,stroke:#2196F3,stroke-width:2px,color:#0D47A1
+    style C fill:#FFF3E0,stroke:#FF9800,stroke-width:2px,color:#E65100
+    style D fill:#F3E5F5,stroke:#9C27B0,stroke-width:2px,color:#4A148C

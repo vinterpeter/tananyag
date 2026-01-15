@@ -1,0 +1,17 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#E8F4FD', 'primaryTextColor': '#2C3E50', 'primaryBorderColor': '#3498DB', 'lineColor': '#5D6D7E'}}}%%
+flowchart TB
+    subgraph TUZ["**MEGOSZTOTT IRÁNYZÁSÚ TŰZTÁMOGATÓ RENDSZER**"]
+        direction TB
+        A["**1. Célfelderítő rendszerek (STA)**<br/>Célok megtalálása"] --> C
+        B["**2. Vezetési rendszer (CIS)**<br/>Tüzek koordinálása"] --> C
+        C["**3. Célba juttató eszközök**<br/>Lövegek, rakéták, aknavetők"]
+        D["**4. Lőszerek**<br/>Irányított és nem irányított"] --> C
+        E["**5. Lőszer-utánpótlás**<br/>Folyamatos ellátás"] --> D
+    end
+
+    style TUZ fill:#FDFEFE,stroke:#5D6D7E,stroke-width:2px
+    style A fill:#EBF5FB,stroke:#3498DB,stroke-width:2px
+    style B fill:#E8F8F5,stroke:#1ABC9C,stroke-width:2px
+    style C fill:#FDEDEC,stroke:#E74C3C,stroke-width:2px
+    style D fill:#FEF9E7,stroke:#F1C40F,stroke-width:2px
+    style E fill:#F5EEF8,stroke:#9B59B6,stroke-width:2px

@@ -1,0 +1,27 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#f8fafc', 'primaryTextColor': '#1e293b', 'primaryBorderColor': '#64748b', 'lineColor': '#475569', 'secondaryColor': '#e0f2fe', 'tertiaryColor': '#fef3c7'}}}%%
+flowchart TB
+    subgraph HHP["Honvédelmi és Haderőfejlesztési Program 2017-2026"]
+        subgraph LANC["Lánctalpas járművek"]
+            L2["Leopard 2&lt;br/&gt;Harckocsi&lt;br/&gt;88 db"]
+            PZH["PzH 2000&lt;br/&gt;Önjáró löveg&lt;br/&gt;24 db"]
+            LYN["Lynx KF41&lt;br/&gt;Gyalogsági harcjármű&lt;br/&gt;218 db"]
+        end
+
+        subgraph KER["Kerekes járművek"]
+            GID["Gidrán&lt;br/&gt;Védett szállító&lt;br/&gt;~350 db"]
+            MRZ["MRZR 4&lt;br/&gt;Könnyű jármű&lt;br/&gt;12 db"]
+        end
+
+        subgraph FEG["Fegyverek"]
+            CG["Carl-Gustav M4&lt;br/&gt;84 mm páncéltörő"]
+            CZ["CZ fegyvercsalád&lt;br/&gt;Hazai gyártás"]
+        end
+    end
+
+    subgraph GYAR["Magyar gyártás"]
+        G1["Zalaegerszeg&lt;br/&gt;Lynx"]
+        G2["Kaposvár&lt;br/&gt;Gidrán"]
+        G3["Kiskunfélegyháza&lt;br/&gt;CZ fegyverek"]
+    end
+
+    HHP --> GYAR

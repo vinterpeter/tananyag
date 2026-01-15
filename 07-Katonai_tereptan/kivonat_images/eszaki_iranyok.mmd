@@ -1,0 +1,15 @@
+flowchart TB
+    subgraph Északi_irányok ["Háromféle északi irány"]
+        TN["<b>Földrajzi észak (TN)</b><br/>Az Északi-sark iránya"]
+        MN["<b>Mágneses észak (MN)</b><br/>Az iránytű iránya"]
+        GN["<b>Hálózati észak (GN)</b><br/>A térkép függőleges vonalai"]
+    end
+
+    TN --> D["Deklináció"]
+    MN --> D
+    GN --> G["GMA - Grid Magnetic Angle"]
+    MN --> G
+
+    style TN fill:#e3f2fd
+    style MN fill:#ffebee
+    style GN fill:#f3e5f5

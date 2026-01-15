@@ -1,0 +1,14 @@
+flowchart LR
+    subgraph TCCC["TCCC FÁZISAI"]
+        direction LR
+        CUF["1. TŰZ ALATTI<br/>Care Under Fire<br/>Minimális beavatkozás"]
+        TFC["2. HARCÁSZATI TEREP<br/>Tactical Field Care<br/>Részletes ellátás"]
+        TAC["3. KIÜRÍTÉS ALATTI<br/>TACEVAC Care<br/>Folyamatos ellátás"]
+    end
+
+    CUF -->|"fedezékbe vonás"| TFC
+    TFC -->|"szállítás"| TAC
+
+    style CUF fill:#fed7d7,stroke:#c53030
+    style TFC fill:#feebc8,stroke:#c05621
+    style TAC fill:#c6f6d5,stroke:#276749

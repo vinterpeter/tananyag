@@ -1,0 +1,16 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#e6fffa', 'primaryTextColor': '#234e52', 'primaryBorderColor': '#319795', 'lineColor': '#4a5568', 'secondaryColor': '#faf5ff', 'tertiaryColor': '#fefcbf'}}}%%
+flowchart LR
+    subgraph VR["Védelmi rendszerek"]
+        P["Kompozit&lt;br/&gt;páncélzat"]
+        T["Trophy&lt;br/&gt;aktív védelem"]
+        K["Ködgránátvető&lt;br/&gt;16 db"]
+    end
+
+    subgraph TR["Tűzvezető rendszerek"]
+        E["EMES 15A2&lt;br/&gt;irányzótávcső"]
+        PE["PERI R17A3&lt;br/&gt;parancsnoki műszer"]
+        L["Lézertávmérő&lt;br/&gt;10 km hatótáv"]
+    end
+
+    VR --> HK["Hunter-Killer&lt;br/&gt;képesség"]
+    TR --> HK

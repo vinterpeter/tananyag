@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kvíz - Spaced Repetition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .deck-info {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .stat-item.correct .stat-value { color: #00ff88; }
+        .stat-item.incorrect .stat-value { color: #ff6b6b; }
+        .stat-item.streak .stat-value { color: #feca57; }
+        .stat-item.mastered .stat-value { color: #9b59b6; }
+
+        /* Progress Bar */
+        .progress-container {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            height: 8px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #feca57);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        /* Question Card */
+        .question-card {
+            background: linear-gradient(145deg, #2a2a4a, #1e1e3a);
+            border: 2px solid rgba(255, 107, 107, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .question-number {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .question-tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .question-image {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 12px;
+            margin: 15px 0;
+            object-fit: contain;
+        }
+
+        .answer-image {
+            max-width: 80px;
+            max-height: 60px;
+            border-radius: 8px;
+            margin-left: 10px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.1);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        /* Answer Options */
+        .answers-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .answer-btn {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            position: relative;
+        }
+
+        .answer-btn:hover:not(:disabled) {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .answer-btn:disabled {
+            cursor: default;
+        }
+
+        .answer-btn.correct {
+            background: rgba(0, 255, 136, 0.2);
+            border-color: #00ff88;
+        }
+
+        .answer-btn.incorrect {
+            background: rgba(255, 107, 107, 0.2);
+            border-color: #ff6b6b;
+        }
+
+        .answer-btn.show-correct {
+            background: rgba(0, 255, 136, 0.1);
+            border-color: rgba(0, 255, 136, 0.5);
+        }
+
+        .answer-key {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            text-align: center;
+            line-height: 28px;
+            margin-right: 12px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .answer-btn.correct .answer-key {
+            background: #00ff88;
+            color: #1a1a2e;
+        }
+
+        .answer-btn.incorrect .answer-key {
+            background: #ff6b6b;
+            color: #1a1a2e;
+        }
+
+        /* Feedback */
+        .feedback {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .feedback.visible {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+
+        .feedback.incorrect {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+
+        .feedback-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .feedback-text {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .feedback-explanation {
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Next Button */
+        .next-btn {
+            display: none;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(145deg, #ff6b6b, #ee5a5a);
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .next-btn.visible {
+            display: block;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Streak Indicator */
+        .streak-indicator {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .streak-fire {
+            color: #feca57;
+        }
+
+        /* Session Complete */
+        .session-complete {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+        }
+
+        .session-complete h2 {
+            color: #00ff88;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(#00ff88 var(--score), rgba(255,255,255,0.1) 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .score-circle::before {
+            content: '';
+            width: 120px;
+            height: 120px;
+            background: #1e1e3a;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .score-value {
+            position: relative;
+            z-index: 1;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00ff88;
+        }
+
+        .session-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+        }
+
+        .session-stat {
+            text-align: center;
+        }
+
+        .session-stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .session-stat-label {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .control-btn {
+            padding: 12px 30px;
+            border: 2px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .control-btn:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        /* Shortcuts */
+        .shortcuts {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+        }
+
+        .shortcuts h4 {
+            color: #888;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .shortcut-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .shortcut {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+        }
+
+        .key {
+            background: rgba(255,255,255,0.1);
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            color: #feca57;
+        }
+
+        /* Load Custom */
+        .load-custom {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 60px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255,255,255,0.1);
+            border-top-color: #ff6b6b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .answers-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-bar {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .stat-item {
+                flex: 1 1 40%;
+            }
+
+            .question-text {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kvíz</h1>
+            <p class="deck-info" id="deckInfo">Spaced Repetition Quiz System</p>
+        </header>
+
+        <div id="app">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Kérdések betöltése...</p>
+            </div>
+        </div>
+
+        <div class="load-custom">
+            <input type="file" id="fileInput" accept=".json" style="display:none">
+            <button class="control-btn" onclick="document.getElementById('fileInput').click()">
+                Saját JSON betöltése
+            </button>
+        </div>
+
+        <div class="shortcuts">
+            <h4>Billentyűparancsok</h4>
+            <div class="shortcut-list">
+                <div class="shortcut"><span class="key">1-4</span> Válasz kiválasztása</div>
+                <div class="shortcut"><span class="key">Enter</span> Következő kérdés</div>
+                <div class="shortcut"><span class="key">R</span> Visszaállítás</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Default embedded quiz questions - Katonai tereptan vizsgafelkészítő
+        const DEFAULT_DATA = {
+            "quiz": {
+                "name": "Katonai tereptan - Vizsgafelkészítő Kvíz",
+                "description": "A Magyar Honvédség katonai tereptan tananyagából összeállított vizsgakérdések: tereptani alapismeretek, térképészeti alapismeretek, tájékozódási alapismeretek, tájolók, GPS"
+            },
+            "questions": [
+                {"id": 1, "question": "Mi a terep definíciója?", "answers": ["Csak a hegyvidéki területek", "A Föld felszínének egy része természeti és mesterséges elemeivel", "Kizárólag a katonai kiképzőterület", "A térképen ábrázolt terület"], "correct": 1, "explanation": "A terep a Föld felszínének egy része, mindazon természeti és mesterséges elemekkel együtt, amelyek befolyásolják a katonai tevékenységet.", "tags": ["tereptan", "alapfogalom"]},
+                {"id": 2, "question": "Melyek a terep alkotóelemei?", "answers": ["Csak domborzat és vizek", "Domborzat, vizek, növényzet, talaj, közlekedési hálózat, települések", "Csak természetes elemek", "Kizárólag mesterséges objektumok"], "correct": 1, "explanation": "A terep alkotóelemei: domborzat, vizek, növényzet, talaj, közlekedési hálózat, települések.", "tags": ["tereptan", "alkotóelemek"]},
+                {"id": 3, "question": "Mi a terepértékelés négy fő katonai szempontja?", "answers": ["Időjárás, hőmérséklet, csapadék, szél", "Járhatóság, fedezőképesség, kilátási és figyelési viszonyok, tűzvezetés", "Méret, forma, szín, anyag", "Költség, idő, erőforrás, személyzet"], "correct": 1, "explanation": "A terepértékelés fő katonai szempontjai: járhatóság, fedezőképesség, kilátási és figyelési viszonyok, tűzvezetési lehetőségek.", "tags": ["tereptan", "terepértékelés"]},
+                {"id": 4, "question": "Mi a síkvidék szintmagasság-különbsége?", "answers": ["0-10 m", "0-30 m", "30-200 m", "200-500 m"], "correct": 1, "explanation": "A síkvidéken a szintmagasság-különbség 0-30 méter, általában kisebb tagoltságú, jó járhatóságú terep.", "tags": ["tereptan", "terepfajták"]},
+                {"id": 5, "question": "Mi a dombvidék szintmagasság-különbsége?", "answers": ["0-30 m", "30-200 m", "200-500 m", "500 m felett"], "correct": 1, "explanation": "A dombvidéken a szintmagasság-különbség 30-200 méter, változatos domborzatú terület.", "tags": ["tereptan", "terepfajták"]},
+                {"id": 6, "question": "Mi a hegyvidék szintmagasság-különbsége?", "answers": ["30-100 m", "100-200 m", "200 m felett", "500 m felett"], "correct": 2, "explanation": "A hegyvidéken a szintmagasság-különbség 200 méter felett van, tagolt, meredek lejtőkkel jellemezhető.", "tags": ["tereptan", "terepfajták"]},
+                {"id": 7, "question": "Melyik UTM zónába esik Magyarország nyugati része?", "answers": ["32. zóna", "33. zóna", "34. zóna", "35. zóna"], "correct": 1, "explanation": "Magyarország nyugati része a 33. UTM zónába esik (Dunaföldvár-Salgótarján vonaltól nyugatra).", "tags": ["térképészet", "UTM"]},
+                {"id": 8, "question": "Melyik UTM zónába esik Magyarország keleti része?", "answers": ["32. zóna", "33. zóna", "34. zóna", "35. zóna"], "correct": 2, "explanation": "Magyarország keleti része a 34. UTM zónába esik (Dunaföldvár-Salgótarján vonaltól keletre).", "tags": ["térképészet", "UTM"]},
+                {"id": 9, "question": "Mekkora az UTM vetületi zónák szélessége?", "answers": ["3°", "4°", "6°", "10°"], "correct": 2, "explanation": "Az UTM vetületi zónák szélessége 6 fok, összesen 60 zónára osztva a Föld felszínét.", "tags": ["térképészet", "UTM"]},
+                {"id": 10, "question": "Mi az MGRS (Military Grid Reference System)?", "answers": ["Légi navigációs rendszer", "Katonai rácshálózatos helymeghatározó rendszer", "Műholdas kommunikációs rendszer", "Radarrendszer"], "correct": 1, "explanation": "Az MGRS a katonai rácshálózatos helymeghatározó rendszer, amely az UTM-re épül és alfanumerikus kódokkal jelöl pontokat.", "tags": ["térképészet", "MGRS"]},
+                {"id": 11, "question": "Mekkora az MGRS 100 km-es négyzetek mérete?", "answers": ["10x10 km", "50x50 km", "100x100 km", "1000x1000 km"], "correct": 2, "explanation": "Az MGRS rendszerben a 100 km-es négyzetek 100x100 km méretűek, és két betűvel jelölik őket.", "tags": ["térképészet", "MGRS"]},
+                {"id": 12, "question": "Mi a GEOREF rendszer?", "answers": ["Szárazföldi navigációs rendszer", "Világméretű földrajzi hivatkozási rendszer légi navigációhoz", "Tengerészeti térképrendszer", "Vasúti helymeghatározó rendszer"], "correct": 1, "explanation": "A GEOREF (World Geographic Reference System) a légi navigációhoz használt világméretű földrajzi hivatkozási rendszer.", "tags": ["térképészet", "GEOREF"]},
+                {"id": 13, "question": "Mi a szintvonal definíciója?", "answers": ["Az azonos hőmérsékletű pontokat összekötő vonal", "Az azonos tengerszint feletti magasságú pontokat összekötő görbe vonal", "Az azonos légsűrűségű pontokat összekötő vonal", "A völgyeket jelölő vonal"], "correct": 1, "explanation": "A szintvonal az azonos tengerszint feletti magasságú pontokat összekötő görbe vonal a térképen.", "tags": ["térképészet", "szintvonalak"]},
+                {"id": 14, "question": "Mekkora az alapszintköz 1:50.000 méretarányú térképen?", "answers": ["5 m", "10 m", "20 m", "50 m"], "correct": 2, "explanation": "Az 1:50.000 méretarányú térképen az alapszintköz 20 méter.", "tags": ["térképészet", "szintvonalak"]},
+                {"id": 15, "question": "Mekkora az alapszintköz 1:25.000 méretarányú térképen?", "answers": ["2,5 m", "5 m", "10 m", "20 m"], "correct": 2, "explanation": "Az 1:25.000 méretarányú térképen az alapszintköz 10 méter.", "tags": ["térképészet", "szintvonalak"]},
+                {"id": 16, "question": "Mit jelent az 1:50.000 méretarány?", "answers": ["1 cm a térképen = 500 m a terepen", "1 cm a térképen = 50 m a terepen", "1 cm a térképen = 5 km a terepen", "1 cm a térképen = 50 km a terepen"], "correct": 0, "explanation": "1:50.000 méretarány: 1 cm a térképen = 500 méter (0,5 km) a terepen.", "tags": ["térképészet", "méretarány"]},
+                {"id": 17, "question": "Mit jelent az 1:25.000 méretarány?", "answers": ["1 cm = 25 m", "1 cm = 250 m", "1 cm = 2,5 km", "1 cm = 25 km"], "correct": 1, "explanation": "1:25.000 méretarány: 1 cm a térképen = 250 méter a terepen.", "tags": ["térképészet", "méretarány"]},
+                {"id": 18, "question": "Mi a 39/49 M tájoló másik neve?", "answers": ["NATO tájoló", "Cammenga tájoló", "Bézárd tájoló", "Silva tájoló"], "correct": 2, "explanation": "A 39/49 M tájoló másik neve Bézárd tájoló, a magyar tervezőjéről elnevezve.", "tags": ["tájolók", "39/49 M"]},
+                {"id": 19, "question": "Hány vonásra van beosztva a 39/49 M tájoló?", "answers": ["360 fok", "400 grad", "6000 vonás", "6400 mil"], "correct": 2, "explanation": "A 39/49 M (Bézárd) tájoló 6000 vonásra van beosztva.", "tags": ["tájolók", "39/49 M"]},
+                {"id": 20, "question": "Hány mil-re van beosztva a NATO tájoló (Cammenga 3H)?", "answers": ["360 fok", "6000 vonás", "6400 mil", "400 grad"], "correct": 2, "explanation": "A NATO tájoló (Cammenga 3H) 6400 mil-re van beosztva, ez a NATO szabvány.", "tags": ["tájolók", "Cammenga"]},
+                {"id": 21, "question": "Mi a valódi észak (TN)?", "answers": ["A mágnestű által mutatott irány", "A térképi koordinátarendszer északi iránya", "A Földrajzi Északi-sarkra mutató irány", "A Nap iránya délben"], "correct": 2, "explanation": "A valódi észak (True North - TN) a Földrajzi Északi-sarkra mutató irány.", "tags": ["tájékozódás", "észak"]},
+                {"id": 22, "question": "Mi a mágneses észak (MN)?", "answers": ["A Földrajzi Északi-sark iránya", "A mágneses Északi-sark iránya, amit a tájoló mutat", "A térképi észak", "A csillagok szerinti észak"], "correct": 1, "explanation": "A mágneses észak (Magnetic North - MN) a mágneses Északi-sark iránya, amit az iránytű mutat.", "tags": ["tájékozódás", "észak"]},
+                {"id": 23, "question": "Mi a hálózati észak (GN)?", "answers": ["A GPS által mutatott észak", "A térképi koordinátarendszer északi iránya", "A valódi észak", "A mágneses észak"], "correct": 1, "explanation": "A hálózati észak (Grid North - GN) a térképi koordinátarendszer északi iránya, a függőleges rácsvonaak iránya.", "tags": ["tájékozódás", "észak"]},
+                {"id": 24, "question": "Mi a deklináció?", "answers": ["A valódi és a mágneses észak közötti szögeltérés", "A valódi és a hálózati észak közötti szög", "A térkép méretaránya", "A szintvonalak közötti távolság"], "correct": 0, "explanation": "A deklináció a valódi észak (TN) és a mágneses észak (MN) közötti szögeltérés.", "tags": ["tájékozódás", "deklináció"]},
+                {"id": 25, "question": "Mi a GMA (Grid-Magnetic Angle)?", "answers": ["A térkép méretaránya", "A hálózati és mágneses észak közötti szögeltérés", "A szintvonalak sűrűsége", "A GPS pontossága"], "correct": 1, "explanation": "A GMA (Grid-Magnetic Angle) a hálózati észak (GN) és a mágneses észak (MN) közötti szögeltérés.", "tags": ["tájékozódás", "GMA"]},
+                {"id": 26, "question": "Mi az azimut?", "answers": ["A térképi távolság", "Egy irány szöge az északi iránytól mérve az óramutató járásával megegyezően", "A magasságkülönbség", "A lejtő meredeksége"], "correct": 1, "explanation": "Az azimut egy irány szöge az északi iránytól (TN, MN vagy GN) mérve az óramutató járásával megegyezően.", "tags": ["tájékozódás", "azimut"]},
+                {"id": 27, "question": "Mi az oldalmetszés (háromszögelés)?", "answers": ["Távolságmérési módszer", "Helymeghatározás két ismert pontból vett irányszögek metszésével", "Térképi távolságszámítás", "GPS mérés"], "correct": 1, "explanation": "Az oldalmetszés helymeghatározási módszer, ahol két ismert pontból vett irányszögek metszéspontja adja a saját pozíciót.", "tags": ["tájékozódás", "helymeghatározás"]},
+                {"id": 28, "question": "Mi a hátrametszés?", "answers": ["Visszafelé haladás a térképen", "Saját hely meghatározása ismert tereptárgyakra vett irányok alapján", "A térkép tájolása", "Távolságmérés"], "correct": 1, "explanation": "A hátrametszés saját hely meghatározása 2-3 ismert tereptárgyra vett irányok (azimutok) alapján.", "tags": ["tájékozódás", "helymeghatározás"]},
+                {"id": 29, "question": "Mi az előremetszés?", "answers": ["Tereptárgy helyének meghatározása két ismert pontból", "Saját pozíció meghatározása", "Térkép tájolása", "Irányszög mérése"], "correct": 0, "explanation": "Az előremetszés egy ismeretlen tereptárgy helyének meghatározása két ismert saját pozícióból vett irányok alapján.", "tags": ["tájékozódás", "helymeghatározás"]},
+                {"id": 30, "question": "Mi a GPS (NAVSTAR) rendszer?", "answers": ["Orosz műholdas rendszer", "Amerikai globális helymeghatározó rendszer", "Európai navigációs rendszer", "Kínai műholdrendszer"], "correct": 1, "explanation": "A GPS (Global Positioning System) az amerikai NAVSTAR műholdas helymeghatározó rendszer.", "tags": ["GPS", "NAVSTAR"]},
+                {"id": 31, "question": "Hány műhold szükséges a 3D helymeghatározáshoz GPS-sel?", "answers": ["2 műhold", "3 műhold", "4 vagy több műhold", "6 műhold"], "correct": 2, "explanation": "A 3D helymeghatározáshoz (szélesség, hosszúság, magasság) minimum 4 műhold vétele szükséges.", "tags": ["GPS", "működés"]},
+                {"id": 32, "question": "Hány műhold szükséges a 2D helymeghatározáshoz GPS-sel?", "answers": ["1 műhold", "2 műhold", "3 műhold", "5 műhold"], "correct": 2, "explanation": "A 2D helymeghatározáshoz (szélesség, hosszúság) minimum 3 műhold vétele szükséges.", "tags": ["GPS", "működés"]},
+                {"id": 33, "question": "Mi a GLONASS?", "answers": ["Amerikai GPS rendszer", "Orosz műholdas navigációs rendszer", "Európai navigációs rendszer", "Kínai műholdrendszer"], "correct": 1, "explanation": "A GLONASS (Globalnaja Navigacionnaja Szputnyikovaja Szisztyema) az orosz műholdas navigációs rendszer.", "tags": ["GPS", "GLONASS"]},
+                {"id": 34, "question": "Mi a Galileo?", "answers": ["Amerikai GPS rendszer", "Orosz navigációs rendszer", "Európai globális navigációs műholdrendszer", "Kínai műholdrendszer"], "correct": 2, "explanation": "A Galileo az Európai Unió globális navigációs műholdrendszere (GNSS).", "tags": ["GPS", "Galileo"]},
+                {"id": 35, "question": "Mi a BeiDou?", "answers": ["Japán navigációs rendszer", "Indiai műholdrendszer", "Kínai műholdas navigációs rendszer", "Dél-koreai rendszer"], "correct": 2, "explanation": "A BeiDou a kínai műholdas navigációs rendszer (BDS - BeiDou Navigation Satellite System).", "tags": ["GPS", "BeiDou"]},
+                {"id": 36, "question": "Mi a fedezőképesség katonai szempontból?", "answers": ["A terep azon tulajdonsága, hogy mennyire nyújt védelmet a felderítés és a tűz ellen", "A térkép méretaránya", "A GPS pontossága", "A szintvonalak sűrűsége"], "correct": 0, "explanation": "A fedezőképesség a terep azon tulajdonsága, hogy mennyire nyújt védelmet a vizuális/műszaki felderítés és az ellenséges tűz ellen.", "tags": ["tereptan", "fedezőképesség"]},
+                {"id": 37, "question": "Mi a járhatóság?", "answers": ["A térkép olvashatósága", "A terep azon tulajdonsága, hogy lehetővé teszi-e csapatok és járművek mozgását", "A szintvonalak iránya", "A GPS vétel minősége"], "correct": 1, "explanation": "A járhatóság a terep azon tulajdonsága, hogy mennyire teszi lehetővé csapatok, járművek és technikai eszközök mozgását.", "tags": ["tereptan", "járhatóság"]},
+                {"id": 38, "question": "Mi befolyásolja leginkább a terep járhatóságát?", "answers": ["A csillagok állása", "Domborzat, talajviszonyok, növényzet, vízfolyások", "Csak az időjárás", "A GPS pontossága"], "correct": 1, "explanation": "A járhatóságot a domborzat (lejtők), talajviszonyok, növényzet sűrűsége és vízfolyások/akadályok befolyásolják.", "tags": ["tereptan", "járhatóság"]},
+                {"id": 39, "question": "Mit jelent a topográfiai térkép?", "answers": ["Csak városokat ábrázoló térkép", "A terep domborzatát és részleteit pontosan ábrázoló térkép", "Csak úthálózatot ábrázoló térkép", "Műholdkép"], "correct": 1, "explanation": "A topográfiai térkép a terep domborzatát (szintvonalakkal) és egyéb részleteit (utak, települések, vizek) pontosan ábrázoló térkép.", "tags": ["térképészet", "topográfia"]},
+                {"id": 40, "question": "Milyen méretarányú az 1:50.000 katonai térkép?", "answers": ["Kisméretarányú", "Közepes méretarányú", "Nagyméretarányú", "Óriás méretarányú"], "correct": 1, "explanation": "Az 1:50.000 méretarányú térkép közepes méretarányú, a leggyakrabban használt katonai topográfiai térkép.", "tags": ["térképészet", "méretarány"]},
+                {"id": 41, "question": "Mi a térképjelrendszer célja?", "answers": ["Csak a határokat jelölni", "A terep elemeit egységesen és érthetően ábrázolni", "Csak az utakat jelölni", "Titkosítani a térképet"], "correct": 1, "explanation": "A térképjelrendszer célja a terep különböző elemeinek egységes, egyértelmű és nemzetközileg érthető ábrázolása.", "tags": ["térképészet", "jelrendszer"]},
+                {"id": 42, "question": "Mi a főszintvonal?", "answers": ["A legmagasabb pont jelzése", "Az alapszintköz ötszörösénél húzott vastagabb szintvonal", "A völgy jelzése", "A vízfolyás jelzése"], "correct": 1, "explanation": "A főszintvonal az alapszintköz ötszörösénél húzott vastagabb szintvonal (pl. 1:50.000-en minden 100 méternél).", "tags": ["térképészet", "szintvonalak"]},
+                {"id": 43, "question": "Mit jeleznek a sűrűn húzott szintvonalak?", "answers": ["Sík terültet", "Meredek lejtőt", "Vizet", "Erdőt"], "correct": 1, "explanation": "A sűrűn húzott szintvonalak meredek lejtőt jeleznek (kis távolságon nagy szintkülönbség).", "tags": ["térképészet", "szintvonalak"]},
+                {"id": 44, "question": "Mit jeleznek a ritkán húzott szintvonalak?", "answers": ["Meredek hegyoldalt", "Lankás, enyhe lejtőt", "Völgyet", "Folyót"], "correct": 1, "explanation": "A ritkán húzott szintvonalak lankás, enyhe lejtőt jeleznek (nagy távolságon kis szintkülönbség).", "tags": ["térképészet", "szintvonalak"]},
+                {"id": 45, "question": "Hogyan jelölik a magassági pontokat a térképen?", "answers": ["Körrel", "Háromszöggel és számmal", "Négyzettel", "Csillaggal"], "correct": 1, "explanation": "A magassági pontokat (trigonometriai pontok, csúcsok) háromszöggel és a magasság számértékével jelölik.", "tags": ["térképészet", "jelrendszer"]},
+                {"id": 46, "question": "Mit jelent a visszaazimut?", "answers": ["Az azimut megismétlése", "Az eredeti irány ellentétes irányának szöge (180°-kal eltér)", "A térkép elforgatása", "A GPS újrakalibrálása"], "correct": 1, "explanation": "A visszaazimut az eredeti azimuttal ellentétes irány szöge, amely 180°-kal (3000 vonás, 3200 mil) tér el.", "tags": ["tájékozódás", "azimut"]},
+                {"id": 47, "question": "Hogyan számoljuk ki a visszaazimutot?", "answers": ["Osztás 2-vel", "Ha az azimut < 180°, hozzáadunk 180°-ot; ha ≥ 180°, kivonunk 180°-ot", "Szorzás 2-vel", "Mindig kivonás 90°"], "correct": 1, "explanation": "Visszaazimut: ha az eredeti azimut < 180°, hozzáadunk 180°-ot; ha ≥ 180°, kivonunk 180°-ot.", "tags": ["tájékozódás", "azimut"]},
+                {"id": 48, "question": "Mi a tájoló tükrének szerepe?", "answers": ["Csak díszítés", "A célzás és a mágnestű egyidejű megfigyelése", "Napfény visszaverése", "Morse-jelzés adása"], "correct": 1, "explanation": "A tájoló tükre lehetővé teszi, hogy a célzással egyidejűleg megfigyeljük a mágnestű állását.", "tags": ["tájolók", "használat"]},
+                {"id": 49, "question": "Mi a tájoló irányzékának (vizírnak) szerepe?", "answers": ["Távolságmérés", "Pontos iránymérés tereptárgyra", "Időmérés", "Magasságmérés"], "correct": 1, "explanation": "Az irányzék (vizír) a pontos iránymérésre szolgál, a célzott tereptárgyra irányítva.", "tags": ["tájolók", "használat"]},
+                {"id": 50, "question": "Mit jelent a 'mils' mértékegység?", "answers": ["Távolságmérték", "A kör 6400 részre osztása NATO szabvány szerint", "Súlymérték", "Időmérték"], "correct": 1, "explanation": "A mils (mil) a szögmérés NATO egysége, ahol a teljes kör 6400 milre van osztva.", "tags": ["tájolók", "mértékegység"]},
+                {"id": 51, "question": "Mit jelent a 'vonás' mértékegység?", "answers": ["Súlymérték", "A kör 6000 részre osztása a magyar/orosz rendszerben", "Távolságmérték", "Időmérték"], "correct": 1, "explanation": "A vonás a szögmérés magyar/orosz egysége, ahol a teljes kör 6000 vonásra van osztva.", "tags": ["tájolók", "mértékegység"]},
+                {"id": 52, "question": "Hogyan tájoljuk a térképet tájoló segítségével?", "answers": ["A térképet délre fordítjuk", "A térkép északi irányát a tájoló észak irányához igazítjuk", "A térképet nyugatra fordítjuk", "Véletlenszerűen elhelyezzük"], "correct": 1, "explanation": "A térkép tájolása: a térkép északi irányát (függőleges vonalak) a tájoló által mutatott észak irányához igazítjuk.", "tags": ["tájékozódás", "térkép"]},
+                {"id": 53, "question": "Mit jelent a WGS-84?", "answers": ["Fegyverrendszer", "World Geodetic System 1984 - a GPS által használt geodéziai rendszer", "Kommunikációs protokoll", "Térképjelrendszer"], "correct": 1, "explanation": "A WGS-84 (World Geodetic System 1984) a GPS és más GNSS rendszerek által használt globális geodéziai vonatkoztatási rendszer.", "tags": ["GPS", "geodézia"]},
+                {"id": 54, "question": "Mi a Sarkcsillag jelentősége a tájékozódásban?", "answers": ["A legfényesebb csillag", "Megközelítőleg az északi irányt mutatja", "A déli irányt jelzi", "Nincs tájékozódási jelentősége"], "correct": 1, "explanation": "A Sarkcsillag (Polaris) megközelítőleg az északi irányt mutatja, mert közel van az égbolt északi pólusához.", "tags": ["tájékozódás", "égi"]},
+                {"id": 55, "question": "Hogyan találjuk meg a Sarkcsillagot?", "answers": ["A Göncölszekér rúdjának meghosszabbításával", "A Göncölszekér hátsó két csillagának 5-szörös távolságával", "Véletlenszerűen", "A Hold segítségével"], "correct": 1, "explanation": "A Sarkcsillagot a Göncölszekér (Nagy Medve) hátsó két csillaga közötti távolság ötszörösének meghosszabbításával találjuk meg.", "tags": ["tájékozódás", "égi"]},
+                {"id": 56, "question": "Mi a napóra módszer a tájékozódásban?", "answers": ["Órával mérjük a napsütést", "Egy bot árnyékának mozgásából határozzuk meg az égtájakat", "A Nap helyzetéből számítjuk az időt", "GPS-t használunk"], "correct": 1, "explanation": "A napóra (árnyék) módszer: egy bot árnyékának végpontjait jelöljük meg időközönként, ezek nyugat-keleti irányt adnak.", "tags": ["tájékozódás", "módszerek"]},
+                {"id": 57, "question": "Hová mutat a Nap délben a mi féltekénkön?", "answers": ["Északra", "Délre", "Keletre", "Nyugatra"], "correct": 1, "explanation": "Az északi féltekén a Nap délben (deleléskor) dél felé áll, és ekkor a legmagasabban.", "tags": ["tájékozódás", "égi"]},
+                {"id": 58, "question": "Mi a kilátási és figyelési viszonyok jelentősége?", "answers": ["Csak a turisták számára fontos", "A terep megfigyelhetősége és ellenőrzési lehetősége katonai szempontból", "Időjárás-előrejelzés", "Madármegfigyelés"], "correct": 1, "explanation": "A kilátási és figyelési viszonyok azt határozzák meg, mennyire lehet a terepet megfigyelni és ellenőrizni katonai szempontból.", "tags": ["tereptan", "megfigyelés"]},
+                {"id": 59, "question": "Mit jelent a tűzvezetési lehetőség?", "answers": ["Tűzoltási kapacitás", "A terep alkalmas-e hatékony fegyverhasználatra és tűzirányításra", "Tűzijáték szervezése", "Erdőtűz kockázata"], "correct": 1, "explanation": "A tűzvezetési lehetőség azt jelenti, mennyire alkalmas a terep a fegyverek hatékony alkalmazására és a tűz irányítására.", "tags": ["tereptan", "tűzvezetés"]},
+                {"id": 60, "question": "Mi a PDOP érték a GPS-ben?", "answers": ["A műholdak száma", "Position Dilution of Precision - a helymeghatározás pontosságának mérőszáma", "A térkép méretaránya", "Az akkumulátor töltöttsége"], "correct": 1, "explanation": "A PDOP (Position Dilution of Precision) a GPS helymeghatározás geometriai pontosságának mérőszáma, az alacsonyabb érték jobb pontosságot jelent.", "tags": ["GPS", "pontosság"]},
+                {"id": 61, "question": "Mi az EPE érték a GPS-ben?", "answers": ["Eltárolt pozíciók száma", "Estimated Position Error - becsült pozíciós hiba méterben", "Akkumulátor állapota", "Műhold típusa"], "correct": 1, "explanation": "Az EPE (Estimated Position Error) a GPS által becsült pozíciós hiba méterben, a pillanatnyi pontosság jelzője.", "tags": ["GPS", "pontosság"]},
+                {"id": 62, "question": "Mit jelent a waypoint a GPS-ben?", "answers": ["Műhold neve", "Előre elmentett vagy célpont, útpont", "Akkumulátor állapota", "Antennakábelé"], "correct": 1, "explanation": "A waypoint egy elmentett pozíció (útpont vagy célpont), amelyhez navigálni lehet vagy útvonalat tervezni.", "tags": ["GPS", "navigáció"]},
+                {"id": 63, "question": "Mit jelent a track a GPS navigációban?", "answers": ["Műhold neve", "Az eszköz által megtett út automatikus rögzítése", "Távolságmérés", "Iránytű funkció"], "correct": 1, "explanation": "A track az eszköz által megtett út automatikus rögzítése, a GPS nyomvonal funkciója.", "tags": ["GPS", "navigáció"]},
+                {"id": 64, "question": "Mit jelent az EOD rövidítés térképjelzésnél?", "answers": ["Robbanótestek tűzszerészeti semlegesítése", "Elektromos objektum", "Élelmiszer osztópont", "Egészségügyi ellátó pont"], "correct": 0, "explanation": "Az EOD (Explosive Ordnance Disposal) a robbanótestek tűzszerészeti semlegesítését jelöli a katonai térképeken.", "tags": ["térképészet", "jelrendszer"]},
+                {"id": 65, "question": "Milyen színnel jelölik az utakat a topográfiai térképen?", "answers": ["Zölddel", "Kékkel", "Sárgával, narancssárgával vagy pirossal", "Feketével"], "correct": 2, "explanation": "Az utakat sárgával (kisebb utak), narancssárgával (főutak) vagy pirossal (autópályák) jelölik a topográfiai térképeken.", "tags": ["térképészet", "jelrendszer"]},
+                {"id": 66, "question": "Milyen színnel jelölik a vizeket (folyókat, tavakat) a térképen?", "answers": ["Zölddel", "Kékkel", "Feketével", "Barnával"], "correct": 1, "explanation": "A vizeket (folyók, tavak, tengerek) kék színnel jelölik a térképeken.", "tags": ["térképészet", "jelrendszer"]},
+                {"id": 67, "question": "Milyen színnel jelölik az erdőket és növényzetet a térképen?", "answers": ["Barnával", "Kékkel", "Zölddel", "Sárgával"], "correct": 2, "explanation": "Az erdőket és egyéb növényzetet zöld színnel jelölik a térképeken.", "tags": ["térképészet", "jelrendszer"]},
+                {"id": 68, "question": "Mit jelent a kiemelőszintvonal?", "answers": ["Sűrűn húzott szintvonal", "A főszintvonalak közötti segédvonal fél alapszintközzel", "Vastagított főszintvonal", "A tengerszint vonala"], "correct": 1, "explanation": "A kiemelőszintvonal (segédszintvonal) a főszintvonalak közötti fél alapszintközű vonal enyhe lejtők pontosabb ábrázolásához.", "tags": ["térképészet", "szintvonalak"]},
+                {"id": 69, "question": "Mi a tájoló libella (szintezője) szerepe?", "answers": ["Iránymérés", "A tájoló vízszintes tartásának ellenőrzése", "Távolságmérés", "Időmérés"], "correct": 1, "explanation": "A libella (szintező) a tájoló vízszintes helyzetének ellenőrzésére szolgál a pontos mérés érdekében.", "tags": ["tájolók", "használat"]},
+                {"id": 70, "question": "Melyik műholdrendszer működik jelenleg teljes kapacitással?", "answers": ["Csak a GPS", "GPS, GLONASS, Galileo és BeiDou mind működik", "Csak az európai Galileo", "Egyik sem"], "correct": 1, "explanation": "Jelenleg mind a négy fő műholdas navigációs rendszer (GPS, GLONASS, Galileo, BeiDou) működik globális lefedettséggel.", "tags": ["GPS", "GNSS"]}
+            ]
+        };
+
+        // Quiz SM-2 Algorithm (adapted for quiz format)
+        class QuizSM2 {
+            static defaultQuestion() {
+                return {
+                    easeFactor: 2.5,
+                    interval: 0,
+                    repetitions: 0,
+                    nextReview: Date.now(),
+                    lastReview: null,
+                    correctCount: 0,
+                    incorrectCount: 0
+                };
+            }
+
+            static calculate(question, isCorrect) {
+                let { easeFactor, interval, repetitions, correctCount, incorrectCount } = question;
+
+                if (isCorrect) {
+                    correctCount++;
+                    // Quality 4 for correct answer
+                    if (repetitions === 0) {
+                        interval = 1;
+                    } else if (repetitions === 1) {
+                        interval = 6;
+                    } else {
+                        interval = Math.round(interval * easeFactor);
+                    }
+                    repetitions++;
+                    easeFactor = Math.max(1.3, easeFactor + 0.1);
+                } else {
+                    incorrectCount++;
+                    // Reset on incorrect
+                    repetitions = 0;
+                    interval = 0; // Ask again soon
+                    easeFactor = Math.max(1.3, easeFactor - 0.2);
+                }
+
+                const nextReview = Date.now() + interval * 24 * 60 * 60 * 1000;
+
+                return {
+                    easeFactor,
+                    interval,
+                    repetitions,
+                    nextReview,
+                    lastReview: Date.now(),
+                    correctCount,
+                    incorrectCount
+                };
+            }
+        }
+
+        // Main Quiz App
+        class QuizApp {
+            constructor() {
+                this.questions = [];
+                this.currentIndex = 0;
+                this.answered = false;
+                this.selectedAnswer = null;
+                this.sessionStats = { correct: 0, incorrect: 0, streak: 0, maxStreak: 0 };
+                this.studyQueue = [];
+                this.storageKey = 'quiz_progress';
+
+                this.init();
+            }
+
+            async init() {
+                await this.loadQuestions();
+                this.loadProgress();
+                this.buildStudyQueue();
+                this.render();
+                this.bindEvents();
+            }
+
+            async loadQuestions() {
+                let data = null;
+
+                try {
+                    const response = await fetch('quiz.json');
+                    if (response.ok) {
+                        data = await response.json();
+                        console.log('Loaded from quiz.json');
+                    }
+                } catch (error) {
+                    console.log('External JSON not available, using embedded data');
+                }
+
+                if (!data) {
+                    data = DEFAULT_DATA;
+                }
+
+                this.quizInfo = data.quiz;
+                this.questions = data.questions.map(q => ({
+                    ...q,
+                    ...QuizSM2.defaultQuestion(),
+                    ...(this.getQuestionProgress(q.id) || {})
+                }));
+
+                document.getElementById('deckInfo').textContent =
+                    `${this.quizInfo.name} - ${this.questions.length} kérdés`;
+            }
+
+            loadProgress() {
+                try {
+                    const saved = localStorage.getItem(this.storageKey);
+                    this.progress = saved ? JSON.parse(saved) : {};
+                } catch {
+                    this.progress = {};
+                }
+            }
+
+            saveProgress() {
+                this.questions.forEach(q => {
+                    this.progress[q.id] = {
+                        easeFactor: q.easeFactor,
+                        interval: q.interval,
+                        repetitions: q.repetitions,
+                        nextReview: q.nextReview,
+                        lastReview: q.lastReview,
+                        correctCount: q.correctCount,
+                        incorrectCount: q.incorrectCount
+                    };
+                });
+                localStorage.setItem(this.storageKey, JSON.stringify(this.progress));
+            }
+
+            getQuestionProgress(questionId) {
+                return this.progress ? this.progress[questionId] : null;
+            }
+
+            buildStudyQueue() {
+                const now = Date.now();
+                const dueQuestions = this.questions.filter(q => q.nextReview <= now);
+
+                // Sort: prioritize incorrect/new, then by due date
+                dueQuestions.sort((a, b) => {
+                    // New questions first
+                    if (a.repetitions === 0 && b.repetitions > 0) return -1;
+                    if (a.repetitions > 0 && b.repetitions === 0) return 1;
+                    // Then by accuracy (lower accuracy = higher priority)
+                    const aAccuracy = a.correctCount / Math.max(1, a.correctCount + a.incorrectCount);
+                    const bAccuracy = b.correctCount / Math.max(1, b.correctCount + b.incorrectCount);
+                    if (aAccuracy !== bAccuracy) return aAccuracy - bAccuracy;
+                    // Then by due date
+                    return a.nextReview - b.nextReview;
+                });
+
+                this.studyQueue = dueQuestions;
+                this.currentIndex = 0;
+            }
+
+            getStats() {
+                return {
+                    total: this.questions.length,
+                    due: this.studyQueue.length,
+                    mastered: this.questions.filter(q => q.interval >= 21).length,
+                    accuracy: this.sessionStats.correct + this.sessionStats.incorrect > 0
+                        ? Math.round(this.sessionStats.correct / (this.sessionStats.correct + this.sessionStats.incorrect) * 100)
+                        : 0
+                };
+            }
+
+            getCurrentQuestion() {
+                return this.studyQueue[this.currentIndex];
+            }
+
+            shuffleAnswers(question) {
+                // Create answer objects with original indices
+                // Answers can be strings or objects with text and image
+                const answers = question.answers.map((answer, index) => {
+                    const isObject = typeof answer === 'object';
+                    return {
+                        text: isObject ? answer.text : answer,
+                        image: isObject ? answer.image : null,
+                        isCorrect: index === question.correct
+                    };
+                });
+
+                // Fisher-Yates shuffle
+                for (let i = answers.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [answers[i], answers[j]] = [answers[j], answers[i]];
+                }
+
+                return answers;
+            }
+
+            selectAnswer(index) {
+                if (this.answered) return;
+
+                this.answered = true;
+                this.selectedAnswer = index;
+
+                const question = this.getCurrentQuestion();
+                const isCorrect = this.shuffledAnswers[index].isCorrect;
+
+                // Update stats
+                if (isCorrect) {
+                    this.sessionStats.correct++;
+                    this.sessionStats.streak++;
+                    this.sessionStats.maxStreak = Math.max(this.sessionStats.maxStreak, this.sessionStats.streak);
+                } else {
+                    this.sessionStats.incorrect++;
+                    this.sessionStats.streak = 0;
+                }
+
+                // Update question with SM-2
+                const updated = QuizSM2.calculate(question, isCorrect);
+                Object.assign(question, updated);
+
+                // If incorrect, add back to queue for later
+                if (!isCorrect) {
+                    this.studyQueue.push(question);
+                }
+
+                this.saveProgress();
+                this.render();
+            }
+
+            nextQuestion() {
+                if (!this.answered) return;
+
+                this.currentIndex++;
+                this.answered = false;
+                this.selectedAnswer = null;
+                this.shuffledAnswers = null;
+                this.render();
+            }
+
+            resetProgress() {
+                if (confirm('Biztosan törölni szeretnéd az összes haladási adatot?')) {
+                    localStorage.removeItem(this.storageKey);
+                    this.progress = {};
+                    this.questions.forEach(q => {
+                        Object.assign(q, QuizSM2.defaultQuestion());
+                    });
+                    this.sessionStats = { correct: 0, incorrect: 0, streak: 0, maxStreak: 0 };
+                    this.buildStudyQueue();
+                    this.render();
+                }
+            }
+
+            render() {
+                const app = document.getElementById('app');
+                const stats = this.getStats();
+                const question = this.getCurrentQuestion();
+                const progress = this.currentIndex / Math.max(1, this.studyQueue.length) * 100;
+
+                if (!question) {
+                    // Session complete
+                    const scorePercent = stats.accuracy;
+                    app.innerHTML = `
+                        <div class="stats-bar">
+                            <div class="stat-item correct">
+                                <div class="stat-value">${this.sessionStats.correct}</div>
+                                <div class="stat-label">Helyes</div>
+                            </div>
+                            <div class="stat-item incorrect">
+                                <div class="stat-value">${this.sessionStats.incorrect}</div>
+                                <div class="stat-label">Hibás</div>
+                            </div>
+                            <div class="stat-item streak">
+                                <div class="stat-value">${this.sessionStats.maxStreak}</div>
+                                <div class="stat-label">Max sorozat</div>
+                            </div>
+                            <div class="stat-item mastered">
+                                <div class="stat-value">${stats.mastered}</div>
+                                <div class="stat-label">Elsajátított</div>
+                            </div>
+                        </div>
+
+                        <div class="session-complete">
+                            <h2>Gratulálok!</h2>
+                            <p>Minden esedékes kérdést megválaszoltál.</p>
+
+                            <div class="score-circle" style="--score: ${scorePercent * 3.6}deg">
+                                <span class="score-value">${scorePercent}%</span>
+                            </div>
+
+                            <div class="session-stats">
+                                <div class="session-stat">
+                                    <div class="session-stat-value" style="color: #00ff88">${this.sessionStats.correct}</div>
+                                    <div class="session-stat-label">Helyes válasz</div>
+                                </div>
+                                <div class="session-stat">
+                                    <div class="session-stat-value" style="color: #ff6b6b">${this.sessionStats.incorrect}</div>
+                                    <div class="session-stat-label">Hibás válasz</div>
+                                </div>
+                            </div>
+
+                            <div class="controls">
+                                <button class="control-btn" onclick="app.buildStudyQueue(); app.render();">
+                                    Frissítés
+                                </button>
+                                <button class="control-btn" onclick="app.resetProgress()">
+                                    Visszaállítás
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Shuffle answers if not already done
+                if (!this.shuffledAnswers) {
+                    this.shuffledAnswers = this.shuffleAnswers(question);
+                }
+
+                const keys = ['A', 'B', 'C', 'D'];
+                let answersHtml = this.shuffledAnswers.map((answer, i) => {
+                    let classes = 'answer-btn';
+                    if (this.answered) {
+                        if (answer.isCorrect) {
+                            classes += i === this.selectedAnswer ? ' correct' : ' show-correct';
+                        } else if (i === this.selectedAnswer) {
+                            classes += ' incorrect';
+                        }
+                    }
+                    return `
+                        <button class="${classes}" onclick="app.selectAnswer(${i})" ${this.answered ? 'disabled' : ''}>
+                            <span class="answer-key">${keys[i]}</span>
+                            ${answer.text}
+                            ${answer.image ? `<img src="${answer.image}" class="answer-image" alt="">` : ''}
+                        </button>
+                    `;
+                }).join('');
+
+                const isCorrect = this.answered && this.shuffledAnswers[this.selectedAnswer]?.isCorrect;
+
+                app.innerHTML = `
+                    <div class="stats-bar">
+                        <div class="stat-item correct">
+                            <div class="stat-value">${this.sessionStats.correct}</div>
+                            <div class="stat-label">Helyes</div>
+                        </div>
+                        <div class="stat-item incorrect">
+                            <div class="stat-value">${this.sessionStats.incorrect}</div>
+                            <div class="stat-label">Hibás</div>
+                        </div>
+                        <div class="stat-item streak">
+                            <div class="stat-value">${this.sessionStats.streak} 🔥</div>
+                            <div class="stat-label">Sorozat</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">${stats.due - this.currentIndex}</div>
+                            <div class="stat-label">Hátralévő</div>
+                        </div>
+                    </div>
+
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: ${progress}%"></div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-number">Kérdés ${this.currentIndex + 1} / ${this.studyQueue.length}</div>
+                        <div class="question-text">${question.question}</div>
+                        ${question.image ? `<img src="${question.image}" class="question-image" alt="">` : ''}
+                        <div class="question-tags">
+                            ${(question.tags || []).map(t => `<span class="tag">${t}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="answers-container">
+                        ${answersHtml}
+                    </div>
+
+                    <div class="feedback ${this.answered ? 'visible' : ''} ${isCorrect ? 'correct' : 'incorrect'}">
+                        <div class="feedback-icon">${isCorrect ? '✓' : '✗'}</div>
+                        <div class="feedback-text">${isCorrect ? 'Helyes válasz!' : 'Sajnos nem jó.'}</div>
+                        <div class="feedback-explanation">${question.explanation || ''}</div>
+                    </div>
+
+                    <button class="next-btn ${this.answered ? 'visible' : ''}" onclick="app.nextQuestion()">
+                        Következő kérdés →
+                    </button>
+                `;
+            }
+
+            bindEvents() {
+                document.addEventListener('keydown', (e) => {
+                    if (e.target.tagName === 'INPUT') return;
+
+                    switch(e.key) {
+                        case '1':
+                            if (!this.answered) this.selectAnswer(0);
+                            break;
+                        case '2':
+                            if (!this.answered) this.selectAnswer(1);
+                            break;
+                        case '3':
+                            if (!this.answered) this.selectAnswer(2);
+                            break;
+                        case '4':
+                            if (!this.answered) this.selectAnswer(3);
+                            break;
+                        case 'Enter':
+                            if (this.answered) this.nextQuestion();
+                            break;
+                        case 'r':
+                        case 'R':
+                            this.resetProgress();
+                            break;
+                    }
+                });
+
+                // File input handler
+                document.getElementById('fileInput').addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        try {
+                            const data = JSON.parse(event.target.result);
+                            this.quizInfo = data.quiz || { name: file.name, description: '' };
+                            this.questions = data.questions.map(q => ({
+                                ...q,
+                                ...QuizSM2.defaultQuestion()
+                            }));
+
+                            document.getElementById('deckInfo').textContent =
+                                `${this.quizInfo.name} - ${this.questions.length} kérdés`;
+
+                            this.sessionStats = { correct: 0, incorrect: 0, streak: 0, maxStreak: 0 };
+                            this.buildStudyQueue();
+                            this.render();
+                        } catch (error) {
+                            alert('Hibás JSON formátum! Ellenőrizd a fájlt.');
+                        }
+                    };
+                    reader.readAsText(file);
+                    e.target.value = '';
+                });
+            }
+        }
+
+        // Initialize
+        const app = new QuizApp();
+    </script>
+</body>
+</html>

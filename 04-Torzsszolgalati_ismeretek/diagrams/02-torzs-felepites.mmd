@@ -1,0 +1,43 @@
+flowchart LR
+    subgraph TORZS["TÖRZS FELÉPÍTÉSE"]
+        PK["👨‍✈️ PARANCSNOK"]
+        TF["📋 TÖRZSFŐNÖK"]
+
+        subgraph KOORD["Koordináló törzs"]
+            G1["G1 Személyügy"]
+            G2["G2 Felderítés"]
+            G3["G3 Hadműveletek"]
+            G4["G4 Logisztika"]
+            G5["G5 Tervezés"]
+            G6["G6 Híradás"]
+        end
+
+        subgraph KULONL["Különleges törzs"]
+            G7["G7 Kiképzés"]
+            G8["G8 Pénzügy"]
+            G9["G9 CIMIC"]
+        end
+    end
+
+    PK --> TF
+    TF --> G1
+    TF --> G2
+    TF --> G3
+    TF --> G4
+    TF --> G5
+    TF --> G6
+    TF --> G7
+    TF --> G8
+    TF --> G9
+
+    style PK fill:#FFE4E1,stroke:#CD5C5C,color:#333
+    style TF fill:#E6E6FA,stroke:#9370DB,color:#333
+    style G1 fill:#F0FFF0,stroke:#90EE90,color:#333
+    style G2 fill:#F0FFF0,stroke:#90EE90,color:#333
+    style G3 fill:#FFF0F5,stroke:#FFB6C1,color:#333
+    style G4 fill:#F0FFF0,stroke:#90EE90,color:#333
+    style G5 fill:#F0FFF0,stroke:#90EE90,color:#333
+    style G6 fill:#F0FFF0,stroke:#90EE90,color:#333
+    style G7 fill:#FFFACD,stroke:#F0E68C,color:#333
+    style G8 fill:#FFFACD,stroke:#F0E68C,color:#333
+    style G9 fill:#FFFACD,stroke:#F0E68C,color:#333

@@ -1,0 +1,31 @@
+flowchart TD
+    subgraph S["🏛️ STRATÉGIAI SZINT"]
+        S1["Politikai-katonai döntéshozatal"]
+        S2["Háborús célok meghatározása"]
+        S3["Erőforrások elosztása"]
+    end
+
+    subgraph H["⚔️ HADMŰVELETI SZINT"]
+        H1["Hadjáratok tervezése"]
+        H2["Hadműveletek összehangolása"]
+        H3["Erők koordinálása"]
+    end
+
+    subgraph T["🎯 HARCÁSZATI SZINT"]
+        T1["Csaták és ütközetek"]
+        T2["Alegységek közvetlen harca"]
+        T3["Feladatok végrehajtása"]
+    end
+
+    S1 --> H1
+    H1 --> T1
+
+    style S1 fill:#E8F4FD,stroke:#4A90A4,color:#333
+    style S2 fill:#E8F4FD,stroke:#4A90A4,color:#333
+    style S3 fill:#E8F4FD,stroke:#4A90A4,color:#333
+    style H1 fill:#FDF2E8,stroke:#D4A574,color:#333
+    style H2 fill:#FDF2E8,stroke:#D4A574,color:#333
+    style H3 fill:#FDF2E8,stroke:#D4A574,color:#333
+    style T1 fill:#E8FDE8,stroke:#74A474,color:#333
+    style T2 fill:#E8FDE8,stroke:#74A474,color:#333
+    style T3 fill:#E8FDE8,stroke:#74A474,color:#333

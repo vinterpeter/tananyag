@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tananyag</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 300px;
+            background: #2c3e50;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: #1a252f;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .chapter-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 0;
+        }
+
+        .chapter-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .chapter-item:hover {
+            background: #34495e;
+        }
+
+        .chapter-item.active {
+            background: #34495e;
+            border-left-color: #3498db;
+        }
+
+        .chapter-number {
+            color: #3498db;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* Main content */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Search bar */
+        .search-container {
+            padding: 15px 20px;
+            background: #ecf0f1;
+            border-bottom: 1px solid #bdc3c7;
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            max-width: 600px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 15px;
+            padding-right: 40px;
+            font-size: 16px;
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: #3498db;
+        }
+
+        .search-clear {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #7f8c8d;
+            cursor: pointer;
+            display: none;
+        }
+
+        .search-clear.visible {
+            display: block;
+        }
+
+        /* Content area */
+        .content-wrapper {
+            flex: 1;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .content h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .content h2 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .content h3 {
+            color: #7f8c8d;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .content th, .content td {
+            padding: 12px;
+            border: 1px solid #bdc3c7;
+            text-align: left;
+        }
+
+        .content th {
+            background: #ecf0f1;
+            font-weight: bold;
+        }
+
+        .content ul, .content ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        .content li {
+            line-height: 1.6;
+            margin-bottom: 5px;
+        }
+
+        /* Search results */
+        .search-results {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            overflow-y: auto;
+            padding: 20px;
+            display: none;
+        }
+
+        .search-results.visible {
+            display: block;
+        }
+
+        .search-results-header {
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .search-result-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            border-left: 4px solid #3498db;
+            transition: all 0.2s;
+        }
+
+        .search-result-item:hover {
+            background: #ecf0f1;
+            transform: translateX(5px);
+        }
+
+        .search-result-chapter {
+            font-size: 0.85em;
+            color: #3498db;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .search-result-heading {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .search-result-context {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .search-result-context mark {
+            background: #f1c40f;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #7f8c8d;
+            padding: 40px;
+        }
+
+        /* Highlight in content */
+        .highlight {
+            background: #f1c40f;
+            padding: 2px 4px;
+            border-radius: 3px;
+            animation: highlightFade 3s ease-out forwards;
+        }
+
+        @keyframes highlightFade {
+            0% { background: #f1c40f; }
+            100% { background: transparent; }
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #7f8c8d;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                max-height: 40vh;
+            }
+
+            .content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">Tananyag</div>
+        <div class="chapter-list" id="chapterList">
+            <div class="loading">Betoltes...</div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <input type="text" class="search-input" id="searchInput" placeholder="Kereses a tananyagban...">
+                <button class="search-clear" id="searchClear">&times;</button>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="content" id="content">
+                <div class="loading">Valasszon egy fejezetet a bal oldali menubol.</div>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <script>
+        // Chapter configuration
+        const chapters = [
+            { id: '02', folder: '02-Vezeteselmellet_altalanos_ismeretek', name: 'Vezeteselmeleti altalanos ismeretek' },
+            { id: '03', folder: '03-Harcaszat', name: 'Harcaszat' },
+            { id: '04', folder: '04-Torzsszolgalati_ismeretek', name: 'Torzsszolgalati ismeretek' },
+            { id: '05', folder: '05-Harci_tamogatas', name: 'Harci tamogatas' },
+            { id: '06', folder: '06-Harci_kiszolgalo_tamogatas', name: 'Harci kiszolgalo tamogatas' },
+            { id: '07', folder: '07-Katonai_tereptan', name: 'Katonai tereptan' },
+            { id: '08', folder: '08-MH_haditechnikai_eszkozei', name: 'MH haditechnikai eszkozei' }
+        ];
+
+        let chaptersContent = {};
+        let currentChapter = null;
+        let searchIndex = [];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', async () => {
+            renderChapterList();
+            await loadAllChapters();
+            buildSearchIndex();
+
+            // Load first chapter by default
+            if (chapters.length > 0) {
+                selectChapter(chapters[0].id);
+            }
+        });
+
+        // Render chapter list
+        function renderChapterList() {
+            const list = document.getElementById('chapterList');
+            list.innerHTML = chapters.map(ch => `
+                <div class="chapter-item" data-id="${ch.id}" onclick="selectChapter('${ch.id}')">
+                    <span class="chapter-number">${ch.id}.</span>
+                    <span>${ch.name}</span>
+                </div>
+            `).join('');
+        }
+
+        // Load all chapters
+        async function loadAllChapters() {
+            const promises = chapters.map(async (ch) => {
+                try {
+                    const mdFile = `${ch.folder}/${ch.folder}.md`;
+                    const response = await fetch(mdFile);
+                    if (response.ok) {
+                        chaptersContent[ch.id] = await response.text();
+                    } else {
+                        chaptersContent[ch.id] = `# ${ch.name}\n\nTartalom nem talalhato.`;
+                    }
+                } catch (e) {
+                    chaptersContent[ch.id] = `# ${ch.name}\n\nHiba a betoltes soran.`;
+                }
+            });
+            await Promise.all(promises);
+        }
+
+        // Select chapter
+        function selectChapter(id) {
+            currentChapter = id;
+
+            // Update active state
+            document.querySelectorAll('.chapter-item').forEach(el => {
+                el.classList.toggle('active', el.dataset.id === id);
+            });
+
+            // Hide search results
+            document.getElementById('searchResults').classList.remove('visible');
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchClear').classList.remove('visible');
+
+            // Render content
+            renderContent(id);
+        }
+
+        // Render content
+        function renderContent(id, scrollToText = null) {
+            const chapter = chapters.find(ch => ch.id === id);
+            const content = chaptersContent[id] || '';
+
+            // Fix image paths
+            const fixedContent = content.replace(
+                /!\[(.*?)\]\(images\//g,
+                `![$1](${chapter.folder}/images/`
+            ).replace(
+                /!\[(.*?)\]\(diagrams\//g,
+                `![$1](${chapter.folder}/diagrams/`
+            );
+
+            const contentEl = document.getElementById('content');
+            contentEl.innerHTML = marked.parse(fixedContent);
+
+            // Scroll to text if specified
+            if (scrollToText) {
+                setTimeout(() => {
+                    highlightAndScrollToText(scrollToText);
+                }, 100);
+            } else {
+                document.querySelector('.content-wrapper').scrollTop = 0;
+            }
+        }
+
+        // Highlight and scroll to text
+        function highlightAndScrollToText(text) {
+            const contentEl = document.getElementById('content');
+            const walker = document.createTreeWalker(contentEl, NodeFilter.SHOW_TEXT, null, false);
+
+            const searchLower = text.toLowerCase();
+            let node;
+
+            while (node = walker.nextNode()) {
+                const nodeText = node.textContent.toLowerCase();
+                const index = nodeText.indexOf(searchLower);
+
+                if (index !== -1) {
+                    const range = document.createRange();
+                    range.setStart(node, index);
+                    range.setEnd(node, index + text.length);
+
+                    const highlight = document.createElement('span');
+                    highlight.className = 'highlight';
+                    range.surroundContents(highlight);
+
+                    highlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    return;
+                }
+            }
+        }
+
+        // Build search index
+        function buildSearchIndex() {
+            searchIndex = [];
+
+            chapters.forEach(chapter => {
+                const content = chaptersContent[chapter.id] || '';
+                const lines = content.split('\n');
+                let currentHeading = chapter.name;
+
+                lines.forEach((line, lineIndex) => {
+                    // Track headings
+                    const headingMatch = line.match(/^#{1,3}\s+(.+)/);
+                    if (headingMatch) {
+                        currentHeading = headingMatch[1];
+                    }
+
+                    // Index non-empty, non-heading lines
+                    if (line.trim() && !line.startsWith('#') && !line.startsWith('!') && !line.startsWith('|')) {
+                        searchIndex.push({
+                            chapterId: chapter.id,
+                            chapterName: chapter.name,
+                            heading: currentHeading,
+                            text: line,
+                            lineIndex: lineIndex
+                        });
+                    }
+                });
+            });
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchClear = document.getElementById('searchClear');
+        const searchResults = document.getElementById('searchResults');
+
+        let searchTimeout;
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.trim();
+            searchClear.classList.toggle('visible', query.length > 0);
+
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                if (query.length >= 2) {
+                    performSearch(query);
+                } else {
+                    searchResults.classList.remove('visible');
+                }
+            }, 300);
+        });
+
+        searchClear.addEventListener('click', () => {
+            searchInput.value = '';
+            searchClear.classList.remove('visible');
+            searchResults.classList.remove('visible');
+        });
+
+        function performSearch(query) {
+            const queryLower = query.toLowerCase();
+            const results = searchIndex.filter(item =>
+                item.text.toLowerCase().includes(queryLower)
+            );
+
+            if (results.length === 0) {
+                searchResults.innerHTML = `
+                    <div class="search-results-header">Kereses: "${query}"</div>
+                    <div class="no-results">Nincs talalat.</div>
+                `;
+            } else {
+                const resultsHtml = results.slice(0, 50).map(result => {
+                    const context = getHighlightedContext(result.text, query);
+                    return `
+                        <div class="search-result-item" onclick="navigateToResult('${result.chapterId}', '${escapeHtml(query)}')">
+                            <div class="search-result-chapter">${result.chapterName}</div>
+                            <div class="search-result-heading">${escapeHtml(result.heading)}</div>
+                            <div class="search-result-context">${context}</div>
+                        </div>
+                    `;
+                }).join('');
+
+                searchResults.innerHTML = `
+                    <div class="search-results-header">Kereses: "${escapeHtml(query)}" - ${results.length} talalat</div>
+                    ${resultsHtml}
+                `;
+            }
+
+            searchResults.classList.add('visible');
+        }
+
+        function getHighlightedContext(text, query) {
+            const maxLength = 200;
+            const queryLower = query.toLowerCase();
+            const textLower = text.toLowerCase();
+            const index = textLower.indexOf(queryLower);
+
+            let start = Math.max(0, index - 50);
+            let end = Math.min(text.length, index + query.length + 100);
+
+            let context = text.substring(start, end);
+            if (start > 0) context = '...' + context;
+            if (end < text.length) context = context + '...';
+
+            // Highlight the query
+            const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+            context = escapeHtml(context).replace(regex, '<mark>$1</mark>');
+
+            return context;
+        }
+
+        function navigateToResult(chapterId, query) {
+            selectChapter(chapterId);
+            renderContent(chapterId, query);
+            searchResults.classList.remove('visible');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+    </script>
+</body>
+</html>
