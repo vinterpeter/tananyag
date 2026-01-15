@@ -772,6 +772,9 @@
 
             searchResults.classList.add('visible');
             searchResults.scrollTop = 0;
+
+            // Scroll to top to see results
+            document.querySelector('.content-wrapper').scrollTop = 0;
         }
 
         function getHighlightedContext(text, query) {
