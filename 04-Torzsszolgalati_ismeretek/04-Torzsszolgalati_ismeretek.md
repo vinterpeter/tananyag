@@ -1,5 +1,8 @@
 # 3 TÖRZSSZOLGÁLATI ISMERETEK
 
+![Ábra - oldal 1](images/page_1_img_1.png)
+
+
 ## 3.1 A KATONAI MŰVELETEK SZINTJEI
 
 **A hadászati szint:**
@@ -17,6 +20,9 @@ A harcászati szint a fegyveres tevékenységek végrehajtói szintje, amely a k
 ---
 
 ## 3.2 A CSAPATVEZETÉSI RENDSZER
+
+![Ábra - oldal 2](images/page_2_img_1.png)
+
 
 ### 3.2.1 A csapatvezetési rendszer fogalma
 
@@ -62,6 +68,9 @@ A törzs munkáját a törzsfőnök vezeti. A törzs összetétele a törzs funk
 - az ügyvitelt.
 
 **Támogató és kiszolgáló csoport**
+
+![Ábra - oldal 4](images/page_4_img_1.png)
+
 
 A törzstámogató századot, a híradó századot, az őrzés-védelemre kijelölt erőket, a megerősítésül át-alárendelt légvédelmi kötelékeket, valamint egyéb biztosításra bevont összfegyvernemi, fegyvernemi kötelékeket foglalja magába.
 
@@ -316,6 +325,9 @@ c) Koordináció a megerősítő és támogató erőkkel.
 ---
 
 ## 3.3 KATONAI DÖNTÉSHOZATALI FOLYAMATOK
+
+![Ábra - oldal 12](images/page_12_img_1.png)
+
 
 ### 3.3.1 A harcászati szintű Katonai Döntéshozatali Folyamat (MDMP)
 
@@ -699,6 +711,9 @@ A Parancsnok Kritikus Információigénye azoknak a lényeges információknak a
 Nemzetközi környezetben a CCIR kibővül a **Befogadó Nemzettel Kapcsolatos Információ Igénnyel (HNIR)**, amely esetben a parancsnok a civil környezettel kapcsolatban tart igényt bizonyos információkra.
 
 Az **Ellenség Elöl Rejtendő Információk (EEFI)** a fenti kettővel ellentétben nem az információk gyűjtését jelenti, hanem azoknak az információknak az azonosítását, melyeket rejteni kell az ellenség felderítése elől. Harcászati szinten ez nem része a parancsnok kritikus információigényének, hadműveleti szinten viszont igen.
+
+![Ábra - oldal 25](images/page_25_img_1.jpeg)
+
 
 Lehetőség szerint a CCIR elemeinek számát 10 alatt kell tartani a könnyebb érthetőség érdekében. A CCIR elemeivel szemben elvárás az időbeliség, hogy segítsen megválaszolni a kérdést: Mit kell tudni a parancsnoknak ahhoz, hogy a megfelelő időben a megfelelő döntést hozhassa meg?
 
@@ -2057,9 +2072,17 @@ Tapasztalatfeldolgozás megfigyelések leadása AAR+50nap
 
 #### 3.5 NATO JELEK, JELZÉSEK
 
+![Ábra - oldal 70](images/page_70_img_1.png)
+
+![Ábra - oldal 70](images/page_70_img_2.png)
+
+
 **NATO alphabet:**
 
 A hadműveleti szimbólumrendszer szabványosításának fontos szerepe van az együttműködési képesség megteremtésében a NATO összhaderőnemi hadműveleteiben. Az egyezményes jelek, jelzések használata biztosítja a széles körű alkalmazhatóságot a NATO és a PfP tagországok, a nem-NATO nemzetek és egyéb szervezetek műveleteiben. A szimbólumkészlet egységes értelmezése lehetővé teszi a NATO vezetési-irányítási, híradó, informatikai és felderítési (C4I) rendszereinek kompatibilitását, azok leghatékonyabb együttműködését, fejlesztését, a műveletekben és gyakorlatokon történő alkalmazását.
+
+![Ábra - oldal 71](images/page_71_img_1.png)
+
 
 A szabványosítási követelmények ismeretében bármilyen kívánt szimbólum létrehozható. Nem szokványos kötelékek vagy szervezetek megjelenítése esetén a leginkább hasonlító szabványos szimbólum használata javasolt.
 
@@ -2104,6 +2127,9 @@ A körvonal jellege az objektum azonosításának biztosságára vagy bizonytala
 
 Annak eldöntésére, hogy melyik objektum milyen harctéri dimenzióba tartozik, az alábbi példákat lehet figyelembe venni: a haditengerészet felszíni egységeit a tenger felszíni dimenzióba, a repülőgépeket a légi/űr dimenzióba, a földi eszközöket pedig a földi dimenzióba kell sorolni. A repülőgépek vagy a csak repülőgépekből álló repülő egységek – függetlenül attól, hogy melyik haderőnem állományába tartoznak – a légi dimenzióba sorolandók. Ennek megfelelően a partraszálló csónakok, melyek elsődleges célja, hogy a személyi állományt és a technikai eszközöket a partra és onnan visszaszállítsák, haditengerészeti egységnek számítanak és a tengeri felszíni dimenzióban kell ábrázolni őket. Ugyanakkor az a partraszálló eszköz, melynek elsődleges funkciója a szárazföldön folytatott harctevékenység – azaz szárazföldi eszköz – a szárazföldi dimenzióba tartozik.
 
+![Ábra - oldal 73](images/page_73_img_1.jpeg)
+
+
 *Megjegyzés: Ugyanakkor egy szárazföldi, vagy tengerészgyalogos helikopteres (al)egységet, más szóval manőver alakulatot (vagyis olyan (al)egységet, amelyhez földi támogató eszközök is tartoznak) a földi dimenzióban kell ábrázolni.*
 
 A zárt körvonalakat a földi és tengeri dimenzióba, az alján nyitott körvonalakat a légi/űr dimenzióba, a tetején nyitott körvonalakat pedig a felszín alatti dimenzióba tartozó objektumok jelölésére kell használni.
@@ -2115,6 +2141,9 @@ A zárt körvonalakat a földi és tengeri dimenzióba, az alján nyitott körvo
 > **Állapot (Státusz):** azt jelzi, hogy az adott hadműveleti objektum a megjelölt helyen bizonyosan létezik-e („aktuális" vagy „megerősített" állapot), vagy majd a jövőben kerül oda („tervezett", vagy „várható" állapot). Ha a szimbólum körvonala folyamatos vonal, az aktuális helyzetet ábrázolja; ha szaggatott, akkor a tervezett vagy feltételezett helyzetet jelzi. A tervezett állapot nem ábrázolható, ha a szimbólum körvonal nélküli, vagy pont jellegű.
 
 **Mozgás és sebesség feltüntetése**
+
+![Ábra - oldal 75](images/page_75_img_1.png)
+
 
 > **A mozgás iránya:** egy nyíl, vagy egy egyenes (vonal), mely egy objektum mozgásának, vagy szándékolt elmozdításának irányába mutat. A szárazföldi szimbólumok esetében az indikátor egy hajlított (tört) nyíl, mely lefelé halad a körvonal, vagy ikon alsó széle közepétől és a mozgás irányába mutat.
 
@@ -2135,6 +2164,27 @@ Az egyes ikonok mérete, alakja és összetevőinek elhelyezkedése jelentőség
 ##### 3.5.2 Szimbólumok
 
 ###### 3.5.2.1 Eszközszimbólumok
+
+![Ábra - oldal 76](images/page_76_img_1.jpeg)
+
+![Ábra - oldal 76](images/page_76_img_2.png)
+
+![Ábra - oldal 76](images/page_76_img_3.png)
+
+![Ábra - oldal 76](images/page_76_img_4.png)
+
+![Ábra - oldal 76](images/page_76_img_5.png)
+
+![Ábra - oldal 76](images/page_76_img_6.png)
+
+![Ábra - oldal 76](images/page_76_img_7.png)
+
+![Ábra - oldal 76](images/page_76_img_8.png)
+
+![Ábra - oldal 76](images/page_76_img_9.png)
+
+![Ábra - oldal 76](images/page_76_img_10.png)
+
 
 **Eszköz-szimbólum kiegészítők**
 
@@ -2158,6 +2208,23 @@ Az egyes ikonok mérete, alakja és összetevőinek elhelyezkedése jelentőség
 - radar
 - ABV eszköz
 
+![Ábra - oldal 77](images/page_77_img_1.png)
+
+![Ábra - oldal 77](images/page_77_img_2.png)
+
+![Ábra - oldal 77](images/page_77_img_3.png)
+
+![Ábra - oldal 77](images/page_77_img_4.png)
+
+![Ábra - oldal 77](images/page_77_img_5.png)
+
+![Ábra - oldal 77](images/page_77_img_6.png)
+
+![Ábra - oldal 77](images/page_77_img_7.png)
+
+![Ábra - oldal 77](images/page_77_img_8.jpeg)
+
+
 ###### 3.5.2.2 Létesítmény szimbólumok
 
 **Objektumok, létesítmények szimbólumai:**
@@ -2170,15 +2237,42 @@ Az egyes ikonok mérete, alakja és összetevőinek elhelyezkedése jelentőség
 - katonai bázis/objektum
 - egészségügyi létesítmény
 
+![Ábra - oldal 78](images/page_78_img_1.png)
+
+![Ábra - oldal 78](images/page_78_img_2.png)
+
+![Ábra - oldal 78](images/page_78_img_3.png)
+
+![Ábra - oldal 78](images/page_78_img_4.png)
+
+![Ábra - oldal 78](images/page_78_img_5.png)
+
+![Ábra - oldal 78](images/page_78_img_6.png)
+
+![Ábra - oldal 78](images/page_78_img_7.png)
+
+![Ábra - oldal 78](images/page_78_img_8.png)
+
+![Ábra - oldal 78](images/page_78_img_9.png)
+
+
 ###### 3.5.2.3 Események szimbólumai
 
 ###### 3.5.2.4 Kötelékszimbólumok felépítése
+
+![Ábra - oldal 79](images/page_79_img_1.jpeg)
+
+![Ábra - oldal 79](images/page_79_img_2.png)
+
 
 **Szimbólum kiegészítők:**
 
 **Az értékelés:**
 
 **J: Értékelési fokozatok**
+
+![Ábra - oldal 80](images/page_80_img_1.png)
+
 
 **Megbízhatósági fokozatok:**
 - A: teljesen megbízható,
@@ -2212,6 +2306,11 @@ Szöveges mező, értékei:
 **A kötelék mérete:**
 
 Az alkalmi harci kötelékjelző a katonai (al)egységeket ideiglenes szervezetként jelöli.
+
+![Ábra - oldal 81](images/page_81_img_1.png)
+
+![Ábra - oldal 81](images/page_81_img_2.png)
+
 
 **Kötelékek jelei (szemelvény):**
 
@@ -2254,6 +2353,79 @@ Az egyszerűség kedvéért baráti (kék téglalap) jelöléssel mutatjuk, de t
 - rendvédelmi erők
 - vezetést biztosító alegység (törzstámogató)
 
+![Ábra - oldal 84](images/page_84_img_1.png)
+
+![Ábra - oldal 84](images/page_84_img_2.png)
+
+![Ábra - oldal 84](images/page_84_img_3.png)
+
+![Ábra - oldal 84](images/page_84_img_4.png)
+
+![Ábra - oldal 84](images/page_84_img_5.png)
+
+![Ábra - oldal 84](images/page_84_img_6.png)
+
+![Ábra - oldal 84](images/page_84_img_7.png)
+
+
+![Ábra - oldal 83](images/page_83_img_1.png)
+
+![Ábra - oldal 83](images/page_83_img_2.png)
+
+![Ábra - oldal 83](images/page_83_img_3.png)
+
+![Ábra - oldal 83](images/page_83_img_4.png)
+
+![Ábra - oldal 83](images/page_83_img_5.png)
+
+![Ábra - oldal 83](images/page_83_img_6.png)
+
+![Ábra - oldal 83](images/page_83_img_7.png)
+
+![Ábra - oldal 83](images/page_83_img_8.png)
+
+![Ábra - oldal 83](images/page_83_img_9.png)
+
+![Ábra - oldal 83](images/page_83_img_10.png)
+
+![Ábra - oldal 83](images/page_83_img_11.png)
+
+![Ábra - oldal 83](images/page_83_img_12.png)
+
+![Ábra - oldal 83](images/page_83_img_13.png)
+
+![Ábra - oldal 83](images/page_83_img_14.png)
+
+![Ábra - oldal 83](images/page_83_img_15.png)
+
+
+![Ábra - oldal 82](images/page_82_img_1.png)
+
+![Ábra - oldal 82](images/page_82_img_2.png)
+
+![Ábra - oldal 82](images/page_82_img_3.png)
+
+![Ábra - oldal 82](images/page_82_img_4.png)
+
+![Ábra - oldal 82](images/page_82_img_5.png)
+
+![Ábra - oldal 82](images/page_82_img_6.png)
+
+![Ábra - oldal 82](images/page_82_img_7.png)
+
+![Ábra - oldal 82](images/page_82_img_8.png)
+
+![Ábra - oldal 82](images/page_82_img_9.png)
+
+![Ábra - oldal 82](images/page_82_img_10.png)
+
+![Ábra - oldal 82](images/page_82_img_11.png)
+
+![Ábra - oldal 82](images/page_82_img_12.png)
+
+![Ábra - oldal 82](images/page_82_img_13.png)
+
+
 **Parancsnokságok**
 
 Ha egy (al)egységhez zászlórudat rajzolunk, akkor annak parancsnokságát jelöljük. Az indikátor (a zászlórúd) nem más, mint egy – a keret bal oldalától – lefelé haladó vonal. Speciális körülmények között a zászlórúd meghosszabbítható, ekkor egy új vagy új elnevezésű C2 parancsnokságot jelent.
@@ -2261,6 +2433,13 @@ Ha egy (al)egységhez zászlórudat rajzolunk, akkor annak parancsnokságát jel
 **Objektumok jelölése a térképen**
 
 Az ikonokat az objektumok geometriai középpontjába kell berajzolni, amely az objektum tömeg-középpontjának általános környezetét jelenti. Ha egy szimbólumot nem lehetséges a tényleges települési helyére rajzolni, akkor indikátort kell használunk (eltolódás jelző), ahol a vonal kezdőpontja az objektum bal alsó sarkából indul, és a tényleges települési helyén ér véget. Ha egyetlen települési helyen egy objektumcsoportot kell megjeleníteni, a csoport maga egy zárójelen belül helyezhető el és a csoport tényleges települési helyét egy indikátor (egyenes vonal) jelölheti.
+
+![Ábra - oldal 85](images/page_85_img_1.png)
+
+![Ábra - oldal 85](images/page_85_img_2.png)
+
+![Ábra - oldal 85](images/page_85_img_3.png)
+
 
 Ha a szimbólumok átfedik egymást, vagy azonos helyen vannak, a zavar csökkentésére más rajzolási lehetőségeket is lehet alkalmazni. A szimbólumok rajzolásának hely-pontossága sokban az alkalmazástól függ. A szárazföldi eszközök – csak körvonal nélküli szimbólumok esetében – olyan módon forgathatók, hogy a mozgás irányába nézzenek.
 
@@ -2271,11 +2450,37 @@ Ha a szimbólumok átfedik egymást, vagy azonos helyen vannak, a zavar csökken
 - gyengített
 - megerősített és gyengített
 
+![Ábra - oldal 86](images/page_86_img_1.png)
+
+![Ábra - oldal 86](images/page_86_img_2.png)
+
+![Ábra - oldal 86](images/page_86_img_3.png)
+
+
 ###### 3.5.2.5 Tartalmi összetevők vezetési pont /parancsnokság/ esetében
 
 A *-al jelzett mezők meghatározóak és amennyiben a szükséges adatok ismertek, kitöltésük kötelező!
 
 **Parancsnokság-típusok**
+
+![Ábra - oldal 87](images/page_87_img_1.png)
+
+![Ábra - oldal 87](images/page_87_img_2.png)
+
+![Ábra - oldal 87](images/page_87_img_3.png)
+
+![Ábra - oldal 87](images/page_87_img_4.png)
+
+![Ábra - oldal 87](images/page_87_img_5.png)
+
+![Ábra - oldal 87](images/page_87_img_6.png)
+
+![Ábra - oldal 87](images/page_87_img_7.png)
+
+![Ábra - oldal 87](images/page_87_img_8.png)
+
+![Ábra - oldal 87](images/page_87_img_9.png)
+
 
 **1. példa:** A 25. dandár 1. megerősített kerekes harcjárművel felszerelt gépesített lövész zászlóalj harccsoportja (+) 1/25
 
@@ -2284,6 +2489,11 @@ A *-al jelzett mezők meghatározóak és amennyiben a szükséges adatok ismert
 **3. példa:** Az ellenséges 9. hadrendi számú gyengített harckocsi zászlóalj fő harcálláspontja. Az információ, az ellenségről meglehetősen megbízható, és más által megerősítésre került.
 
 **4. példa:** A magyar nemzetiségű 5.DD.39.Z. 2. megerősített BTR-80-as harcjárművel felszerelt gépesített lövész század harccsoportja, ami helyi idő szerint 2011.12.06-07. között menetet hajt végre a kijelölt irányban.
+
+![Ábra - oldal 88](images/page_88_img_1.png)
+
+![Ábra - oldal 88](images/page_88_img_2.png)
+
 
 **Szimbólummódosítók**
 
@@ -2300,6 +2510,11 @@ A mobilitás jelző az adott objektum mozgékonyságát jellemzi és csak eszkö
 **Internetes jelgenerátorok (angol nyelvű):**
 - https://spatialillusions.com/unitgenerator/
 - https://www.symbol.army/symbol/editor
+
+![Ábra - oldal 89](images/page_89_img_1.png)
+
+![Ábra - oldal 89](images/page_89_img_2.png)
+
 
 ##### 3.5.3 Harcászati grafikai jelek
 
@@ -2334,6 +2549,17 @@ Minden szöveg megírása nyomtatott nagybetűvel történjen. A szöveg helyzet
 
 Felszíni körzeteket (vagy légteret) határoló vonalakat alkalmazunk a tevékenység összehangolásának megkönnyítésére, a szomszédos egységek, kötelékek, vagy körletek tevékenységének elválasztására.
 
+![Ábra - oldal 91](images/page_91_img_1.png)
+
+![Ábra - oldal 91](images/page_91_img_2.png)
+
+![Ábra - oldal 91](images/page_91_img_3.png)
+
+![Ábra - oldal 91](images/page_91_img_4.png)
+
+![Ábra - oldal 91](images/page_91_img_5.png)
+
+
 Irányítási rendszabály, melyet többnyire felismerhető tereptárgyak mentén jelölnek ki és általában a szomszédos egységek, vagy a magasabb parancsnokság részéről a mélységben elhelyezett alárendelt csapatok harcászati felelősségi körzetének kijelölésére használnak.
 
 A vonalak a terep olyan szakaszainak megjelölései, amelyek a műveletek végrehajtása és szabályozása során különös jelentőséggel bírnak. A vonalak többségét fázisvonalaknak nevezik az egyszerűség miatt.
@@ -2361,6 +2587,11 @@ Irányítási rendszabály, mely egy egység tevékenységi zónájának vagy sz
 
 Valamely szervezetnek az ellenség irányában lévő legtávolabbi felelősségi határvonala. A mélységi harcban eddig a határig terjed felelőssége. Ezen a határvonalon túl a közvetlen elöljáró parancsnokság felel a mélységi harctevékenység koordinálásáért. Támadó harcban – a harctéri helyzet függvényében – fázisvonaltól - fázisvonalig előre mozoghat.
 
+![Ábra - oldal 92](images/page_92_img_1.png)
+
+![Ábra - oldal 92](images/page_92_img_2.png)
+
+
 **Mögöttes határvonal**
 
 Egy adott egység tevékenységi szektorának vagy zónájának hátulsó határát jelöli ki. A mögöttes határvonal mögé eső területek a közvetlen elöljáró parancsnokhoz tartoznak és az itt lévő elemek elhelyezkedését ezzel az elöljáró parancsnokkal kell egyeztetni.
@@ -2378,15 +2609,20 @@ Az a vonal, mely bármilyen katonai hadművelet során egy adott időben az erő
 
 **FEBA vs. FLOT**
 
-*(lásd: images/)*
 
 **Példák sávhatárokra:**
 
-*(lásd: images/)*
 
 ###### 3.5.3.2 Pontok
 
 A pontok olyan helyek megjelölései, amelyek a műveletek végrehajtása során különös jelentőséggel bírnak elhelyezkedésük vagy funkciójuk alapján.
+
+![Ábra - oldal 95](images/page_95_img_1.png)
+
+![Ábra - oldal 95](images/page_95_img_2.png)
+
+![Ábra - oldal 95](images/page_95_img_3.png)
+
 
 **Kapcsolódási pont (Contact Point)**
 
@@ -2421,6 +2657,13 @@ Egy határozottan megjelölt hely, melyen az egységek előre, vagy hátramozgá
 
 ###### 3.5.3.3 Körletek, területek
 
+![Ábra - oldal 96](images/page_96_img_1.png)
+
+![Ábra - oldal 96](images/page_96_img_2.png)
+
+![Ábra - oldal 96](images/page_96_img_3.jpeg)
+
+
 A körletek olyan területek megjelölésére szolgálnak, amelyek a műveletek végrehajtása során különös jelentőséggel bírnak elhelyezkedésük vagy funkciójuk alapján.
 
 **Körletek szimbólummódosítói:**
@@ -2430,27 +2673,42 @@ A körletek olyan területek megjelölésére szolgálnak, amelyek a műveletek 
 - W, W1: DTG
 - N: Ellenségjelző
 
-*(példák: lásd images/)*
 
 ###### 3.5.3.4 Manőverek, harcfeladatok
 
-*(lásd: images/)*
+![Ábra - oldal 99](images/page_99_img_1.png)
+
+
 
 **Visszavonás (Retirement)**
 
 Tevékenység, melynek során az ellenséggel harcérintkezésen kívül lévő erő eltávolodik az ellenségtől. Szárazföldi haderő – Visszafelé irányuló tevékenység egy formája; egy – az ellenséggel harcérintkezésben nem lévő és azzal várhatóan nem is találkozó – erő irányított visszafelé való mozgása.
 
+![Ábra - oldal 102](images/page_102_img_1.png)
+
+![Ábra - oldal 102](images/page_102_img_2.png)
+
+![Ábra - oldal 102](images/page_102_img_3.png)
+
+
 ###### 3.5.3.5 Tűztámogatás
 
-*(lásd: images/)*
 
 ###### 3.5.3.6 Harci kiszolgáló támogatás
 
-*(lásd: images/)*
+![Ábra - oldal 103](images/page_103_img_1.png)
+
+![Ábra - oldal 103](images/page_103_img_2.png)
+
+
 
 ###### 3.5.3.7 Akadályok jelölései
 
-*(lásd: images/)*
+![Ábra - oldal 104](images/page_104_img_1.png)
+
+![Ábra - oldal 104](images/page_104_img_2.png)
+
+
 
 #### 3.6 A HARCI OKMÁNYOK RENDSZERE
 
@@ -2749,6 +3007,9 @@ Ezzel a melléklettel a parancsnok utasítást ad a csapatrepülő parancsnokok 
 
 Ez a melléklet a parancsnoknak a hadműveletek biztonságára vonatkozó utasításait tartalmazza. Szerkezeti felépítése megegyezik a Paranccsal, de a speciális utasítások, a megfelelő részekben külön alpontokban szerepelnek.
 
+![Ábra - oldal 115](images/page_115_img_1.png)
+
+
 **3.6.2.4.8 Mozgási melléklet**
 
 A melléklet általános utasításokat ad az alárendelt parancsnokoknak a menettel kapcsolatban, a harctevékenységgel összefüggő mozgás megkezdése előtt. A melléklet tartalmazza a parancsnok elvárásait. Utasításokat ad a mozgást végrehajtó, vagy önálló egységek közötti együttműködésre.
@@ -2757,7 +3018,6 @@ Az alárendelt egységek útmutatóként használják a mellékletet, a saját m
 
 A pontok logikai sorrendben alkalmazhatók a tevékenységre.
 
-*(oleáta vázlat minta: lásd images/)*
 
 **Általános meghatározások**
 
